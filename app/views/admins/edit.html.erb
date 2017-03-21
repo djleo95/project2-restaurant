@@ -1,15 +1,15 @@
 <section id="login" class="parallax-section section-box">
   <div class="login-form">
-    <h1><%= t "admin.edit" %></h1>
+    <h1 class="stylish-heading"><%= t "admin.edit" %></h1>
 
     <%= render "shared/flash" %>
 
     <%= form_for @current_admin do |f| %>
-      <%= f.label :name %>
+      <%= f.label :name, class: "form-label" %>
       <%= f.text_field :name, class: "form-control form-group",
         value: @current_admin.name, placeholder: t("admin.email") %>
 
-      <%= f.label :email %>
+      <%= f.label :email, class: "form-label" %>
       <%= f.email_field :email, class: "form-control form-group",
         value: @current_admin.email, placeholder: t("admin.email") %>
 
@@ -19,15 +19,16 @@
 
       <div id="edit_pass_show" class="edit-pass-content-hide">
         <%= f.label :password %>
+
         <%= f.password_field :password, class: "form-control form-group",
           placeholder: t("admin.newpass") %>
 
-        <%= f.label :password %>
+        <%= f.label :password_confirmation, class: "form-label" %>
         <%= f.password_field :password_confirmation, class: "form-control form-group",
           placeholder: t("admin.newpass2") %>
       </div>
 
-      <%= f.label :current_password %>
+      <%= f.label :current_password, class: "form-label" %>
       <%= f.password_field :old_password, class: "form-control form-group",
         placeholder: t("admin.oldpass") %>
 

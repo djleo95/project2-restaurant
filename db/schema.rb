@@ -98,8 +98,8 @@ ActiveRecord::Schema.define(version: 20170413065341) do
     t.integer  "guest_id"
     t.integer  "table_id"
     t.string   "code"
-    t.date     "date"
-    t.time     "time_in"
+    t.date     "day"
+    t.integer  "time_in"
     t.boolean  "isConfirm",  default: false
     t.integer  "discount",   default: 0
     t.datetime "created_at",                 null: false

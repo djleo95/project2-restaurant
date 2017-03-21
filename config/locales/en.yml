@@ -59,6 +59,7 @@ en:
       delete_fail: Failed. Something's wrong.
   admin:
     combo: Combo
+    menu: Menu
     category: Category
     dish: Dish
     order: Check Order
@@ -66,7 +67,8 @@ en:
     profile: Profile
     setting: Setting
     logout: Log out
-    login: Login (only for Admin)
+    login: Login
+    login2: (only for Admin)
     error_log: Please log in
     error_wrongpass: Wrong password or email
     email: Input email
@@ -359,3 +361,22 @@ en:
         create: Create %{model}
         delete: Delete %{model}
         update: Save changes to %{model}
+  select:
+    em: Early Morning (08:00 - 10:00)
+    lm: Later Morning (10:00 - 12:00)
+    ea: Early Afternoon (13:00 - 15:00)
+    la: Later Afternoon (15:00 - 17:00)
+    ee: Early Evening (17:30 - 19:30)
+    le: Later Evening (20:00 - 22:00)
+    ta: Not important
+    tm: Middle of room
+    ts: Side of room
+    to: Outside
+  reserve:
+    quantity: Please choose capacity
+    table: Please select prefer table
+    date: Choose date
+    time: Please choose your time
+    submit: Finish Booking Table
+    find: Find Table
+    table: Please choose table

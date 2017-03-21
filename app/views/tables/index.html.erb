@@ -1,0 +1,47 @@
+<section class="default-section">
+  <div class="transparent-div" id="div-find-table">
+    <h1 class="stylish-heading h1style">Reservation</h1>
+    <%= render "reservation" %>
+  </div>
+  <div class="transparent-div3" id="div-show-result" class="div-show-result">
+    <h2 class="stylish-heading h1style">Available Table</h2>
+    <%= render "map" %>
+    <div class="btn-guide btn-maru btn-left2 btn-bottom3 text-center">Table is Available</div>
+    <div class="btn-guide btn-batsu btn-right2 btn-bottom3 text-center">Table is Unavailable</div>
+  </div>
+
+  <div id="myModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="close">&times;</span>
+        <h2 id="guest-info">Please input your information to complete booking</h2>
+        <h2 id="guest-info-confirmed" class="guest-info-confirmed">Confirm you order</h2>
+      </div>
+      <div class="modal-body">
+        <!--<div id="finish-guest-info"> </div>-->
+        <%= form_for @guest, url: guests_path, remote: true do |f| %>
+          <div id="hide-after-guest-info">
+            <%= f.label :name, class: "form-label" %>
+            <%= f.text_field :name, id: "name-guest", class: "form-control form-group", required: true %>
+            <%= f.label :email, class: "form-label" %>
+            <%= f.text_field :email, id: "email-guest", class: "form-control form-group", required: true %>
+            <%= f.label :phoneNum, "phone number", class: "form-label" %>
+            <%= f.text_field :phoneNum, id: "phone-guest", class: "form-control form-group", required: true %>
+          </div>
+          <div class="row col-sm-12">
+            <button id="btn-submit-guest" class="btn-guest
+            log-btn-2 btn-submit-modal col-sm-6"
+              type="summit">Submit info</button>
+            <button id="btn-submit-order" class="btn-order
+            log-btn-2 btn-submit-modal col-sm-6">Confirm Order</button>
+            <div class="close-modal log-btn-2 col-sm-6 text-center"> Cancel </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+
+      </div>
+    </div>
+  </div>
+</section>
