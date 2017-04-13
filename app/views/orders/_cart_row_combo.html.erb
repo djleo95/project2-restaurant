@@ -1,0 +1,32 @@
+<div class="well">
+  <div class="row">
+    <div class="col-xs-4 text-center">
+      <h4><%= combo.description %></h4>
+    </div>
+    <div class="col-xs-8">
+      <%= form_for order_combo, remote: true do |f| %>
+        <div class="col-xs-4 ">
+          <h4 class="text-left"> <%= t "order.unit_price" %>
+            <span><%= number_to_currency order_combo.price %></span></h4>
+          <h4 class="text-left"> <%= t "order.total_price" %>
+            <span><%= number_to_currency order_combo.total_price %></span></h4>
+        </div>
+        <div class="col-xs-8 row">
+          <div class="col-xs-4">
+            <%= f.number_field :quantity, value: order_combo.quantity.to_i,
+              class: "col-xs-8 form-control", min: 1 %>
+            <%= f.hidden_field :id, value: order_combo.id %>
+          </div>
+          <div class="col-xs-8 text-left">
+            <div class="btn-group">
+              <%= f.submit t("order.update_quantity"), class: "btn btn-primary" %>
+              <%= link_to t("order.delete"), order_combo,
+                {data: {confirm: t("order.delete_alert", product_name: order_combo.combo.description)},
+                method: :delete, remote: true, class: "btn btn-danger" } %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

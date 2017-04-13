@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   resources :dishes
   resource :order, only: :show
   resources :order_dishes, only: [:create, :update, :destroy]
+  resources :order_combos, only: [:create, :update, :destroy]
 end

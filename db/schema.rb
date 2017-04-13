@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170321023257) do
+ActiveRecord::Schema.define(version: 20170413065341) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -64,6 +64,19 @@ ActiveRecord::Schema.define(version: 20170321023257) do
     t.datetime "updated_at",      null: false
   end
 
+  create_table "order_combos", force: :cascade do |t|
+    t.integer  "order_id"
+    t.integer  "combo_id"
+    t.integer  "discount"
+    t.integer  "quantity"
+    t.integer  "price"
+    t.integer  "total_price"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["combo_id"], name: "index_order_combos_on_combo_id"
+    t.index ["order_id"], name: "index_order_combos_on_order_id"
+  end
+
   create_table "order_dishes", force: :cascade do |t|
     t.integer  "order_id"
     t.integer  "dish_id"
@@ -83,10 +96,10 @@ ActiveRecord::Schema.define(version: 20170321023257) do
     t.string   "code"
     t.date     "time_in"
     t.date     "time_out"
-    t.boolean  "isConfirm"
+    t.boolean  "isConfirm",  default: false
     t.integer  "discount"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.index ["guest_id"], name: "index_orders_on_guest_id"
     t.index ["table_id"], name: "index_orders_on_table_id"
   end
