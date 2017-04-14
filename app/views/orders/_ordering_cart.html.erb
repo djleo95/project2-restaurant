@@ -7,13 +7,20 @@
     </ul>
   </div>
 <% end %>
-<% unless @order_dishes.any? %>
-  <p class="text-center">
-    <%= link_to t("order.empty_item"), dishes_path%>
-  </p>
-<% else %>
+<% if @order_dishes.any? %>
   <% @order_dishes.each do |order_dish| %>
     <%= render "orders/cart_row", dish: order_dish.dish,
       order_dish: order_dish, show_total: true %>
   <% end %>
+<% end %>
+<% if @order_combos.any? %>
+  <% @order_combos.each do |order_combo| %>
+    <%= render "orders/cart_row_combo", combo: order_combo.combo,
+      order_combo: order_combo, show_total: true %>
+  <% end %>
+<% end %>
+<% unless @order_dishes.any? || @order_combos.any? %>
+  <p class="text-center">
+    <%= link_to t("order.empty_item"), dishes_path%>
+  </p>
 <% end %>
