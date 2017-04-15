@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="//fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+<section class="section admin-site">
+  <br><br><br>
+  <div class="col-md-10 col-md-offset-1">
+    <h1><%= t ".title" %></h1>
+    <% flash.each do |key, value| %>
+      <div class="flash-message <%= key %>">
+        <%= value %>
+      </div>
+    <% end %>
+    <div class="bloc">
+      <div class="search-form col-xs-12" id="category">
+        <%= render "category" %>
+      </div>
+      <br>
+      <%= link_to t(".add_button"), new_admin_category_path,
+        class: "btn btn-primary button-add" %>
+    </div>
+  </div>
+</section>

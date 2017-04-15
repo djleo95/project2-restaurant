@@ -9,4 +9,18 @@ Rails.application.routes.draw do
   resource :order, only: :show
   resources :order_dishes, only: [:create, :update, :destroy]
   resources :order_combos, only: [:create, :update, :destroy]
+  resources :combos
+
+  namespace :admin do
+    resources :categories do
+      resources :dishes
+    end
+    resources :dishes
+    resources :combos do
+      resources :dishes
+    end
+    resources :orders do
+      resources :dishes, only: [:create, :update, :destroy]
+    end
+  end
 end

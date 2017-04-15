@@ -1,0 +1,67 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<section class="section user-site">
+  <br><br><br><br>
+  <div class="col-sm-10 col-sm-offset-1 menu bloc">
+    <div class="col-xs-12">
+      <div class="text-center">
+        <%= image_tag @combo.image, class: "cover" %>
+      </div><br>
+      <p class="menu-desc"><i><%= @combo.description %></i></p><br>
+      <h3 class="menu-desc"><b><%= t ".include" %></b></h3>
+      <% @combo.dishes.each do |dish| %>
+        <div class="col-xs-12 col-sm-6 dish">
+          <div class="menu-entry">
+            <div class="menu-entry-head">
+              <div class="menu-entry-title">
+                <span class="tag">
+                  <%= link_to dish.name, dish_path(dish) %>
+                </span>
+              </div>
+              <p class="menu-entry-price view" tabindex="1">
+                <i class="fa fa-lg fa-camera"></i>
+              </p>
+              <div class="fancybox">
+                <div class="fancybox-overlay fancybox-overlay-fixed">
+                  <div class="fancybox-wrap fancybox-opened">
+                    <div class="fancybox-skin" style="left: -60%">
+                      <div class="fancybox-outer">
+                        <div class="fancybox-inner">
+                          <%= image_tag dish.image, class: "fancybox-image",
+                            alt: "img" %>
+                          <p title="Close" class="fancybox-item fancybox-close"
+                            onclick="$('#fancybox').toggle();"></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="menu-entry-desc">
+              <span class="more"><%= dish.description %></span>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-sm-12">
+      <h3><b><%= t ".condition" %></b></h3>
+      <li>
+        <%= t ".discount" %>
+        <span class="red"><%= @combo.discount %></span>
+          <i class="fa fa-percent"></i>
+        <%= t ".bill" %>
+      </li>
+      <li>
+        <%= t ".valid" %>
+        <span class="red">
+          <%= @combo.from.in_time_zone("Hanoi").strftime("%b %d %Y") %>
+        </span>
+        <%= t ".to" %>
+        <span class="red">
+          <%= @combo.to.in_time_zone("Hanoi").strftime("%b %d %Y") %>
+        </span>
+      </li>
+    </div>
+  </div>
+</section>

@@ -4,10 +4,11 @@ class CreateOrders < ActiveRecord::Migration[5.0]
       t.references :guest, foreign_key: true
       t.references :table, foreign_key: true
       t.string :code
-      t.date :time_in
-      t.date :time_out
+      t.date :date
+      t.time :time_in
+      t.time :time_out
       t.boolean :isConfirm, default: false
-      t.integer :discount
+      t.integer :discount, default: 0
 
       t.timestamps
     end

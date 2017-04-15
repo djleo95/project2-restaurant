@@ -9,31 +9,6 @@ en:
     book: Booking
     contact: Contact
     admin: Admin Only
-  admin:
-    menu: Menu
-    category: Category
-    dish: Dish
-    order: Check Order
-    bill: Export bill
-    profile: Profile
-    setting: Setting
-    logout: Log out
-    login: Login (only for Admin)
-    error_log: Please log in
-    error_wrongpass: Wrong password or email
-    email: Input email
-    pass: Input password
-    admin: Admin
-    not_exist: This account is not exist.
-    success: Success update info
-    fail: Failed update info
-    edit: Edit profile
-    name: Input name
-    newpass: Input new password
-    newpass2: Re-input new password
-    oldpass: Confirm password to update
-    update: Update profile
-    change_pass: Change Password
   footer:
     about: About the house
     about_content: Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
@@ -69,7 +44,43 @@ en:
       update_success: Updated combo successfully!
       destroy_success: Deleted combo successfully!
       destroy_fail: Failed. Something's wrong.
+    category:
+      find_fail: Category not found.
+      create_success: Created category successfully!
+      update_success: Updated category successfully!
+      delete_success: Deleted category successfully!
+      delete_fail: Failed. Something's wrong.
+    order:
+      find_fail: Order not found.
+      create_success: Created order successfully!
+      update_success: Updated order successfully!
+      delete_success: Deleted order successfully!
+      delete_fail: Failed. Something's wrong.
   admin:
+    combo: Combo
+    category: Category
+    dish: Dish
+    order: Check Order
+    bill: Export bill
+    profile: Profile
+    setting: Setting
+    logout: Log out
+    login: Login (only for Admin)
+    error_log: Please log in
+    error_wrongpass: Wrong password or email
+    email: Input email
+    pass: Input password
+    admin: Admin
+    not_exist: This account is not exist.
+    success: Success update info
+    fail: Failed update info
+    edit: Edit profile
+    name: Input name
+    newpass: Input new password
+    newpass2: Re-input new password
+    oldpass: Confirm password to update
+    update: Update profile
+    change_pass: Change Password
     search: Search
     dishes:
       index:
@@ -77,10 +88,12 @@ en:
         name: Dish
         add_dish_button: Creat new dish
         search_fail: Not found.
+      new:
+        title: Create dish
+      edit:
+        title: Edit dish
       show:
         title: Dish information
-        field: Field
-        value: Value
         name: "Name:"
         price: "Price:"
         money: $
@@ -90,6 +103,7 @@ en:
         active: "Active:"
         yes: Yes
         no: No
+        edit_dish: Edit dish
       form:
         name: "Dish name:"
         price: "Price:"
@@ -126,8 +140,10 @@ en:
         description: "Description:"
       show:
         title: Combo information
-        field: Field
-        value: Value
+        category: Category
+        no: No.
+        opition: Opition
+        dish: Dish name
         name: Combo
         dishes: LIST DISHES
         description: Description
@@ -135,7 +151,8 @@ en:
         delete_dish_button: Delete
         delete_warning: Are you sure?
       edit:
-         delete_combo_button: Delete this combo
+        title: Edit combo
+        delete_combo_button: Delete this combo
       form:
         create_combo_button: Create combo
         update_combo_button: Update combo
@@ -153,6 +170,84 @@ en:
         delete_combo_button: Delete
         delete_warning: Are you sure?
         dishes: View dishes
+    categories:
+      index:
+        title: Categories manager
+        add_button: Add new category
+        search_fail: Not found
+      form:
+        name: "Category name:"
+        description: "Description:"
+      show:
+        dish: Dish name
+        opition: Opition
+        add_dish_button: Add dish
+        empty: This category hasn't any dish.
+        title: Category information
+        name: Category
+        opition: Opition
+        category: Category
+        description: Description
+        dishes: LIST DISHES
+        no: "No."
+        edit_category_button: Edit combo
+        delete_dish_button: Delete
+      edit:
+        title: Edit category
+      new:
+        title: Create category
+      category:
+        order: No.
+        name: Category
+        opition: Opition
+        search: Search
+        input_keyword: Search for category name or description
+        view_button: Details
+        edit_button: Edit
+        delete_button: Delete
+        delete_warning: Are you sure?
+    orders:
+      index:
+        title: Orders manager
+        add_order_button: Add new order
+      show:
+        title: Order details
+      new:
+        title: Create order
+      edit:
+        title: Edit order
+      form:
+        code: Order code
+        discount: Discount
+        guest_name: Guest name
+        capacity: Capacity
+        date: Date
+        time_in: From
+        time_out: To
+        status: "Status:"
+        approved: Approved
+        canceled: Canceled
+      order:
+        search: Search
+        input_keyword: Search for order code or guest name
+        choose: "--- Choose ---"
+        date: "Date:"
+        check: "Status:"
+        code: Code
+        discount: Discount
+        table: Table
+        capacity: Persons
+        guest_name: Guest name
+        phone: Phone
+        date: Date
+        from: From
+        to: To
+        status: Status
+        all: All
+        approved: Approved
+        canceled: Canceled
+        no_table: Not order
+        action: Action
   button:
     view: Details
     add: Add
@@ -162,6 +257,7 @@ en:
     cancel: Back
     clear: Clear form
     all_dish: View all dishes
+    delete_warning: Are you sure?
   dishes:
     index:
       title: OUR MENU
@@ -202,9 +298,18 @@ en:
   combos:
     index:
       viewdes: View Detail
+      continue: ... (continued)
+      from: "Only from"
+      to: "to "
     show:
       readmore: Read more
-      viewimage: View image
+      viewimage: Image
+      include: "Combo includes:"
+      condition: "Terms & conditions:"
+      discount: "Discount "
+      bill: " for total bill."
+      valid: Valid from
+      to: "to "
     combo:
       money: $
       view: View detail
@@ -219,6 +324,11 @@ en:
       readmore: Read More
       off: " off"
       deal: View Deal
+      continue: ... (continued)
+      valid_from: " Valid from"
+      valid_to: " to"
+    showmore: Show more
+    showless: Show less
   order:
     empty_item: "There are no items in your shopping cart.  Please go menu and add some items to your cart."
     delete: Delete
@@ -231,3 +341,21 @@ en:
     not_valid_or_not_active: "is not valid or is not active."
     not_valid_value: "is not a valid order."
     not_valid: "not valid."
+  helpers:
+    submit:
+      dish:
+        create: Create %{model}
+        delete: Delete %{model}
+        update: Save changes to %{model}
+      combo:
+        create: Create %{model}
+        delete: Delete %{model}
+        update: Save changes to %{model}
+      category:
+        create: Create %{model}
+        delete: Delete %{model}
+        update: Save changes to %{model}
+      order:
+        create: Create %{model}
+        delete: Delete %{model}
+        update: Save changes to %{model}

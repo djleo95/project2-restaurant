@@ -3,8 +3,9 @@ class DishesController < ApplicationController
 
   def index
     @search = Dish.ransack params[:q]
-    @search.sorts = %w[name, price] if @search.sorts.empty?
+    @search.sorts = %w(name price) if @search.sorts.empty?
     @dishes = @search.result.page(params[:page]).per_page Settings.limit
+    @categories = Category.all
   end
 
   def show

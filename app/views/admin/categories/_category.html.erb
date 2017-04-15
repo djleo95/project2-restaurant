@@ -1,0 +1,52 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<%= search_form_for [:admin, @search], remote: true, method: :get do |f| %>
+  <div class="input-group input-group-lg">
+    <div class="form-group has-feedback has-clear input-group-lg">
+      <%= f.text_field :name_or_description_cont, class: "form-control",
+                       placeholder: t(".input_keyword"), id: "searchinput" %>
+      <span id="searchclear" class="form-control-clear glyphicon
+          glyphicon-remove-circle form-control-feedback"></span>
+    </div>
+    <span class="input-group-btn">
+        <%= f.submit  t(".search"), class: "btn btn-primary" %>
+      </span>
+  </div>
+  <div class="apple-pagination">
+    <%= paginate @categories, remote: true %>
+  </div>
+  <ul class="sortable-list">
+    <li>
+      <div class="order-holder">
+        <b><%= sort_link @search, :id, t(".order"), {}, {remote: true, method: :get} %></b>
+      </div>
+      <div class="name-holder">
+        <b><%= sort_link @search, :name, {}, {remote: true, method: :get} %></b>
+      </div>
+      <div class="option-holder"><b><%= t ".opition" %></b></div>
+    </li>
+    <% if @categories.any? %>
+      <% @categories.each do |category| %>
+        <li>
+          <div class="order-holder">
+            <%= category.id %>
+          </div>
+          <div class="title-holder">
+            <%= category.name %>
+          </div>
+          <div class="view-holder">
+            <%= link_to t("button.view"), admin_category_path(category) %>
+          </div>
+          <div class="edit-holder">
+            <%= link_to t("button.edit"), edit_admin_category_path(category) %>
+          </div>
+          <div class="delete-holder">
+            <%= link_to t("button.delete"), admin_category_path(category),
+              method: :delete, data: {confirm: t("button.delete_warning")} %>
+          </div>
+        </li>
+      <% end %>
+    <% else %>
+      <%= t "admin.categories.index.search_fail" %>
+    <% end %>
+  </ul>
+<% end %>

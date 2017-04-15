@@ -1,3 +1,11 @@
 $('#dishes').html('<%= j render "dish" %>');
 $('#pagination').html('<%= j paginate(@dishes, remote: true).to_s %>');
 $('#counter').html('<%= j page_entries_info(@dishes, remote: true).to_s %>');
+$('.show-advanced-search').on('click', function () {
+  $('.advanced-search').show();
+  $(this).hide();
+})
+$('.close-advanced-search').on('click', function () {
+  $('.advanced-search').hide();
+  $('.show-advanced-search').show();
+})
