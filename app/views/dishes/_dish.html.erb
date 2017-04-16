@@ -34,7 +34,7 @@
         <div class="w350" style="width:30%">
           <p style="display: inline-block; width:100%">
             <%= f.label :from, class: "date" %>
-            <%= f.number_field :price_gteq, class: "pj-form-field w150 price", placeholder: "Minumum" %>
+            <%= f.number_field :price_gteq, class: "pj-form-field w150", placeholder: "Minumum" %>
           </p>
           <p>
             <label class="title">&nbsp;</label>
@@ -45,7 +45,7 @@
         <div class="w350" style="width:30%">
           <p style="display: inline-block; width:100%">
             <%= f.label :to, class: "date" %>
-            <%= f.number_field :price_lteq, class: "pj-form-field w150 price", placeholder: "Maximum" %>
+            <%= f.number_field :price_lteq, class: "pj-form-field w150", placeholder: "Maximum" %>
           </p>
         </div>
       </div>
@@ -115,6 +115,3 @@
     width: 40%;
   }
 </style>
-<script>
-  $(".price").numeric()
-</script>

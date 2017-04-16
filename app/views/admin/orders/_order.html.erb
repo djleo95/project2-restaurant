@@ -5,12 +5,9 @@
   </div>
   <br>
   <div class="b10">
-    <%= link_to t("+ Add reservation"), new_admin_order_path, class:"float_left pj-form r10 pj-link" %>
+    <%= link_to "+ Add reservation", new_admin_order_path, class:"float_left pj-form r10 pj-link" %>
     <%= f.text_field :code_cont, class:"pj-form-field pj-form-field-search w350",
       placeholder:"Search by code" %>
-    <!--<button type="button" class="pj-button pj-button-detailed col-sm-1" onClick="showTable()">-->
-      <!--<span class="pj-button-detailed-arrow">S</span>-->
-    <!--</button>-->
     <div class="float_right t5">
       <%= link_to t(".all"), {q: nil, remote: true},
                   class:"pj-button btn-all"%>
@@ -90,7 +87,6 @@
           <%= sort_link @search, :date, t(".date"), {}, {remote: true, method: :get} %>
         </th>
         <th class="left width-110"><%= t ".from" %></th>
-        <th class="left width-110"><%= t ".to" %></th>
         <th class="left width-170">
           <%= sort_link @search, :guest_name, t(".guest_name"), {}, {remote: true, method: :get} %>
         </th>
@@ -114,8 +110,7 @@
             <td><%= link_to order.code, admin_order_path(order) %></td>
             <td><%= order.date.in_time_zone('Hanoi').strftime('%b %d %Y') %></td>
             <td><%= order.time_in.in_time_zone('Hanoi').strftime('%I:%M %p') %></td>
-            <td><%= order.time_out.in_time_zone('Hanoi').strftime('%I:%M %p') %></td>
-            <td><%= t "name" %></td>
+            <td><%= "name" %></td>
             <td class="text-center">
               <% if order.table.id.present? %>
                 <%= order.table.id %>

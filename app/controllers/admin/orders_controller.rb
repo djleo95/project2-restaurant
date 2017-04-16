@@ -7,10 +7,6 @@ class Admin::OrdersController < ApplicationController
     @search = Order.ransack params[:q]
     @search.sorts = %w[code] if @search.sorts.empty?
     @orders = @search.result.page(params[:page]).per_page Settings.max_result
-    respond_to do |format|
-      format.html
-      format.js
-    end
   end
 
   def show
@@ -60,7 +56,7 @@ class Admin::OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit :code, :discount, :date, :time_in, :time_out, :isConfirm,
+    params.require(:order).permit :code, :discount, :date, :time_in, :isConfirm,
       guest_attributes: [:id, :name], table_attributes: [:id, :capacity]
   end
 

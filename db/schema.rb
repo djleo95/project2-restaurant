@@ -100,7 +100,6 @@ ActiveRecord::Schema.define(version: 20170413065341) do
     t.string   "code"
     t.date     "date"
     t.time     "time_in"
-    t.time     "time_out"
     t.boolean  "isConfirm",  default: false
     t.integer  "discount",   default: 0
     t.datetime "created_at",                 null: false

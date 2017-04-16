@@ -1,7 +1,8 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="//fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
 <section class="section admin-site">
   <br><br>
-  <div class="col-sm-8 col-sm-offset-2">
+  <div class="col-sm-10 col-sm-offset-1">
     <h1><%= t ".title" %></h1><br><br>
     <% flash.each do |key, value| %>
       <div class="flash-message <%= key %>">
@@ -10,19 +11,176 @@
     <% end %>
     <div class="bloc">
       <br>
-      <%= @order.code %>
-      <%= @order.date.in_time_zone('Hanoi').strftime('%b %d %Y') %>
-      <%= @order.time_in.in_time_zone('Hanoi').strftime('%I:%M %p') %>
-      <%= @order.time_out.in_time_zone('Hanoi').strftime('%I:%M %p') %>
-      <%= @order.guest.name %>
-      <%= @order.guest.phoneNum %>
-      <%= @order.table.capacity %>
-      <%= @order.discount %><i class="fa fa-percent"></i><br>
-      <%= t "Order items" %><br>
-      <% @order.order_dishes.each do |order_dish|%>
-        <%= order_dish.dish.name %>
-        <%= order_dish.quantity %>
-      <% end %>
+      <table dir="ltr" class="default-dg-table">
+        <tbody id="combo_dish">
+          <tr class="dg_tr" id="di_row_0">
+            <td class="default_dg_td dg-left dg-nowrap"><b>Code</b></td>
+            <td class="default_dg_td dg-left"><%= @order.code %></td>
+          </tr>
+          <tr class="dg_tr" id="di_row_0">
+            <td class="default_dg_td dg-left dg-nowrap"><b>Date</b></td>
+            <td class="default_dg_td dg-left">
+              <%= @order.date.in_time_zone('Hanoi').strftime('%b %d %Y') %>
+            </td>
+          </tr>
+          <tr class="dg_tr" id="di_row_0">
+            <td class="default_dg_td dg-left dg-nowrap"><b>From</b></td>
+            <td class="default_dg_td dg-left">
+              <%= @order.time_in.in_time_zone('Hanoi').strftime('%I:%M %p') %>
+            </td>
+          </tr>
+          <tr class="dg_tr" id="di_row_0">
+            <td class="default_dg_td dg-left dg-nowrap"><b>Table id</b></td>
+            <td class="default_dg_td dg-left">
+              <%= @order.table.id %>
+            </td>
+          </tr>
+          <tr class="dg_tr" id="di_row_0">
+            <td class="default_dg_td dg-left dg-nowrap"><b>Capacity</b></td>
+            <td class="default_dg_td dg-left">
+              <%= @order.table.capacity %>
+            </td>
+          </tr>
+          <tr class="dg_tr" id="di_row_0">
+            <td class="default_dg_td dg-left dg-nowrap"><b>Discount</b></td>
+            <td class="default_dg_td dg-left dg-nowrap">
+              <%= @order.discount %><i class="fa fa-percent"></i><br>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      <div class="col-xs-12 text-center">
+        <%= link_to "Edit order", edit_admin_order_path(@order), class:"pj-button" %>
+      </div>
+      <br><br>
+      <h3 style="display: inline">Order items</h3>
+      <h3 style="display: inline">
+        <%= link_to "+ Add dishes", new_admin_order_order_dish_path(@order), class:"btn btn-link" %>
+      </h3>
+      <br><br>
+      <table class="items-table">
+        <thead>
+          <tr>
+            <th>No.</th>
+            <th>Dish name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Subtotal</th>
+            <th colspan="2" class="text-center">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @order.order_dishes.each do |order_dish| %>
+          <tr>
+            <td class="total"><%= order_dish.dish.id %></td>
+            <td class="total">
+              <strong><%= link_to order_dish.dish.name, admin_dish_path(order_dish) %></strong>
+            </td>
+            <td class="total">
+              <%= number_to_currency order_dish.dish.price %>
+            </td>
+            <td class="total">
+              <%= order_dish.quantity %>
+            </td>
+            <td class="total">
+              <%= number_to_currency order_dish.total_price %>
+            </td>
+            <td class="total width-10 text-center">
+              <%= link_to edit_admin_order_order_dish_path(order_dish) do %>
+                  <i class="fa fa-lg fa-pencil-square-o"></i>
+              <% end %>
+            </td>
+            <td class="total width-10 text-center">
+              <%= link_to admin_order_order_dish_path(order_dish), method: :delete,
+                          data: { confirm: t("button.delete_warning") } do %>
+                  <i class="fa fa-lg fa-times"></i>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+        <tfoot>
+        <tr>
+          <td colspan="4" class="foot">Total (not discount)</td>
+          <td class="foot" style="text-align: left" colspan="3">
+            <%= number_to_currency @order.subtotal %>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="4" class="foot">Voucher discount</td>
+          <td class="foot" colspan="3"></td>
+        </tr>
+        <tr>
+          <td colspan="4" align="right" style="padding:7px 9px"><strong>Total</strong></td>
+          <td style="padding:7px 9px" colspan="3">
+            <strong><%= number_to_currency @order.subtotal %></strong>
+          </td>
+        </tr>
+        </tfoot>
+      </table>
     </div>
   </div>
 </section>
+<style>
+  .width-10 {
+    width: 10px;
+  }
+  .items-table {
+    border: 0;
+    width: 100%;
+    background: #f5f5f5;
+    margin-bottom: 30px;
+    border-bottom: solid 1px gray;
+  }
+  h3 {
+    display: inline-block;
+  }
+  a {
+    font-size: 18px !important;
+  }
+  .items-table tbody, tfoot {
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 16px;
+    color: black;
+    line-height: 22px;
+  }
+  tfoot {
+    border-top: solid 1px gray;
+    background: #eee;
+  }
+  .items-table tbody {
+    background: #f9f9f9;
+  }
+  .foot {
+    text-align: right;
+    padding: 5px 9px;
+  }
+  .items-table th {
+    padding: 6px 9px;
+    color: #fff;
+    text-transform: uppercase;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 16px;
+    line-height:22px;
+    background-color: rgb(2, 172, 234);
+    font-weight: bold;
+    border-color: rgb(2, 172, 234) !important;
+  }
+  
+  .total {
+    padding: 3px 9px;
+  }
+  
+  td, th {
+    display: table-cell;
+    vertical-align: inherit;
+  }
+  tr {
+    display: table-row;
+    vertical-align: inherit;
+  }
+  tr:hover {
+    background: white;
+  }
+</style>

@@ -6,6 +6,6 @@ class Dish < ApplicationRecord
   has_many :order_dishes
 
   validates :name, presence: true
-  validates :price, presence: true, numericality: true
+  validates :price, presence: true, numericality: {greater_than: 0}
   scope :dishes, -> {where isAvailable: true}
 end

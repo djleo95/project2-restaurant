@@ -190,8 +190,7 @@ en:
         description: Description
         dishes: LIST DISHES
         no: "No."
-        edit_category_button: Edit combo
-        delete_dish_button: Delete
+        edit_category_button: Edit category
       edit:
         title: Edit category
       new:

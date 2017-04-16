@@ -7,10 +7,10 @@
       <% if combo.discount > 39 %>
         <div class="slide">
           <span class="hot"></span>
-          <%= link_to combo_path(combo), title: combo.name do %>
+          <%= link_to combo_path(combo), title: combo.name, target:"_blank" do %>
             <%= image_tag combo.image %>
           <% end %>
-          <%= link_to combo_path(combo), class:"link" do %>
+          <%= link_to combo_path(combo), class:"link", target:"_blank" do %>
             <%= combo.name %> <i class="fa fa-angle-double-right"></i>
           <% end %>
           <p>

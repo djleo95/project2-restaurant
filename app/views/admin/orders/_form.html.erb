@@ -1,35 +1,33 @@
 <%= form_for [:admin, @order] do |f| %>
-  <%= f.label :code, t(".code") %>
+  <%= f.label :code, t(".code"), class:"form-label" %>
   <%= f.text_field :code, class: "form-control" %>
 
   <%= f.fields_for :guest do |guest| %>
-    <%= guest.label :name, t(".guest_name") %>
+    <%= guest.label :name, t(".guest_name"), class:"form-label" %>
     <%= guest.text_field :name, class: "form-control" %>
   <% end %>
 
   <%= f.fields_for :table do |table| %>
-    <%= table.label :capacity, t(".capacity") %>
+    <%= table.label :capacity, t(".capacity"), class:"form-label" %>
     <%= table.text_field :capacity, class: "form-control" %>
   <% end %>
 
-  <%= f.label :discount, t(".discount") %>
+  <%= f.label :discount, t(".discount"), class:"form-label" %>
   <%= f.text_field :discount, class: "form-control"  %>
 
-  <%= f.label :date, t(".date") %><br>
+  <%= f.label :date, t(".date"), class:"form-label" %><br>
   <%= f.text_field :date, class: "form-control datepicker" %><br>
 
-  <%= f.label :time_in, t(".time_in") %><br>
+  <%= f.label :time_in, t(".time_in"), class:"form-label" %><br>
   <%= f.time_select :time_in, class: "form-control" %><br>
 
-  <%= f.label :time_out, t(".time_out") %><br>
-  <%= f.time_select :time_out, class: "form-control" %><br>
-
-  <%= f.label :isConfirm, t(".status") %>
+  <%= f.label :isConfirm, t(".status"), class:"form-label" %>
   <%= f.radio_button :isConfirm, "true", checked: true %> <%= t(".approved") %>
   <%= f.radio_button :isConfirm, "false" %> <%= t(".canceled") %>
 
-  <%= link_to "Add dishes", admin_order_dishes_path(@order) %>
-
+  <div class="col-xs-12">
+    <%= link_to "Add dishes", new_admin_order_order_dish_path(@order) %>
+  </div>
   <br><br><br>
   <% if @order.new_record? %>
     <%= f.submit t("button.clear"), type: :reset,

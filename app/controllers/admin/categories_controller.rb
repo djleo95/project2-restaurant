@@ -9,6 +9,7 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def show
+    @category = Category.includes(:dishes).find(params[:id])
   end
 
   def new
