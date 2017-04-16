@@ -1,0 +1,2 @@
+$('#combos').html('<%= j render "combo" %>');
+$('#pagination').html('<%= j paginate(@combos, remote: true).to_s %>');

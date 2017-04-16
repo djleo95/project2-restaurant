@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="//fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+<section class="section admin-site">
+  <br><br>
+  <div class="col-md-10 col-md-offset-1 col-xs-12">
+    <h1><%= t ".title" %></h1>
+    <% flash.each do |key, value| %>
+      <div class="flash-message <%= key %>">
+        <%= value %>
+      </div>
+    <% end %>
+    <div class="bloc">
+      <div id="combo" class="search-form col-xs-12">
+        <%= render "combo" %>
+      </div>
+      <br>
+      <%= link_to t(".add_combo_button"), new_admin_combo_path,
+        class: "btn btn-primary col-md-offset-5" %>
+    </div>
+  </div>
+</section>

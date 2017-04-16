@@ -1,0 +1,79 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<%= search_form_for [:admin, @search], remote: true, method: :get do |f| %>
+  <div class="col-sm-12">
+    <div class="form-group has-feedback has-clear input-group-lg col-sm-7 col-xs-12">
+      <%= f.text_field :name_or_description_cont, class: "form-control",
+        placeholder: t(".input_keyword"), id: "searchinput" %>
+      <span id="searchclear" class="form-control-clear glyphicon
+        glyphicon-remove-circle form-control-feedback"></span>
+    </div>
+    <div class="col-sm-3 col-xs-6 status">
+      <%= t ".status" %>
+      <%= f.select :isAvailable_true, [[t(".yes"), 1], [t(".no"), 0]],
+        {include_blank: t(".all"),
+        selected: params[:q] ? params[:q][:isAvailable_true] : ''},
+        class: "btn btn-default" %>
+    </div>
+    <div class="col-sm-1 col-xs-4 search-button">
+      <%= f.submit  t(".search"), class: "btn btn-primary" %>
+    </div>
+  </div>
+  <div class="apple-pagination">
+    <%= paginate @dishes, remote: true %>
+  </div>
+  <table class="default-dg-table">
+    <thead>
+      <tr style="" id="di_row_">
+        <th class="default_dg_th dg-center dg-nowrap">
+          <%= sort_link @search, :id, t(".order"), {}, {remote: true, method: :get} %>
+        </th>
+        <th class="default_dg_th dg-center dg-nowrap" colspan="2">
+          <%= sort_link @search, :name, {}, {remote: true, method: :get} %>
+        </th>
+        <th class="default_dg_th dg-center dg-nowrap">
+          <%= sort_link @search, :price, {}, {remote: true, method: :get} %>
+        </th>
+        <th class="default_dg_th dg-center dg-nowrap">
+          <%= t ".status" %>
+        </th>
+        <th class="default_dg_th dg-center dg-nowrap" colspan="3">
+          <%= t ".opition" %>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if @dishes.any? %>
+        <% @dishes.each do |dish| %>
+          <tr class="dg_tr" id="di_row_0">
+            <td class="default_dg_td dg-center dg-nowrap"><%= dish.id %></td>
+            <td class="default_dg_td dg-left dg-nowrap img">
+              <%= image_tag dish.image,
+                onerror: "this.src='https://t4.ftcdn.net/jpg/01/07/86/19/500_F_107861953_YZ800J1eDVtaEVAMXj1KRpez6efJpm7D.jpg';" %>
+            </td>
+            <td class="default_dg_td dg-left dg-nowrap"><%= dish.name %></td>
+            <td class="default_dg_td dg-center dg-nowrap">
+              <i class="fa fa-usd"></i><%= dish.price %>
+            </td>
+            <td class="default_dg_td dg-center dg-nowrap">
+              <% if dish.isAvailable? %>
+                <span class="badge-green"><%= t ".yes" %></span>
+              <% else %>
+                <span class="badge-red"><%= t ".no" %></span>
+              <% end %>
+            </td>
+            <td class="default_dg_td dg-center dg-nowrap">
+              <%= link_to t("button.view"), admin_dish_path(dish) %>
+            </td>
+            <td class="default_dg_td dg-center dg-nowrap">
+              <%= link_to t("button.edit"), edit_admin_dish_path(dish) %>
+            </td>
+            <td class="default_dg_td dg-center dg-nowrap">
+              <%= link_to image_tag("http://icons.iconarchive.com/icons/saki/nuoveXT/128/Actions-button-cancel-icon.png"), admin_dish_path(dish),
+                method: :delete, data: {confirm: t("button.delete_warning")} %>
+            </td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

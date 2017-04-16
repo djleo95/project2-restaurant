@@ -1,0 +1,53 @@
+<%= form_for [:admin, @order] do |f| %>
+  <%= f.label :code, t(".code") %>
+  <%= f.text_field :code, class: "form-control" %>
+
+  <%= f.fields_for :guest do |guest| %>
+    <%= guest.label :name, t(".guest_name") %>
+    <%= guest.text_field :name, class: "form-control" %>
+  <% end %>
+
+  <%= f.fields_for :table do |table| %>
+    <%= table.label :capacity, t(".capacity") %>
+    <%= table.text_field :capacity, class: "form-control" %>
+  <% end %>
+
+  <%= f.label :discount, t(".discount") %>
+  <%= f.text_field :discount, class: "form-control"  %>
+
+  <%= f.label :date, t(".date") %><br>
+  <%= f.text_field :date, class: "form-control datepicker" %><br>
+
+  <%= f.label :time_in, t(".time_in") %><br>
+  <%= f.time_select :time_in, class: "form-control" %><br>
+
+  <%= f.label :time_out, t(".time_out") %><br>
+  <%= f.time_select :time_out, class: "form-control" %><br>
+
+  <%= f.label :isConfirm, t(".status") %>
+  <%= f.radio_button :isConfirm, "true", checked: true %> <%= t(".approved") %>
+  <%= f.radio_button :isConfirm, "false" %> <%= t(".canceled") %>
+
+  <%= link_to "Add dishes", admin_order_dishes_path(@order) %>
+
+  <br><br><br>
+  <% if @order.new_record? %>
+    <%= f.submit t("button.clear"), type: :reset,
+      class: "btn btn-danger pull-right" %>
+    <%= f.submit class: "btn btn-primary pull-right" %>
+  <% else %>
+    <%= f.submit t("button.clear"), type: :reset,
+      class: "btn btn-danger pull-right" %>
+    <%= f.submit class: "btn btn-success pull-right"%>
+  <% end %>
+<% end %>
+<script>
+  $('.datepicker').datepicker({
+      constrainInput: true,
+      autoSize: true,
+      dateFormat: 'dd-mm-yy',
+      firstDay: 1,
+      changeYear: true,
+      changeMonth: true,
+  });
+</script>

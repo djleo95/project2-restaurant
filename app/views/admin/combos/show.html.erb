@@ -1,0 +1,45 @@
+<link href="//fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+<section class="section admin-site">
+  <br><br>
+  <h1><%= t ".title" %></h1>
+  <div class="col-sm-10 col-sm-offset-1 col-xs-12">
+    <% flash.each do |key, value| %>
+      <div class="flash-message <%= key %>">
+        <%= value %>
+      </div>
+    <% end %>
+    <div class="bloc">
+      <table dir="ltr" class="default-dg-table">
+        <tbody>
+          <tr class="dg_tr" id="di_row_0">
+            <td class="default_dg_td dg-left dg-nowrap"><b><%= t ".name" %></b></td>
+            <td class="default_dg_td dg-left"><%= @combo.name %></td>
+          </tr>
+          <tr class="dg_tr" id="di_row_0">
+            <td class="default_dg_td dg-left dg-nowrap"><b><%= t ".description" %></b></td>
+            <td class="default_dg_td dg-left" colspan="2"><%= @combo.description %></td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      <h2><%= t ".dishes" %></h2>
+      <table dir="ltr" class="default-dg-table">
+        <tbody id="combo_dish">
+          <%= render "combo_dish" %>
+        </tbody>
+      </table>
+      <br><br>
+      <div class="col-sm-12" style="margin-top: -30px">
+        <%= link_to t(".edit_combo_button"), edit_admin_combo_path(@combo),
+          class: "btn btn-primary col-md-2 col-md-offset-5 back" %>
+        <%= link_to t("button.cancel"), :back,
+          class: "btn btn-link btn-lg pull-right" %>
+      </div>
+    </div>
+  </div>
+</section>
+<style>
+  .back {
+    color: white !important;
+  }
+</style>

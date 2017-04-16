@@ -1,0 +1,18 @@
+<link href="//fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+<section class="section admin-site">
+  <br><br>
+  <div class="col-sm-12 col-xs-12">
+    <h1><%= t ".title" %></h1>
+    <br>
+    <% flash.each do |key, value| %>
+      <div class="flash-message <%= key %>">
+        <%= value %>
+      </div>
+    <% end %>
+    <div class="bloc col-xs-12">
+      <div id="orders" class="search-form col-xs-12">
+        <%= render "order" %>
+      </div>
+    </div>
+  </div>
+</section>

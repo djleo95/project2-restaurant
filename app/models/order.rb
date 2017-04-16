@@ -1,9 +1,12 @@
 class Order < ApplicationRecord
-  belongs_to :guest
-  belongs_to :table
+  belongs_to :guest, inverse_of: :orders
+  belongs_to :table, inverse_of: :orders
 
   has_many :order_dishes
   has_many :order_combos
+
+  accepts_nested_attributes_for :guest
+  accepts_nested_attributes_for :table
 
   def subtotal
     total_dishs_price = order_dishes.map{|order_dish| order_dish.valid? ?

@@ -1,0 +1,59 @@
+<link href="//fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+<section class="section admin-site">
+  <br><br>
+  <h1><%= t ".title" %></h1><br><br>
+  <div class="col-sm-10 col-sm-offset-1 col-xs-12">
+    <% flash.each do |key, value| %>
+      <div class="flash-message <%= key %>">
+        <%= value %>
+      </div>
+    <% end %>
+    <div class="bloc">
+      <table dir="ltr" class="default-dg-table">
+        <tbody>
+          <tr class="dg_tr" id="di_row_0">
+            <td class="default_dg_td dg-left dg-nowrap"><b><%= t ".name" %></b></td>
+            <td class="default_dg_td dg-left"><%= @category.name %></td>
+          </tr>
+          <tr class="dg_tr" id="di_row_0">
+            <td class="default_dg_td dg-left dg-nowrap"><b><%= t ".description" %></b></td>
+            <td class="default_dg_td dg-left" colspan="2"><%= @category.description %></td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      <h2><%= t ".dishes" %></h2>
+      <table dir="ltr" class="default-dg-table">
+        <tbody>
+        <tr class="dg_tr" style="" id="di_row_">
+          <th class="default_dg_th dg-center dg-nowrap">
+            <%= t ".no" %>
+          </th>
+          <th class="default_dg_th dg-left dg-nowrap" colspan="3"><%= t ".dish" %></th>
+          <th class="default_dg_th dg-center dg-nowrap">
+            <%= t ".opition" %>
+          </th>
+        </tr>
+        <% @category.dishes.each do |f| %>
+          <tr class="dg_tr" id="di_row_0">
+            <td class="default_dg_td dg-center dg-nowrap"><%= f.id %></td>
+            <td class="default_dg_td dg-left dg-nowrap" colspan="3">
+              <%= link_to f.name, admin_dish_path(f) %>
+            </td>
+            <td class="default_dg_td dg-center dg-nowrap">
+              <%= link_to t(".delete_dish_button"),
+                admin_category_dish_path(@category.id, f.id),
+                method: :delete, data: {confirm: t("button.delete_warning")} %>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+      <br><br>
+      <%= link_to t(".edit_category_button"), edit_admin_category_path(@category),
+        class: "btn btn-primary col-md-2 col-md-offset-5" %>
+      <%= link_to t("button.cancel"), :back,
+        class: "btn btn-link btn-lg pull-right" %>
+    </div>
+  </div>
+</section>

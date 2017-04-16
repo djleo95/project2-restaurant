@@ -1,0 +1,35 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="//fonts.googleapis.com/css?family=Open Sans Condensed:300" rel="stylesheet">
+<section class="section user-site">
+  <br><br><br>
+  <div class="owl-carousel">
+    <% @combo.each do |combo| %>
+      <% if combo.discount > 39 %>
+        <div class="slide">
+          <span class="hot"></span>
+          <%= link_to combo_path(combo), title: combo.name do %>
+            <%= image_tag combo.image %>
+          <% end %>
+          <%= link_to combo_path(combo), class:"link" do %>
+            <%= combo.name %> <i class="fa fa-angle-double-right"></i>
+          <% end %>
+          <p>
+          <%= t ".from" %>
+            <span class="valid">
+              <%= combo.from.in_time_zone("Hanoi").strftime("%b %d %Y") %>
+            </span>
+            <%= t ".to" %>
+            <span class="valid">
+              <%= combo.to.in_time_zone("Hanoi").strftime("%b %d %Y") %>
+            </span>
+          </p>
+          <h1>&nbsp;<%= combo.discount %></h1>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <br>
+  <div id="combos" class="col-xs-12 bloc combo-user">
+    <%= render "combo" %>
+  </div>
+</section>

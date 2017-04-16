@@ -3,11 +3,36 @@ Admin.create! name: "admin", email: "admin@123.com",
   password: "123123"
 
 Category.create! ([
-  {name: "Bread"},
-  {name: "Soups"},
-  {name: "Salads"},
-  {name: "Cookies & Squares"},
-  {name: "Hot Beverages"}
+  {name: "Main",
+   description: "Our main course is the featured and primary dish in the meal and consists of several courses."},
+  {name: "Burgers",
+   description: "We can admit it: Burgers are delicious, but salads are nutritious. Luckily, our robust selection of salads and burgers all taste really spectacular, too. Try them!"},
+  {name: "Soups",
+   description: "All our soups are freshly made with absolutely no stabilizers, additives or colorings."},
+  {name: "Salads",
+   description: "Abundant with garden-fresh vegetables and flavorful toppings, our Farm-Fresh Salads reflect the bounty of the heartland."},
+  {name: "Sandwich",
+   description: "We like to make our own sandwiches. Try our health sandwiches. Need freshness? The new health sandwich is prepared with avocado, hummus, fresh tomatoes, cucumber, lettuce, etc."},
+  {name: "Meat",
+   description: "Try one of our vibrant, thick cut ribeye steaks and other meat dishes and you will know what we are talking about."},
+  {name: "Seafood",
+   description: "Try our veggie and fish recipes for the barbecue - oh so tasty and not a banger in sight! We also have more vegetarian dishes"},
+  {name: "Drinks",
+   description: "Hot Drinks, A little something sweet with your coffee and else...Try our 30 smoothie and frozen drink recipes or put your blender to work to make our best fresh and blended drinks."},
+  {name: "Desserts",
+   description: "Try the best desserts ever on our city! Are you a chocolate fan? Try these rich chocolate desserts or decadent fudge recipes."},
+  {name: "Wines",
+   description: "Discover our wine country. There are no rights or wrongs in wine – only your preferences."},
+  {name: "Japanese food",
+   description: "Food in Japanese style"},
+  {name: "Chinese food",
+   description: "Food in Chinese style"},
+  {name: "Noodle",
+   description: "Noodles are a staple food in many cultures made from unleavened dough which is stretched, extruded, or rolled flat and cut into one of a variety of shapes."},
+  {name: "Pasta",
+   description: "There are many different varieties of pasta, a staple dish of Italian cuisine."},
+  {name: "Stews",
+   description: "A stew is a combination of solid food ingredients that have been cooked in liquid and served in the resultant gravy. Ingredients in a stew can include any combination of vegetables (such as carrots, potatoes, beans, onions, peppers, tomatoes, etc.), plus meat."},
 ])
 
 Dish.create! ([
@@ -435,6 +460,497 @@ Dish.create! ([
    description: "Salt Grilled Mackerel or Saba Shioyaki is a popular seafood dishes served as an entrée or part of a bento combination in Japanese restaurants.",
    isAvailable: true
   },
+  {name: "Tagliatelle", price: 19,
+   image: "http://www.bellaitalia.co.uk/wp-content/uploads/2015/06/tagliatelle-pomodoro048.jpg",
+   description: "Tagliatelle and tagliolini are a traditional type of pasta from Emilia-Romagna and Marche, regions of Italy.",
+   isAvailable: true
+  },
+  {name: "Chè thập cẩm", price: 3,
+   image: "http://media.phunutoday.vn/files/upload_images/2015/04/02/nau-che-thap-cam-3.jpg",
+   description: "Varieties of Chè are made with mung beans, black-eyed peas, kidney beans, tapioca, jelly (clear or grass), fruit (longan, mango, durian, lychee or jackfruit), and coconut cream.",
+   isAvailable: true
+  },
+  {name: "Crème caramel", price: 7,
+   image: "http://www.sunnyqueen.com.au/wp-content/uploads/2013/04/CremeCaramel2.jpg",
+   description: "Crème caramel is a variant of plain custard (crème) where sugar syrup cooked to caramel stage is poured into the mold before adding the custard base.",
+   isAvailable: true
+  },
+  {name: "Bacon and egg pie", price: 9,
+   image: "http://www.sunnyqueen.com.au/wp-content/uploads/2013/09/egg-and-bacon-pie2009-09-21-113638.jpg",
+   description: "The bacon and egg pie is a savory pie consisting of a crust containing bacon, egg and sometimes onion, peas, tomato and cheese.",
+   isAvailable: true
+  },
+
+])
+
+20.times do |n|
+  Table.create!(capacity: (n%4 + 1), code: (n + 1) )
+end
+
+ComboDish.create!([
+  {combo_id: 1,
+   dish_id: 1
+  },
+  {combo_id: 1,
+   dish_id: 3
+  },
+  {combo_id: 1,
+   dish_id: 7
+  },
+  {combo_id: 1,
+   dish_id: 41
+  },
+  {combo_id: 1,
+   dish_id: 55
+  },
+  {combo_id: 2,
+   dish_id: 23
+  },
+  {combo_id: 2,
+   dish_id: 62
+  },
+  {combo_id: 2,
+   dish_id: 63
+  },
+  {combo_id: 2,
+   dish_id: 64
+  },
+  {combo_id: 2,
+   dish_id: 65
+  },
+  {combo_id: 2,
+   dish_id: 66
+  },
+  {combo_id: 2,
+   dish_id: 67
+  },
+  {combo_id: 2,
+   dish_id: 68
+  },
+  {combo_id: 3,
+   dish_id: 14
+  },
+  {combo_id: 3,
+   dish_id: 29
+  },
+  {combo_id: 3,
+   dish_id: 15
+  },
+  {combo_id: 3,
+   dish_id: 30
+  },
+  {combo_id: 4,
+   dish_id: 31
+  },
+  {combo_id: 4,
+   dish_id: 40
+  },
+  {combo_id: 4,
+   dish_id: 17
+  },
+  {combo_id: 4,
+   dish_id: 6
+  },
+  {combo_id: 4,
+   dish_id: 20
+  },
+  {combo_id: 5,
+   dish_id: 5
+  },
+  {combo_id: 5,
+   dish_id: 33
+  },
+  {combo_id: 5,
+   dish_id: 34
+  },
+  {combo_id: 5,
+   dish_id: 59
+  },
+  {combo_id: 6,
+   dish_id: 24
+  },
+  {combo_id: 6,
+   dish_id: 25
+  },
+  {combo_id: 6,
+   dish_id: 60
+  },
+  {combo_id: 6,
+   dish_id: 26
+  },
+  {combo_id: 6,
+   dish_id: 61
+  },
+  {combo_id: 7,
+   dish_id: 2
+  },
+  {combo_id: 7,
+   dish_id: 9
+  },
+  {combo_id: 7,
+   dish_id: 35
+  },
+  {combo_id: 7,
+   dish_id: 61
+  },
+  {combo_id: 8,
+   dish_id: 2
+  },
+  {combo_id: 8,
+   dish_id: 8
+  },
+  {combo_id: 8,
+   dish_id: 10
+  },
+  {combo_id: 8,
+   dish_id: 11
+  },
+  {combo_id: 8,
+   dish_id: 17
+  },
+  {combo_id: 8,
+   dish_id: 33
+  },
+  {combo_id: 8,
+   dish_id: 52
+  },
+  {combo_id: 10,
+   dish_id: 16
+  },
+  {combo_id: 10,
+   dish_id: 38
+  },
+  {combo_id: 10,
+   dish_id: 39
+  },
+  {combo_id: 10,
+   dish_id: 40
+  },
+  {combo_id: 10,
+   dish_id: 41
+  },
+  {combo_id: 9,
+   dish_id: 42
+  },
+  {combo_id: 9,
+   dish_id: 43
+  },
+  {combo_id: 9,
+   dish_id: 44
+  },
+  {combo_id: 9,
+   dish_id: 45
+  },
+  {combo_id: 9,
+   dish_id: 46
+  },
+  {combo_id: 9,
+   dish_id: 47
+  },
+  {combo_id: 11,
+   dish_id: 48
+  },
+  {combo_id: 11,
+   dish_id: 50
+  },
+  {combo_id: 11,
+   dish_id: 49
+  },
+  {combo_id: 11,
+   dish_id: 51
+  },
+  {combo_id: 11,
+   dish_id: 52
+  },
+  {combo_id: 11,
+   dish_id: 58
+  },
+  {combo_id: 12,
+   dish_id: 11
+  },
+  {combo_id: 12,
+   dish_id: 52
+  },
+  {combo_id: 12,
+   dish_id: 40
+  },
+  {combo_id: 12,
+   dish_id: 39
+  },
+  {combo_id: 12,
+   dish_id: 3
+  },
+  {combo_id: 13,
+   dish_id: 13
+  },
+  {combo_id: 13,
+   dish_id: 54
+  },
+  {combo_id: 13,
+   dish_id: 48
+  },
+  {combo_id: 13,
+   dish_id: 51
+  },
+  {combo_id: 13,
+   dish_id: 52
+  },
+  {combo_id: 13,
+   dish_id: 57
+  },
+  {combo_id: 14,
+   dish_id: 53
+  },
+  {combo_id: 14,
+   dish_id: 48
+  },
+  {combo_id: 14,
+   dish_id: 59
+  },
+  {combo_id: 14,
+   dish_id: 54
+  },
+  {combo_id: 14,
+   dish_id: 16
+  },
+  {combo_id: 14,
+   dish_id: 55
+  },
+  {combo_id: 14,
+   dish_id: 51
+  },
+  {combo_id: 14,
+   dish_id: 51
+  },
+  {combo_id: 15,
+   dish_id: 27
+  },
+  {combo_id: 15,
+   dish_id: 51
+  },
+  {combo_id: 15,
+   dish_id: 52
+  },
+  {combo_id: 15,
+   dish_id: 48
+  },
+  {combo_id: 15,
+   dish_id: 56
+  },
+  {combo_id: 15,
+   dish_id: 58
+  },
+  {combo_id: 18,
+   dish_id: 70
+  },
+  {combo_id: 18,
+   dish_id: 71
+  },
+  {combo_id: 18,
+   dish_id: 72
+  },
+  {combo_id: 18,
+   dish_id: 73
+  },
+  {combo_id: 18,
+   dish_id: 76
+  },
+  {combo_id: 18,
+   dish_id: 77
+  },
+  {combo_id: 18,
+   dish_id: 69
+  },
+  {combo_id: 17,
+   dish_id: 74
+  },
+  {combo_id: 17,
+   dish_id: 75
+  },
+  {combo_id: 17,
+   dish_id: 78
+  },
+  {combo_id: 17,
+   dish_id: 79
+  },
+  {combo_id: 17,
+   dish_id: 80
+  },
+  {combo_id: 17,
+   dish_id: 81
+  },
+  {combo_id: 17,
+   dish_id: 82
+  },
+  {combo_id: 17,
+   dish_id: 83
+  },
+  {combo_id: 16,
+   dish_id: 83
+  },
+  {combo_id: 16,
+   dish_id: 84
+  },
+  {combo_id: 16,
+   dish_id: 73
+  },
+])
+
+Combo.create!([
+  {name: "Special Sushi set",
+   description: "Have a festive time as you visit Golden King Buffet Restaurant with the advantage of this MetroDeal and save 30% off the regular price",
+   image: "http://kenh14cdn.com/2017/fresh-west-indies-sushi-1487754807350-0-0-1055-1688-crop-1487754828923.jpg",
+   discount: 30,
+   from: DateTime.new(2017, 4, 7),
+   to: DateTime.new(2017, 4, 14)},
+  {name: "Worth of Drink",
+   description: "Enjoy an outstanding selection of drink at Not Just Lemons in Sky Garden SM City North EDSA by taking advantage of today's MetroDeal",
+   image: "https://d1sttufwfa12ee.cloudfront.net/uploads/deal/thumb/49029_3.jpg",
+   discount: 45,
+   from: DateTime.new(2017, 4, 1),
+   to: DateTime.new(2017, 4, 22)},
+  {name: "Delectable Whole dessert",
+   description: "Choose from the following luscious 8-inch round cakes: Double Chocolate Cheesecake, Mocha/Fudge Cheesecake, Moist Chocolate Cake, Old Fashion Mocha, Red Velvet",
+   image: "http://www.sakura-hostel.co.jp/blog/SP.jpg",
+   discount: 50,
+   from: DateTime.new(2017, 4, 11),
+   to: DateTime.new(2017, 4, 15)},
+  {name: "Shabu shabu with drink!!!",
+   description: "Enjoy traditional Japanese hot pot dishes with P1000 worth of food and drinks at Ganso-Shabuway Japanese Style Hot Pot.",
+   image: "http://daotaobeptruong.vn/images/daotaobeptruong/tin-tuc-hoc-nau-an/day-nau-an-lau-nhat-shabu-shabu.jpg",
+   discount: 45,
+   from: DateTime.new(2017, 4, 1),
+   to: DateTime.new(2017, 4, 22)},
+  {name: "Worth of Chinese food",
+   description: "Flavorful Grilled Pork Belly, Yang Chow Fried Rice & More.",
+   image: "https://d1sttufwfa12ee.cloudfront.net/uploads/deal/thumb/48451.jpg",
+   discount: 31,
+   from: DateTime.new(2017, 3, 31),
+   to: DateTime.new(2017, 4, 3)},
+  {name: "Worth of Delicious Burgers",
+   description: "For the health conscious eaters, Big Better Burgers also has a line of fish and chicken fillet sandwiches and rice meals",
+   image: "https://d1sttufwfa12ee.cloudfront.net/uploads/deal/thumb/45586_2.jpg",
+   discount: 41,
+   from: DateTime.new(2017, 4, 1),
+   to: DateTime.new(2017, 4, 22)},
+  {name: "Worth of Korean Food",
+   description: "The craze for Korean-styled fried chicken has been continuously growing its patrons all over the world, but if you're one of those who still haven't tried this savory meal, no worries as with this MetroDeal exclusively from Gangnam Wings you'll surely have your chance.",
+   image: "https://d1sttufwfa12ee.cloudfront.net/uploads/deal/thumb/48636.jpg",
+   discount: 35,
+   from: DateTime.new(2017, 4, 1),
+   to: DateTime.new(2017, 4, 22)},
+  {name: "1-for-1 Rice or Noodles",
+   description: "Siam Kitchen is where old world meets new, as the restaurant brings authentic dishes of ancient Siam to young diners with a discerning palate. Let our bona fide chefs from Thailand, handpicked for their ability to whip up delicious home–styled Thai cuisine, thrill you with familiar favourites such as Tom Yum Goong, Green Curry and their crunchy Sesame Prawn Sticks.",
+   image: "https://tabledb.s3.amazonaws.com/hgwlandingpage/promotion/58787664e4b033c8ebf4a7ef/oo_20170321_9504.jpg",
+   discount: 31,
+   from: DateTime.new(2017, 4, 1),
+   to: DateTime.new(2017, 4, 5)},
+  {name: "Wine Appreciation Night with Torelló",
+   description: "Prices are subjected to 10% service charge and prevailing government taxes. Please note that once this promotion has been selected and confirmed, requests for cancellation will not be accepted.",
+   image: "https://tabledb.s3.amazonaws.com/hgwlandingpage/promotion/5822e0b2e4b09fe8968a538f/pan-seared-pink-salmon-img-0355_20170317_3158.jpg",
+   discount: 30,
+   from: DateTime.new(2017, 4, 1),
+   to: DateTime.new(2017, 4, 22)},
+  {name: "Bluefin Tuna Carving $88/pax",
+   description: "Hanami Festival: Bluefine Tuna Carving @$88/pax with a choice of Wayu Rib or Mangalica Pork",
+   image: "https://tabledb.s3.amazonaws.com/hgwlandingpage/promotion/5850c23fe4b0d85dba877de9/promo_20170323_4217.jpg",
+   discount: 25,
+   from: DateTime.new(2017, 4, 1),
+   to: DateTime.new(2017, 4, 22)},
+  {name: "Set Lunch Gyu Niku Shogayaki Gozen",
+   description: "Enjoy a variety of set lunch specials at Kyoaji Dining where the third set lunch order will be complimentary!",
+   image: "https://tabledb.s3.amazonaws.com/hgwlandingpage/promotion/5823c338e4b0de82c5479a52/dsc-2497-gyuniku-shogayaki-gozen_20170201_3952.jpg",
+   discount: 40,
+   from: DateTime.new(2017, 4, 1),
+   to: DateTime.new(2017, 4, 22)},
+  {name: "Set Lunch Shake To Udon Gozen",
+   description: "Prices are subjected to 7% GST and 10% service charge. The Management reserves the right to amend the terms and conditions without prior notice.",
+   image: "https://tabledb.s3.amazonaws.com/hgwlandingpage/promotion/5823c338e4b0de82c5479a52/dsc-2477-shake-to-udon-gozen_20170201_1344.jpg",
+   discount: 40,
+   from: DateTime.new(2017, 4, 1),
+   to: DateTime.new(2017, 4, 22)},
+  {name: "Set Lunch Tempura Gozen",
+   description: "Prices are subjected to 7% GST and 10% service charge. The Management reserves the right to amend the terms and conditions without prior notice.",
+   image: "https://tabledb.s3.amazonaws.com/hgwlandingpage/promotion/5823c338e4b0de82c5479a52/dsc-2524-tempura-gozen_20170201_6215.jpg",
+   discount: 35,
+   from: DateTime.new(2017, 4, 1),
+   to: DateTime.new(2017, 4, 22)},
+  {name: "Set Lunch Bento",
+   description: "Prices are subjected to 7% GST and 10% service charge. The Management reserves the right to amend the terms and conditions without prior notice.",
+   image: "https://tabledb.s3.amazonaws.com/hgwlandingpage/promotion/5823c338e4b0de82c5479a52/dsc-2527-bento_20170201_7955.jpg",
+   discount: 40,
+   from: DateTime.new(2017, 4, 1),
+   to: DateTime.new(2017, 4, 22)},
+  {name: "Set Lunch Kijiyaki Gozen",
+   description: "Prices are subjected to 7% GST and 10% service charge. The Management reserves the right to amend the terms and conditions without prior notice.",
+   image: "https://tabledb.s3.amazonaws.com/hgwlandingpage/promotion/5823c338e4b0de82c5479a52/dsc-2493-kijiyaki-gozen_20170201_1880.jpg",
+   discount: 30,
+   from: DateTime.new(2017, 4, 1),
+   to: DateTime.new(2017, 4, 22)},
+  {name: "10% Off Lunch Total Bill",
+   description: "1. Valid from Monday to Saturday, lunch only.
+2. Cannot be used in conjunction with other promotions, discounts or vouchers.
+3. The management reserves the right to amend the terms and conditions without prior notice.",
+   image: "https://tabledb.s3.amazonaws.com/hgwlandingpage/promotion/58575902e4b0022b5af02172/2_20170208_2100.jpg",
+   discount: 10,
+   from: DateTime.new(2017, 4, 1),
+   to: DateTime.new(2017, 4, 30)},
+  {name: "Set Dinner Asian style",
+   description: "• Image used is only for illustration purposes
+• No service charge
+• The Management reserves the right to amend the terms and conditions without prior notice",
+   image: "https://tabledb.s3.amazonaws.com/hgwlandingpage/promotion/51aef040e4b0e4089c17219f/msc_20170223_7276.jpg",
+   discount: 15,
+   from: DateTime.new(2017, 3, 31),
+   to: DateTime.new(2017, 4, 30)},
+  {name: "Weekday Lunch Set Menu from $8++",
+   description: "• Valid daily from Monday to Friday, 11.30 to 14:00
+• Cannot be used in conjunction with other promotions, discounts or vouchers
+• Prices are subjected to 7% GST and 10% service charge
+• Promotion is not valid on Eve of, Public Holidays and Special Occasions
+• The management reserves the right to amend the terms and conditions without prior notice",
+   image: "https://tabledb.s3.amazonaws.com/hgwlandingpage/promotion/57ea22f1e4b0ac725969a16b/15994772-1139956622768161-7755982885056234841-o_20170125_3958.jpg",
+   discount: 30,
+   from: DateTime.new(2017, 4, 1),
+   to: DateTime.new(2017, 4, 30)},
+])
+
+CategoryDish.create!([
+ {category_id: 1,
+  dish_id: 1
+ },
+ {category_id: 1,
+  dish_id: 2
+ },
+])
+
+Order.create!([
+  {guest_id: 1,
+   table_id: 1,
+   code: "A001",
+   date: Time.zone.local(2017, 4, 1, 14, 00).to_date,
+   time_in: Time.zone.local(2017, 4, 1, 14, 00).to_time,
+   time_out: Time.zone.local(2017, 4, 1, 16, 00).to_time,
+   isConfirm: true,
+   discount: 10,
+  },
+  {guest_id: 2,
+   table_id: 4,
+   code: "A002",
+   date: Time.zone.local(2017, 4, 1, 20, 00).to_date,
+   time_in: Time.zone.local(2017, 4, 1, 20, 00).to_time,
+   time_out: Time.zone.local(2017, 4, 1, 22, 00).to_time,
+   isConfirm: false,
+   discount: 0,
+  },
+])
+
+OrderDish.create!([
+  {order_id: 1,
+   dish_id: 3,
+   discount: 5,
+   quantity: 1
+  }
 ])
 
 Human.create! name: "admin", email: "admin1@123.com",

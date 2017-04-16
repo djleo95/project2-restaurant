@@ -1,0 +1,151 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<%= search_form_for [:admin, @search], remote: true, method: :get do |f| %>
+  <div class="apple-pagination">
+    <%= paginate @orders, remote: true %>
+  </div>
+  <br>
+  <div class="b10">
+    <%= link_to t("+ Add reservation"), new_admin_order_path, class:"float_left pj-form r10 pj-link" %>
+    <%= f.text_field :code_cont, class:"pj-form-field pj-form-field-search w350",
+      placeholder:"Search by code" %>
+    <!--<button type="button" class="pj-button pj-button-detailed col-sm-1" onClick="showTable()">-->
+      <!--<span class="pj-button-detailed-arrow">S</span>-->
+    <!--</button>-->
+    <div class="float_right t5">
+      <%= link_to t(".all"), {q: nil, remote: true},
+                  class:"pj-button btn-all"%>
+      <%= link_to "Confirmed", {q: {isConfirm_eq: true}, remote: true},
+                  class:"pj-button btn-all" %>
+      <%= link_to "Pending", {q: {isConfirm_eq: false}, remote: true},
+                  class:"pj-button btn-all" %>
+    </div>
+  </div>
+  <div class="pj-form-filter-advanced col-sm-12">
+    <span class="pj-menu-list-arrow"></span>
+    <div class="pj-form pj-form-search">
+      <div class="w350">
+        <p>
+          <%= f.label :date_from, class:"date" %>
+          <%= f.text_field :date_gteq,
+            class: "datepicker pj-form-field pointer w150 f-text f-calendar" %>
+        </p>
+        <p>
+          <%= f.label :date_to, class:"date" %>
+          <%= f.text_field :date_lteq,
+            class: "datepicker pj-form-field pointer w150 f-text f-calendar" %>
+        </p>
+      </div>
+      <div class="w350">
+        <p>
+          <%= f.label :table_id, class:"title" %>
+          <span class="inline-block">
+            <%= f.collection_select :table_id_eq, Table.all, "id", "id",
+              {include_blank: t(".choose")},
+              {:class => "btn btn-default pj-form-field w180"} %>
+          </span>
+        </p>
+        <p>
+          <%= f.label :name, class:"title" %>
+          <span class="inline-block">
+            <%= f.text_field :guest_name_cont,
+              class: "pj-form-field w180" %>
+          </span>
+        </p>
+        <p>
+          <label class="title">&nbsp;</label>
+          <%= f.submit  t(".search"), class:"pj-button" %>
+          <%= link_to "Cancel", {remote: true}, class:"pj-button", id:"clear" %>
+        </p>
+      </div>
+      <div class="w350">
+        <p>
+          <%= f.label :phone, class:"title" %>
+          <span class="inline-block">
+            <%= f.text_field :guest_phoneNum_cont,
+              class: "pj-form-field w180" %>
+          </span>
+        </p>
+        <p>
+          <%= f.label :email, class:"title" %>
+          <span class="inline-block">
+            <%= f.text_field :guest_email_cont,
+              class: "pj-form-field w180" %>
+          </span>
+        </p>
+      </div>
+      <br class="clear_both">
+    </div>
+  </div>
+  <div class="apple-pagination">
+    <%= paginate @orders, remote: true %>
+  </div>
+  <br>
+  <table class="table-order table">
+    <thead>
+      <tr>
+        <th class="left width-90">
+          <%= sort_link @search, :code, t(".code"), {}, {remote: true, method: :get} %>
+        </th>
+        <th class="left width-170">
+          <%= sort_link @search, :date, t(".date"), {}, {remote: true, method: :get} %>
+        </th>
+        <th class="left width-110"><%= t ".from" %></th>
+        <th class="left width-110"><%= t ".to" %></th>
+        <th class="left width-170">
+          <%= sort_link @search, :guest_name, t(".guest_name"), {}, {remote: true, method: :get} %>
+        </th>
+        <th class="text-center width-90"><%= t ".table" %></th>
+        <th class="text-center width-90">
+          <%= sort_link @search, :table_capacity, t(".capacity"), {}, {remote: true, method: :get} %>
+        </th>
+        <th class="text-center width-90">
+          <%= sort_link @search, :discount, t(".discount"), {}, {remote: true, method: :get} %>
+        </th>
+        <th class="text-center width-90 text-center">
+          <%= t ".status" %>
+        </th>
+        <th class="actions" colspan="2"><%= t ".action" %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if @orders.any? %>
+        <% @orders.each do |order| %>
+          <tr>
+            <td><%= link_to order.code, admin_order_path(order) %></td>
+            <td><%= order.date.in_time_zone('Hanoi').strftime('%b %d %Y') %></td>
+            <td><%= order.time_in.in_time_zone('Hanoi').strftime('%I:%M %p') %></td>
+            <td><%= order.time_out.in_time_zone('Hanoi').strftime('%I:%M %p') %></td>
+            <td><%= t "name" %></td>
+            <td class="text-center">
+              <% if order.table.id.present? %>
+                <%= order.table.id %>
+              <% else %>
+                <% t ".no_table" %>
+              <% end %>
+            </td>
+            <td class="text-center"><%= order.table.capacity %></td>
+            <td class="text-center"><%= order.discount %><i class="fa fa-percent"></i></td>
+            <td class="text-center">
+              <% if order.isConfirm? %>
+                <span class="label-green"><%= t ".approved" %></span>
+              <% else %>
+                <span class="label-red"><%= t ".canceled" %></span>
+              <% end %>
+            </td>
+            <td class="width-20">
+              <%= link_to edit_admin_order_path(order) do %>
+                <i class="fa fa-lg fa-pencil-square-o"></i>
+              <% end %>
+            </td>
+            <td class="width-20">
+              <%= link_to admin_order_path(order), method: :delete,
+                data: { confirm: t("button.delete_warning") } do %>
+                <i class="fa fa-lg fa-times"></i>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

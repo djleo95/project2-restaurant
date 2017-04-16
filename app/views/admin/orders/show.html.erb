@@ -1,0 +1,28 @@
+<link href="//fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+<section class="section admin-site">
+  <br><br>
+  <div class="col-sm-8 col-sm-offset-2">
+    <h1><%= t ".title" %></h1><br><br>
+    <% flash.each do |key, value| %>
+      <div class="flash-message <%= key %>">
+        <%= value %>
+      </div>
+    <% end %>
+    <div class="bloc">
+      <br>
+      <%= @order.code %>
+      <%= @order.date.in_time_zone('Hanoi').strftime('%b %d %Y') %>
+      <%= @order.time_in.in_time_zone('Hanoi').strftime('%I:%M %p') %>
+      <%= @order.time_out.in_time_zone('Hanoi').strftime('%I:%M %p') %>
+      <%= @order.guest.name %>
+      <%= @order.guest.phoneNum %>
+      <%= @order.table.capacity %>
+      <%= @order.discount %><i class="fa fa-percent"></i><br>
+      <%= t "Order items" %><br>
+      <% @order.order_dishes.each do |order_dish|%>
+        <%= order_dish.dish.name %>
+        <%= order_dish.quantity %>
+      <% end %>
+    </div>
+  </div>
+</section>

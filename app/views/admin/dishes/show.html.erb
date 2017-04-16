@@ -1,0 +1,68 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="//fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+<section class="section admin-site">
+  <br><br>
+  <div class="col-sm-8 col-sm-offset-2">
+    <h1><%= t ".title" %></h1>
+    <div class="bloc">
+      <% flash.each do |key, value| %>
+        <div class="flash-message <%= key %>">
+          <%= value %>
+        </div>
+      <% end %>
+      <br>
+      <table dir="ltr" class="default-dg-table combo-admin">
+        <tbody>
+        <tr class="dg_tr" id="di_row_0" style="padding-bottom: 20px">
+          <td class="default_dg_td dg-left dg-nowrap"><b><%= t ".image" %></b></td>
+          <td class="default_dg_td dg-left">
+            <img class="icon-big" src=<%= @dish.image %>
+                onerror="this.src='https://t4.ftcdn.net/jpg/01/07/86/19/500_F_107861953_YZ800J1eDVtaEVAMXj1KRpez6efJpm7D.jpg';">
+          </td>
+        </tr>
+        <tr class="dg_tr" id="di_row_0">
+          <td class="default_dg_td dg-left dg-nowrap"><b><%= t ".name" %></b></td>
+          <td class="default_dg_td dg-left"><%= @dish.name %></td>
+        </tr>
+        <tr class="dg_tr" id="di_row_0">
+          <td class="default_dg_td dg-left dg-nowrap"><b><%= t ".description" %></b></td>
+          <td class="default_dg_td dg-left"><%= @dish.description %></td>
+        </tr>
+        <tr class="dg_tr" id="di_row_0">
+          <td class="default_dg_td dg-left dg-nowrap"><b><%= t ".price" %></b></td>
+          <td class="default_dg_td dg-left"><%= @dish.price %></td>
+        </tr>
+        <tr class="dg_tr" id="di_row_0">
+          <td class="default_dg_td dg-left dg-nowrap"><b><%= t "Categories" %></b></td>
+          <td class="default_dg_td dg-left">
+            <% @dish.categories.each do |cate| %>
+              <% if cate != @dish.categories.last %>
+                <%= link_to cate.name, admin_category_path(cate) %>,
+              <% else %><%= link_to cate.name, admin_category_path(cate) %>
+              <% end %>
+            <% end %>
+          </td>
+        </tr>
+        <tr class="dg_tr" id="di_row_0">
+          <td class="default_dg_td dg-left dg-nowrap"><b><%= t ".active" %></b></td>
+          <td class="default_dg_td dg-left">
+            <% if @dish.isAvailable? %><%= t ".yes" %>
+            <% else %><%= t ".no" %>
+            <% end %>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <div class="form">
+        <div class="row">
+          <div class="">
+            <%= link_to t(".edit_dish"), edit_admin_dish_path(@dish), method: :get,
+              class: "btn btn-link btn-lg pull-left" %>
+            <%= link_to t("button.cancel"), :back,
+              class: "btn btn-link btn-lg pull-right" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

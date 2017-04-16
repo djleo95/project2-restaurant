@@ -1,0 +1,42 @@
+<%= form_for [:admin, @dish] do |f| %>
+  <%= f.label :name, t(".name") %>
+  <%= f.text_field :name, class: "form-control" %>
+
+  <%= f.label :price, t(".price") %>
+  <%= f.text_field :price, class: "form-control" %>
+
+  <%= f.label :description, t(".description") %>
+  <%= f.text_area :description, class: "form-control" %>
+
+  <%= f.label :image, t(".image") %>
+  <%= f.text_area :image, class: "form-control" %>
+
+  <%= f.label :isAvailable, t(".active") %>
+  <%= f.radio_button :isAvailable, "true", checked: true %> <%= t ".yes" %>
+  <%= f.radio_button :isAvailable, "false" %> <%= t ".no" %>
+  <br>
+
+  <%= f.label :categories, t("Categories") %>
+  <div class="col-xs-12">
+    <% Category.all.each do |category| %>
+      <div class="col-xs-4 choose">
+        <%= check_box_tag "dish[category_ids][]", category.id, @dish.categories.include?(category) %>
+        <%= label_tag :dish_ids, category.name %>
+      </div>
+    <% end %>
+  </div>
+  <br><br><br>
+  <% if @dish.new_record? %>
+      <%= f.submit t("button.clear"), type: :reset,
+        class: "btn btn-danger pull-right" %>
+      <%= f.submit class: "btn btn-primary pull-right" %>
+      <%= link_to t("button.all_dish"), admin_dishes_path,
+        class: "btn btn-link pull-left" %>
+  <% else %>
+      <%= f.submit t("button.clear"), type: :reset,
+        class: "btn btn-danger pull-right" %>
+      <%= f.submit class: "btn btn-success pull-right"%>
+      <%= link_to t("button.all_dish"), admin_dishes_path,
+        class: "btn btn-link pull-left" %>
+  <% end %>
+<% end %>

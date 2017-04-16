@@ -1,0 +1,28 @@
+<%= form_for [:admin, @category] do |f| %>
+  <%= f.label :name, t(".name"), class:"pull-left" %>
+  <%= f.text_field :name, class: "form-control" %>
+
+  <%= f.label :description, t(".description"), class:"pull-left" %>
+  <%= f.text_field :description, class: "form-control" %>
+
+  <%= f.label :dishes, t("Dishes") %>
+  <div class="col-xs-12">
+    <% Dish.all.each do |dish| %>
+        <div class="col-xs-4 choose">
+          <%= check_box_tag "category[dish_ids][]", dish.id, @category.dishes.include?(dish) %>
+          <%= label_tag :dish_ids, dish.name %>
+        </div>
+    <% end %>
+  </div>
+  <div class="col-xs-12 text-center">
+    <% if @category.new_record? %>
+      <%= f.submit class: "btn btn-primary" %>
+      <%= f.submit t("button.clear"), type: :reset,
+                   class: "btn btn-danger" %>
+    <% else %>
+      <%= f.submit class: "btn btn-success" %>
+      <%= f.submit t("button.clear"), type: :reset,
+                   class: "btn btn-danger" %>
+    <% end %>
+  </div>
+<% end %>
