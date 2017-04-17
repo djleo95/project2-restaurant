@@ -25,7 +25,46 @@
       <h2><%= t ".dishes" %></h2>
       <table dir="ltr" class="default-dg-table">
         <tbody id="combo_dish">
-          <%= render "combo_dish" %>
+          <tr class="dg_tr" style="" id="di_row_">
+            <th class="default_dg_th dg-center dg-nowrap">
+              <%= t ".no" %>
+            </th>
+            <th class="default_dg_th dg-left dg-nowrap" colspan="2">
+              <%= t ".dish" %>
+            </th>
+            <th class="default_dg_th dg-center dg-nowrap">
+              <%= t ".category" %>
+            </th>
+            <th class="default_dg_th dg-center dg-nowrap">
+              <%= t ".opition" %>
+            </th>
+          </tr>
+          <% @combo.dishes.each do |f| %>
+            <tr class="dg_tr" id="di_row_0">
+              <td class="default_dg_td dg-center dg-nowrap">
+                <%= f.id %>
+              </td>
+              <td class="default_dg_td dg-left dg-nowrap" colspan="2">
+                <%= link_to f.name, admin_dish_path(f) %>
+              </td>
+              <td class="default_dg_td dg-center dg-nowrap">
+                <% Category.all.each do |category| %>
+                    <% if f.categories.include? category %>
+                        <% if category != f.categories.last %>
+                            <%= link_to category.name, admin_category_path(category) %>,
+                        <% else %>
+                            <%= link_to category.name, admin_category_path(category) %>
+                        <% end %>
+                    <% end %>
+                <% end %>
+              </td>
+              <td class="default_dg_td dg-center dg-nowrap">
+                <%= link_to t("button.delete"),
+                  admin_combo_dish_path(@combo.id, f.id),
+                  method: :delete, data: {confirm: t("button.delete_warning")} %>
+              </td>
+            </tr>
+          <% end %>
         </tbody>
       </table>
       <br><br>

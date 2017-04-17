@@ -1,3 +1,3 @@
 class Guest < Human
-  has_many :orders, inverse_of: :guest
+  has_many :orders, dependent: :destroy
 end

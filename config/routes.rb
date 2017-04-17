@@ -20,7 +20,8 @@ Rails.application.routes.draw do
       resources :dishes
     end
     resources :orders do
-      resources :dishes, only: [:create, :update, :destroy]
+      resources :order_dishes
+      resources :order_combos
     end
   end
 end

@@ -1,11 +1,12 @@
 class Admin::DishesController < ApplicationController
   before_action :logged_in_admin
   before_action :find_combo_dish, only: [:destroy, :new]
-  before_action :find_dish, except: [:index, :new, :create]
+  before_action :find_category_dish, only: [:destroy, :new]
+  before_action :find_dish, except: [:index, :new]
 
   def index
     @search = Dish.ransack(params[:q])
-    @search.sorts = %w[id name price] if @search.sorts.empty?
+    @search.sorts = %w(id name price) if @search.sorts.empty?
     @dishes = @search.result.page(params[:page]).per_page Settings.max_result
   end
 
@@ -40,9 +41,16 @@ class Admin::DishesController < ApplicationController
 
   def destroy
     if @combo
-      @combo.dishes.include?(@dish)
+      @combo.dishes.include? @dish
       if @combo.dishes.delete @dish
+        flash[:success] = t "flash.dish.destroy_success"
         redirect_to admin_combo_path @combo
+      end
+    elsif @category
+      @category.dishes.include? @dish
+      if @category.dishes.delete @dish
+        flash[:success] = t "flash.dish.destroy_success"
+        redirect_to admin_category_path @category
       end
     else
       if @dish.destroy
@@ -63,22 +71,17 @@ class Admin::DishesController < ApplicationController
       {category_ids: []}
   end
 
-  def find_combo_dish
-    @combo = Combo.find_by id: params[:id]
-    unless @combo
-      # flash[:danger] = t "flash.combo.find_fail"
-    end
-    @dish = Dish.find_by id: params[:id]
-    unless @dish
-      # flash[:danger] = t "flash.dish.find_fail"
-    end
-  end
-
   def find_dish
     @dish = Dish.find_by id: params[:id]
-    unless @dish
-      flash[:danger] = t "flash.dish.find_fail"
-      redirect_to admin_dishes_path
-    end
+  end
+
+  def find_combo_dish
+    @combo = Combo.find_by id: params[:combo_id]
+    @dish = Dish.find_by id: params[:id]
+  end
+
+  def find_category_dish
+    @category = Category.find_by id: params[:category_id]
+    @dish = Dish.find_by id: params[:id]
   end
 end

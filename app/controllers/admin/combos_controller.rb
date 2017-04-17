@@ -9,9 +9,7 @@ class Admin::CombosController < ApplicationController
   end
 
   def show
-    @s = @combo.dishes.ransack params[:q]
-    @s.sorts = %w[id] if @s.sorts.empty?
-    @dishes = @s.result.page(params[:page]).per_page Settings.max_result
+    @combo = Combo.includes(:dishes).find(params[:id])
   end
 
   def new

@@ -5,7 +5,7 @@
       <%= f.text_field :name_or_description_cont, class: "form-control",
         placeholder: t(".input_keyword"), id: "searchinput" %>
       <span id="searchclear" class="form-control-clear glyphicon
-        glyphicon-remove-circle form-control-feedback"></span>
+        glyphicon-remove form-control-feedback" style="opacity: 0.5"></span>
     </div>
     <div class="col-sm-3 col-xs-6 status">
       <%= t ".status" %>
@@ -36,7 +36,7 @@
         <th class="default_dg_th dg-center dg-nowrap">
           <%= t ".status" %>
         </th>
-        <th class="default_dg_th dg-center dg-nowrap" colspan="3">
+        <th class="default_dg_th dg-center dg-nowrap" colspan="2">
           <%= t ".opition" %>
         </th>
       </tr>
@@ -50,9 +50,11 @@
               <%= image_tag dish.image,
                 onerror: "this.src='https://t4.ftcdn.net/jpg/01/07/86/19/500_F_107861953_YZ800J1eDVtaEVAMXj1KRpez6efJpm7D.jpg';" %>
             </td>
-            <td class="default_dg_td dg-left dg-nowrap"><%= dish.name %></td>
+            <td class="default_dg_td dg-left dg-nowrap">
+              <%= link_to dish.name, admin_dish_path(dish) %>
+            </td>
             <td class="default_dg_td dg-center dg-nowrap">
-              <i class="fa fa-usd"></i><%= dish.price %>
+              $<%= dish.price %>
             </td>
             <td class="default_dg_td dg-center dg-nowrap">
               <% if dish.isAvailable? %>
@@ -61,15 +63,16 @@
                 <span class="badge-red"><%= t ".no" %></span>
               <% end %>
             </td>
-            <td class="default_dg_td dg-center dg-nowrap">
-              <%= link_to t("button.view"), admin_dish_path(dish) %>
+            <td class="default_dg_td dg-right dg-nowrap">
+              <%= link_to edit_admin_dish_path(dish) do %>
+                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+              <% end %>
             </td>
-            <td class="default_dg_td dg-center dg-nowrap">
-              <%= link_to t("button.edit"), edit_admin_dish_path(dish) %>
-            </td>
-            <td class="default_dg_td dg-center dg-nowrap">
-              <%= link_to image_tag("http://icons.iconarchive.com/icons/saki/nuoveXT/128/Actions-button-cancel-icon.png"), admin_dish_path(dish),
-                method: :delete, data: {confirm: t("button.delete_warning")} %>
+            <td class="default_dg_td dg-left dg-nowrap">
+              <%= link_to admin_dish_path(dish),
+                method: :delete, data: {confirm: t("button.delete_warning")} do %>
+                <i class="fa fa-times" aria-hidden="true"></i>
+              <% end %>
             </td>
           </tr>
         <% end %>
@@ -77,3 +80,11 @@
     </tbody>
   </table>
 <% end %>
+<style>
+  tr a {
+    font-size: 18px !important;
+  }
+  tr {
+    line-height: 24px !important;
+  }
+</style>

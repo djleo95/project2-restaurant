@@ -1,0 +1,33 @@
+<%= form_for [:admin, @order, @order_combo] do |f| %>
+  <div class="col-xs-12">
+    <%= f.label :combo, "Combo name:" %>
+    <% if @order_combo.combo.present? %>
+      <p><%= @order_combo.combo.name %></p>
+    <% else %>
+      <%= f.select :combo_id, @combos, {include_blank: false,
+        selected: :combo_id}, class: "btn btn-default" %>
+    <% end %>
+  </div>
+  <div class="col-xs-12">
+    <%= f.label :quantity, "Quantity:" %>
+    <%= f.number_field :quantity, class: "form-control" %>
+  </div>
+  <div class="col-xs-12 text-center">
+    <% if @order_combo.new_record? %>
+      <%= f.submit "Add combo", class: "btn btn-primary"%>
+    <% else %>
+      <%= f.submit "Edit combo", class: "btn btn-success"%>
+    <% end %>
+  </div>
+<% end %>
+<style>
+  .btn-default, label {
+    font-size: 18px !important;
+  }
+  p {
+    color:red;
+    display: inline;
+    font-size: 20px;
+    font-weight: bolder;
+  }
+</style>

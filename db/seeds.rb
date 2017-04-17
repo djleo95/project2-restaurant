@@ -925,21 +925,27 @@ CategoryDish.create!([
 ])
 
 Order.create!([
-  {guest_id: 1,
+  {guest_id: 5,
    table_id: 1,
    code: "A001",
    date: Time.zone.local(2017, 4, 1, 14, 00).to_date,
    time_in: Time.zone.local(2017, 4, 1, 14, 00).to_time,
-   time_out: Time.zone.local(2017, 4, 1, 16, 00).to_time,
    isConfirm: true,
    discount: 10,
   },
-  {guest_id: 2,
+  {guest_id: 5,
    table_id: 4,
    code: "A002",
-   date: Time.zone.local(2017, 4, 1, 20, 00).to_date,
-   time_in: Time.zone.local(2017, 4, 1, 20, 00).to_time,
-   time_out: Time.zone.local(2017, 4, 1, 22, 00).to_time,
+   date: Time.zone.local(2017, 4, 14, 20, 00).to_date,
+   time_in: Time.zone.local(2017, 4, 14, 20, 00).to_time,
+   isConfirm: false,
+   discount: 0,
+  },
+  {guest_id: 6,
+   table_id: 2,
+   code: "A003",
+   date: Time.zone.local(2017, 4, 19, 20, 00).to_date,
+   time_in: Time.zone.local(2017, 4, 19, 20, 00).to_time,
    isConfirm: false,
    discount: 0,
   },
@@ -953,6 +959,13 @@ OrderDish.create!([
   }
 ])
 
+OrderCombo.create!([
+  {order_id: 1,
+   combo_id: 9,
+   quantity: 1
+  }
+])
+
 Human.create! name: "admin", email: "admin1@123.com",
               password: "123123", password_confirmation: "123123", role: "Admin"
 Human.create! name: "admin2", email: "admin2@123.com",
@@ -960,4 +973,6 @@ Human.create! name: "admin2", email: "admin2@123.com",
 Human.create! name: "admin3", email: "admin3@123.com",
               password: "123123", password_confirmation: "123123", role: "Admin"
 Human.create! name: "guest", email: "guest@123.com",
+              role: "Guest", phoneNum: "01213218307"
+Human.create! name: "Foo", email: "guest2@123.com",
               role: "Guest", phoneNum: "01213218307"
