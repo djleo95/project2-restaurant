@@ -9,6 +9,7 @@ class CombosController < ApplicationController
   end
 
   def show
+    @order_combo = current_order.order_combos.new
   end
 
   private
