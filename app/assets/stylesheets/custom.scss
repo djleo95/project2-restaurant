@@ -55,13 +55,16 @@ $east-bay: #4d508e;
 $cardinal: #d11f25;
 $jelly-blue: #2d97a7;
 $yellow: #ff0;
+$golden: #e6c600;
+$golden-dark: #b89d00;
 $alto: #ddd;
 $dark-silver: #aaa;
 $dark-white: rgba(246, 229, 209, .3);
 $martini: rgba(180, 160, 160, .3);
 $black-opacity: rgba(0, 0, 0, .2);
 $gray-opacity: rgba(84, 84, 84, .89);
-$gray-darked: rgba(127, 255, 212, 0);
+$gray-darked: rgba(100, 96, 99, 0);
+$gray-darked2: rgba(100, 96, 99, 0.85);
 $white-light: rgba(251, 251, 255, .86);
 $blossom: rgba(255, 134, 147, .65);
 $dark-blossom: rgba(188, 114, 113, .66);
@@ -80,6 +83,11 @@ $black-dark: rgba(0, 0, 0, .8);
 $fiord: rgba(70, 75, 110, .247059);
 $admin-background: rgba(185, 176, 176, .2);
 $slide-link: #07a6f5;
+$form-background: rgba(253, 255, 255, .7);
+$btn-color1: #41deb6;
+$form-control-color: #23ffd0;
+$outside-ground: rgba(168, 129, 110, 0.82);
+$inside-ground: rgba(199, 194, 155, 0.93);
 
 .footer {
   background-image: url('http://hotelselfoss.is/wp-content/uploads/2015/12/E-Riverside-Restaurant.jpg');
@@ -184,6 +192,7 @@ $slide-link: #07a6f5;
 
 .navbar {
   box-shadow: 0 4px 6px $bitter;
+  height: 5vh;
   margin-bottom: 1px;
   position: fixed;
   width: 100%;
@@ -290,10 +299,7 @@ img.inactived {
 }
 
 #login {
-  animation-duration: 1.5s;
-  animation-name: fadeInDown;
-  background: url('http://i.imgur.com/brRS1Vl.jpg');
-  background-position: center center;
+  background: url("http://i.imgur.com/brRS1Vl.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   filter: blur(.4px);
@@ -301,10 +307,13 @@ img.inactived {
 }
 
 .login-form {
+  animation: fadeIn 2.5s;
   background: $white-light;
-  border-radius: 4px;
   left: 0;
   margin: auto;
+  max-height: 90vh;
+  border-radius: 4px;
+  overflow: auto;
   padding: 20px 15px;
   position: absolute;
   right: 0;
@@ -329,19 +338,32 @@ img.inactived {
 }
 
 .log-btn {
-  background: $light-green;
-  border: 0;
+  background: $golden;
+  border: 1px solid $golden-dark;
   border-radius: 4px;
   color: $white;
   display: inline-block;
   font-size: 16px;
   height: 50px;
+  margin-top: 10px;
   text-decoration: none;
   width: 100%;
 }
 
-#btn-submit:hover {
-  background: $meadow;
+.log-btn-2 {
+  background: $light-green;
+  border: 1px solid $green-sushi;
+  border-radius: 4px;
+  color: $white;
+  display: inline-block;
+  font-size: 16px;
+  height: 40px;
+  margin-top: 10px;
+  text-decoration: none;
+}
+
+.log-btn:hover {
+  background: $golden;
 }
 
 .btn2 {
@@ -378,12 +400,16 @@ img.inactived {
   border-radius: 5px;
   color: $brick;
   padding: 8px;
+  font-size: 15px;
 }
 
 .success {
-  background: $spring-green;
+  background: $blossom;
+  border: $spring-green;
   border-radius: 5px;
   color: $salem;
+  padding: 8px;
+  font-size: 15px;
 }
 
 #admin-show {
@@ -416,6 +442,7 @@ img.inactived {
   border: 1px solid $jelly-blue;
   border-radius: 5px;
   color: $white;
+  margin-bottom: 5px;
   padding: 5px 20px;
   text-align: center;
 }
@@ -1457,7 +1484,7 @@ img.inactived {
   display: flex;
   flex-wrap: wrap;
   list-style: none;
-  margin: 0;
+  margin: -10px;
   padding: 0;
 }
 
@@ -1501,7 +1528,7 @@ img.inactived {
 }
 
 .tm-header-height {
-  height: 400px;
+  height: 95vh;
   overflow: hidden;
   position: relative;
   width: 100%;
@@ -2056,11 +2083,6 @@ img.inactived {
 
 .btn-all {
   background: rgba(237,237,237,1);
-  background: -moz-linear-gradient(top, rgba(237,237,237,1) 0%, rgba(246,246,246,1) 53%, rgba(255,255,255,1) 100%);
-  background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(237,237,237,1)), color-stop(53%, rgba(246,246,246,1)), color-stop(100%, rgba(255,255,255,1)));
-  background: -webkit-linear-gradient(top, rgba(237,237,237,1) 0%, rgba(246,246,246,1) 53%, rgba(255,255,255,1) 100%);
-  background: -o-linear-gradient(top, rgba(237,237,237,1) 0%, rgba(246,246,246,1) 53%, rgba(255,255,255,1) 100%);
-  background: -ms-linear-gradient(top, rgba(237,237,237,1) 0%, rgba(246,246,246,1) 53%, rgba(255,255,255,1) 100%);
   background: linear-gradient(to bottom, rgba(237,237,237,1) 0%, rgba(246,246,246,1) 53%, rgba(255,255,255,1) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ededed', endColorstr='#ffffff', GradientType=0 );
 }
@@ -2436,4 +2458,420 @@ a:active, a:focus, a:hover, a:link, a:visited {
 
 .form-label {
   font-size: 18px !important;
+}
+
+.default-section {
+  animation-duration: .6s;
+  animation-name: zoomIn;
+  background: url("http://i.imgur.com/L86gC8h.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: blur(.4px);
+  min-height: 100vh;
+}
+
+.transparent-div {
+  animation-duration: 1.5s;
+  animation-name: fadeIn;
+  background: $form-background;
+  border-radius: 4px;
+  height: 85vh;
+  min-width: 350px;
+  overflow: auto;
+  padding: 0 15px 0 15px;
+  width: 40vw;
+  margin-left: 3vw;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 55%;
+  transform: translateY(-50%);
+}
+
+.transparent-div2 {
+  animation-duration: 1.5s;
+  animation-name: fadeIn;
+  height: 85vh;
+  min-width: 450px;
+  overflow: auto;
+  padding: 0 15px 0 15px;
+  background: $form-background;
+  border-radius: 4px;
+  margin: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 55%;
+  transform: translateY(-50%);
+  width: 50vw;
+}
+
+.transparent-div3 {
+  animation-duration: 1.5s;
+  animation-name: fadeIn;
+  height: 85vh;
+  min-width: 350px;
+  overflow: auto;
+  padding: 0 15px 0 15px;
+  background: $form-background;
+  border-radius: 4px;
+  margin-right: 3vw;
+  margin-left: 45vw;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 55%;
+  transform: translateY(-50%);
+  width: 50vw;
+}
+
+.btn-maru {
+  background: $golden;
+  background-image: linear-gradient(to bottom, $golden, $golden-dark);
+  box-shadow: 1px 1px 3px $gray-darked2;
+  font-family: Arial;
+  color: $white;
+  font-size: 20px;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-choose {
+  background: $orangered;
+  background-image: linear-gradient(to bottom, $orangered, $red);
+  box-shadow: 1px 1px 3px $gray-darked2;
+  font-family: Arial;
+  color: $white;
+  font-size: 20px;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-maru:hover {
+  background: $btn-color1;
+  background-image: linear-gradient(to bottom, $btn-color1, $spring-green);
+  text-decoration: none;
+}
+
+.btn-maru:active {
+  background: $pink;
+  background-image: linear-gradient(to bottom, $pink, $orangered);
+  text-decoration: none;
+}
+
+.btn-batsu {
+  background: $gray;
+  background-image: linear-gradient(to bottom, $gray, $dark-silver);
+  box-shadow: 1px 1px 3px $gray-darked2;
+  font-family: Arial;
+  color: $white;
+  font-size: 20px;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-search-table {
+  padding: 36px 15px 36px 15px;
+}
+
+.btn-close-result {
+  padding: 20px 15px 20px 15px;
+}
+
+.stylish-heading {
+  color: $golden;
+  font-family: Serif;
+  font-size: 5em;
+  font-style: italic;
+  font-variant: small-caps;
+  text-align: center;
+}
+
+.h1style {
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.h2style {
+  font-size: 5em;
+  margin-top: -10px;
+}
+
+.h3style {
+  font-size: 2em;
+  margin-top: -10px;
+}
+
+.form-control {
+  background: $white;
+  color: $golden-dark;
+  border: 1px solid $golden;
+  border-radius: 4px;
+  height: 35px;
+  padding: 5px 7px 5px 5px;
+  width: 100%;
+}
+
+.form-control:focus {
+  outline: none !important;
+  border: 1px solid $form-control-color;
+}
+
+.form-label {
+  font-family: Serif;
+  font-variant: small-caps;
+  font-size: 1.5em;
+  color: $golden;
+  padding: 2px;
+}
+
+.btn-summit-table {
+  display: none;
+}
+
+.btn-summit-table:hover {
+  background: $golden-dark;
+}
+
+.btn-find-table {
+  display: inline-block;
+  padding-top: 12px;
+  background: $light-green;
+}
+
+.btn-find-table:hover {
+  display: inline-block;
+  padding-top: 12px;
+  background: $light-blue;
+}
+
+.chosen_table {
+  display: none;
+}
+
+.map-table {
+  padding: 1px;
+  width: 95%;
+  height: 85%;
+  margin: auto;
+}
+
+.table-content {
+  height: 90%;
+  margin: 0.5vh;
+}
+
+.map2 {
+  background: $outside-ground;
+  height: 62vh;
+  margin: 0.5vh;
+  margin-left: 1.5vw;
+  width: 12vw;
+  display: inline-block;
+}
+
+.map3 {
+  background: $inside-ground;
+  height: 62vh;
+  margin: 0.5vh;
+  padding-left: 1.5vw;
+  width: 32vw;
+  position: absolute;
+  display: inline-block;
+}
+
+.btn-oval-huge {
+  height: 16vh;
+  width: 12vw;
+  border-radius: 50px;
+}
+
+.btn-rough-huge {
+  height: 12vh;
+  width: 12vw;
+}
+
+.btn-rough-big {
+  height: 9vh;
+  margin: 3vh 1.5vw 3vh 1.5vw;
+  width: 9vw;
+}
+
+.btn-rough-md {
+  height: 8vh;
+  width: 4vw;
+}
+
+.btn-rough-sm {
+  height: 7vh;
+  margin: 1vh 1vw 1vh 1vw;
+  width: 3.5vw;
+}
+
+.row2 {
+  margin-left: 0.5vw;
+}
+
+.row3 {
+  text-align: center;
+  height: 14vh;
+  font-size: 2em;
+  font-style: italic;
+  font-variant: small-caps;
+  padding-top: 4vh;
+  vertical-align: middle;
+  color: $golden;
+}
+
+.btn-right {
+  position: absolute;
+  right: 5%;
+}
+
+.btn-left {
+  position: absolute;
+  left: 5%;
+}
+
+.btn-right2 {
+  position: absolute;
+  right: 12%;
+}
+
+.btn-left2 {
+  position: absolute;
+  left: 12%;
+}
+
+.btn-top {
+  position: absolute;
+  top: 5%;
+}
+
+.btn-top2 {
+  position: absolute;
+  top: 7%;
+}
+
+.btn-center {
+  position: absolute;
+  left: 30%;
+}
+
+.btn-midtop {
+  position: absolute;
+  top: 30%;
+}
+
+.btn-midbot {
+  position: absolute;
+  bottom: 30%;
+}
+
+.btn-midcen {
+  position: absolute;
+  left: 30%;
+  top: 38%;
+}
+
+.btn-bottom {
+  position: absolute;
+  bottom: 5%;
+}
+
+.btn-bottom2 {
+  position: absolute;
+  bottom: 7%;
+}
+
+.btn-bottom3 {
+  position: absolute;
+  bottom: 2%;
+}
+
+.btn-guide {
+  height: 5vh;
+  width: 16vw;
+}
+
+.btn-test{
+  background: red;
+}
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 80%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+
+/* Add Animation */
+@keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}
+
+/* The Close Button */
+.close {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-header {
+  padding: 2px 16px;
+  background-color: #5cb85c;
+  color: white;
+}
+
+.modal-body {padding: 2px 16px;}
+
+.modal-footer {
+  padding: 2px 16px;
+  background-color: #5cb85c;
+  color: white;
+}
+
+.close-modal{
+  padding-top: 8px;
+
+}
+
+.btn-order {
+  display: none
+}
+
+.guest-info-confirmed {
+  display: none;
 }

@@ -20,6 +20,7 @@ gem "bootstrap-kaminari-views"
 gem "social-share-button"
 gem "will_paginate"
 gem "owlcarousel-rails"
+gem "bootstrap-datepicker-rails"
 
 group :development, :test do
   gem "byebug", platform: :mri

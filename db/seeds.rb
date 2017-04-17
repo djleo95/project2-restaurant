@@ -1,7 +1,3 @@
-Admin.delete_all
-Admin.create! name: "admin", email: "admin@123.com",
-  password: "123123"
-
 Category.create! ([
   {name: "Main",
    description: "Our main course is the featured and primary dish in the meal and consists of several courses."},
@@ -483,10 +479,6 @@ Dish.create! ([
 
 ])
 
-20.times do |n|
-  Table.create!(capacity: (n%4 + 1), code: (n + 1) )
-end
-
 ComboDish.create!([
   {combo_id: 1,
    dish_id: 1
@@ -928,27 +920,19 @@ Order.create!([
   {guest_id: 5,
    table_id: 1,
    code: "A001",
-   date: Time.zone.local(2017, 4, 1, 14, 00).to_date,
-   time_in: Time.zone.local(2017, 4, 1, 14, 00).to_time,
+   day: Time.zone.local(2017, 4, 1, 14, 00).to_date,
+   time_in: 1,
    isConfirm: true,
    discount: 10,
   },
   {guest_id: 5,
    table_id: 4,
    code: "A002",
-   date: Time.zone.local(2017, 4, 14, 20, 00).to_date,
-   time_in: Time.zone.local(2017, 4, 14, 20, 00).to_time,
+   day: Time.zone.local(2017, 4, 1, 20, 00).to_date,
+   time_in: 2,
    isConfirm: false,
    discount: 0,
-  },
-  {guest_id: 6,
-   table_id: 2,
-   code: "A003",
-   date: Time.zone.local(2017, 4, 19, 20, 00).to_date,
-   time_in: Time.zone.local(2017, 4, 19, 20, 00).to_time,
-   isConfirm: false,
-   discount: 0,
-  },
+  }
 ])
 
 OrderDish.create!([
@@ -976,3 +960,21 @@ Human.create! name: "guest", email: "guest@123.com",
               role: "Guest", phoneNum: "01213218307"
 Human.create! name: "Foo", email: "guest2@123.com",
               role: "Guest", phoneNum: "01213218307"
+
+Table.create! capacity: 2, code: "5"
+Table.create! capacity: 2, code: "2"
+Table.create! capacity: 2, code: "3"
+Table.create! capacity: 2, code: "4"
+Table.create! capacity: 4, code: "7"
+Table.create! capacity: 4, code: "9"
+Table.create! capacity: 4, code: "10"
+Table.create! capacity: 4, code: "11"
+Table.create! capacity: 4, code: "12"
+Table.create! capacity: 4, code: "14"
+Table.create! capacity: 4, code: "15"
+Table.create! capacity: 4, code: "17"
+Table.create! capacity: 8, code: "1"
+Table.create! capacity: 8, code: "6"
+Table.create! capacity: 12, code: "8"
+Table.create! capacity: 12, code: "16"
+Table.create! capacity: 16, code: "18"

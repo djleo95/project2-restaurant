@@ -48,6 +48,8 @@ GEM
       thread_safe (~> 0.3, >= 0.3.1)
     bcrypt (3.1.11)
     bindex (0.5.0)
+    bootstrap-datepicker-rails (1.6.4.1)
+      railties (>= 3.0)
     bootstrap-kaminari-views (0.0.5)
       kaminari (>= 0.13)
       rails (>= 3.1)
@@ -286,6 +288,7 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt
+  bootstrap-datepicker-rails
   bootstrap-kaminari-views
   bootstrap-sass (= 3.3.6)
   brakeman

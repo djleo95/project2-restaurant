@@ -1,18 +1,19 @@
 <section id="login" class="parallax-section section-box">
   <div class="login-form">
-    <h1><%= t "admin.login" %></h1>
-
+    <h1 class="stylish-heading h2style"><%= t "admin.login" %></h1>
+    <h3 class="stylish-heading h3style"><%= t "admin.login2" %></h3>
     <%= render "shared/flash" %>
 
     <%= form_for :session, url: login_path do |f| %>
-      <%= f.label :email %>
+      <%= f.label :email, class: "form-label" %>
       <%= f.email_field :email, class: "form-control form-group",
         placeholder: t("admin.email") %>
-      <%= f.label :password %>
+      <%= f.label :password, class: "form-label" %>
       <%= f.password_field :password, class: "form-control form-group",
         placeholder: t("admin.pass") %>
       <%= link_to t("form.lost_pass"), "#", class: "link" %>
-      <%= f.submit t("form.button"), class: "btn btn-primary log-btn" %>
+      <br>
+      <%= f.submit t("form.button"), class: "log-btn" %>
     <% end %>
   </div>
 </section>
