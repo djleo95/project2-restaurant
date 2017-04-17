@@ -24,7 +24,7 @@ class OrdersController < ApplicationController
     params[:guest_id] = session[:guest]["id"]
     current_order.update_attributes order_params
     flash[:success] = "Success create order"
-    redirect_to root_path
+    render :json => { :path1 => "#{order_path}" }
   end
 
   private

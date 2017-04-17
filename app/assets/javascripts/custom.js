@@ -225,7 +225,24 @@ $(document).ready(function(){
 
 $(document).on('click', '#btn-summit-table', function(e) {
   e.preventDefault();
-  $('#myModal').css('display','block');
+  var a = 0;
+  var val_cap = $('#capacity_field').val();
+  var val_date = $('#date_field').val();
+  var val_time = $('#time_field').val();
+  if(val_cap == "" || val_date == "" || val_time == "") {
+    a = 1;
+    alert("Please fill all field");
+  } else if (!$('.btn-table').hasClass('btn-choose')) {
+    a = 2;
+  }
+
+  if(a == 0) {
+    $('#myModal').css('display','block');
+  } else if(a == 1) {
+
+  } else if(a ==2) {
+    alert("Please choose prefer table");
+  }
 });
 
 $(document).on('click','.close', function(){
@@ -246,9 +263,10 @@ $(document).on('click', '#btn-submit-order',function(e){
   var val_date = $('#date_field').val();
   var val_time = $('#time_field').val();
   var id_table = $('.btn-table.btn-choose').text();
+  $('#myModal').css('display','none');
   $.ajax({
     type:'POST',
-    url: '/order',
+    url: '/orders',
     dataType: "json",
     data: {
       code: val_cap,
@@ -256,6 +274,8 @@ $(document).on('click', '#btn-submit-order',function(e){
       time_in: val_time,
       table_id: id_table
     }
+  }).success(function(d){
+    location.replace(d.path1);
   });
 });
 $(document).on('turbolinks:load', function(){
