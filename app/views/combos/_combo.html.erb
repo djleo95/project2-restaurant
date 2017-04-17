@@ -36,8 +36,10 @@
   <div class="col-sm-12">
     <% @combos.each do |combo| %>
       <div class="deal">
-        <%= link_to image_tag combo.image, class:"lazy-img", title: combo.name,
-          onerror: "this.src='https://t4.ftcdn.net/jpg/01/07/86/19/500_F_107861953_YZ800J1eDVtaEVAMXj1KRpez6efJpm7D.jpg';" %>
+        <%= link_to combo_path(combo), target: "_blank" do %>
+          <% image_tag combo.image, class:"lazy-img", title: combo.name,
+            onerror: "this.src='https://t4.ftcdn.net/jpg/01/07/86/19/500_F_107861953_YZ800J1eDVtaEVAMXj1KRpez6efJpm7D.jpg';" %>
+        <% end %>
         <h1>
           <%= link_to combo.name, combo_path(combo),
             target: "_blank", class: "display" %>

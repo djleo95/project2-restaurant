@@ -153,6 +153,7 @@ $(document).on('turbolinks:load', function(){
   $('.owl-carousel').owlCarousel({
     autoPlay: 4000,
     touchDrag: true,
+    stopOnHover: true,
     items: 2,
     itemsDesktop: [1119,2],
     itemsDesktopSmall: [979, 2],
@@ -257,3 +258,20 @@ $(document).on('click', '#btn-submit-order',function(e){
     }
   });
 });
+$(document).on('turbolinks:load', function(){
+  $('.carousel').owlCarousel({
+    autoPlay: 3000,
+    stopOnHover: true,
+    touchDrag: true,
+    rewindNav: true,
+    rewindSpeed: 600,
+    pagination: false,
+    navigation: true,
+    navigationText: ["<img src='http://dynarules.com/Images/arrleft.png'>","<img src='http://www.freeiconspng.com/uploads/right-arrow-icon-27.png'>"],
+    items: 4,
+    itemsDesktop: [1119,4],
+    itemsDesktopSmall: [979, 3],
+    itemsTablet: [768,2],
+    itemsMobile: [479,1]
+  });
+})

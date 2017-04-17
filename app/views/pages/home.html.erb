@@ -1,8 +1,47 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="//fonts.googleapis.com/css?family=Khand" rel="stylesheet">
 <section id="top" class="parallax-section">
   <div id="top2">
-    <%= render "shared/flash" %>
+    <%= render "shared/flash" %><br><br><br>
   </div>
 </section>
+  <div class="tm-block-top-a uk-block uk-block-default">
+    <div class="uk-container uk-container-center">
+      <section class="uk-grid">
+        <div class="uk-width-1-1">
+          <div class="uk-panel uk-text-center">
+            <h2 class="uk-module-title-alt uk-margin-large-bottom">__ Our most loved dishes __</h2>
+            <div class="carousel">
+            <!--<div class="uk-grid">-->
+              <% Dish.joins(:order_dishes).group("order_dishes.dish_id").order("count(order_dishes.dish_id) desc").limit(10).each do |dish| %>
+                <div class="uk-width-medium-1-4">
+                  <h3 class="uk-margin-small">
+                    <%= link_to dish.name, dish_path(dish) %>
+                  </h3>
+                  <ul class="tm-rating">
+                    <li><i class="uk-icon-star fa fa-star" aria-hidden="true"></i></li>
+                    <li><i class="uk-icon-star fa fa-star" aria-hidden="true"></i></li>
+                    <li><i class="uk-icon-star fa fa-star" aria-hidden="true"></i></li>
+                    <li><i class="uk-icon-star fa fa-star" aria-hidden="true"></i></li>
+                    <li><i class="uk-icon-star fa fa-star" aria-hidden="true"></i></li>
+                  </ul>
+                <%= link_to dish_path(dish) do %>
+                  <%= image_tag dish.image, onerror: "this.src='https://t4.ftcdn.net/jpg/01/07/86/19/500_F_107861953_YZ800J1eDVtaEVAMXj1KRpez6efJpm7D.jpg';",
+                    class:"hot-dish", tittle: dish.name %>
+                <% end %>
+                  <p style="min-height: 100px;font-size: 16px">
+                    <%= truncate dish.description, length: 100, omission: "... (continue)" %>
+                  </p>
+                  <p class="tm-price">$<%= dish.price %></p>
+                </div>
+              <% end %>
+            <!--</div>-->
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
 <section class="section">
   <div class="mk-page-section-wrapper">
     <div id="page-section-19" class="mk-page-section self-hosted full_layout full-width-19 center-y">
@@ -69,12 +108,16 @@
                 <div class="vc-column-inner ">
                   <div class="wpb-wrapper">
                     <h2 id="fancy-title-21" class="mk-fancy-title simple-style">
-                      <span>OUR MENU</span>
+                      <span>Great food. Tastes good.</span>
                     </h2>
                     <div class="clearboth"></div>
                     <div id="text-block-22" class="mk-text-block">
                       <p>
-                        <span>Chef Stuart Cauldwell &nbsp;has created a menu of dishes using the finest seasonal British produce. Table service throughout for food and drinks.</span>
+                        <span>Learn from the past, set vivid, detailed goals for the future,
+                          and live in the only moment of time over which you have any control: now.
+                          Optimism is the faith that leads to achievement. Nothing can be done without
+                          hope and confidence. If you can dream it, you can do it. Do it now, not tomorrow.
+                          Always continue the climb. It is possible for you to do.</span>
                       </p>
                       <div class="clearboth"></div>
                     </div>
@@ -165,3 +208,169 @@
     </div>
   </div>
 </section>
+<style>
+  .uk-grid > * > :last-child {
+    margin-bottom: 0;
+  }
+  .uk-text-center {
+    text-align: center !important;
+  }
+  .uk-panel, .uk-panel:hover {
+    text-decoration: none;
+  }
+  .uk-panel {
+    display: block;
+    position: relative;
+  }
+  .uk-text-center .uk-module-title-alt {
+    display: inline-block;
+  }
+  .uk-module-title-alt {
+    position: relative;
+    display: table;
+  }
+  .uk-margin-large-bottom {
+    margin-bottom: 50px !important;
+  }
+  h2, .uk-h2 {
+    font-size: 32px;
+    line-height: 36px;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    margin: 0 0 15px 0;
+    font-family: 'Khand';
+    font-weight: 400;
+    color: #533834;
+    text-transform: none;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    text-rendering: auto;
+  }
+
+  [class*='uk-width'] {
+    box-sizing: border-box;
+    width: 100%;
+  }
+  .uk-grid > * {
+    padding-left: 25px;
+  }
+  .uk-grid > * {
+    -ms-flex: none;
+    -webkit-flex: none;
+    flex: none;
+    margin: 0;
+    float: left;
+  }
+
+  .uk-margin-small{
+    margin-bottom: 5px;
+  }
+
+  .uk-margin-small a {
+    color: #aea512 !important;
+    font-size: 28px;
+    font-weight: 600;
+  }
+  .tm-rating {
+    list-style-type: none;
+    padding: 0;
+    margin: 0 0 20px;
+  }
+  .tm-rating li {
+    color: #fd8e18;
+    padding-right: 1px;
+    display: inline-block;
+    line-height: 20px;
+  }
+
+  [class*='uk-icon-'] {
+    font-family: FontAwesome;
+    display: inline-block;
+    font-weight: normal;
+    font-style: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .tm-price {
+    color: red;
+    font-weight: 600;
+    font-size: 26px;
+    margin: 30px 0;
+  }
+
+  .uk-block-default {
+    background: #ffffff;
+  }
+
+  .uk-block {
+    position: relative;
+    box-sizing: border-box;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    overflow: hidden;
+  }
+
+  .uk-block > :last-child {
+    margin-bottom: 0;
+  }
+
+  .uk-container-center {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .uk-container {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 25px;
+    position: relative;
+    display: block;
+  }
+  [data-uk-scrollspy*='uk-animation-']:not([data-uk-scrollspy*='target']) {
+    opacity: 0;
+  }
+  .uk-block {
+    display: block;
+  }
+  .uk-width-medium-1-4 {
+    width: 90%;
+  }
+  .hot-dish {
+    width: 180px !important;
+    height: 150px !important;
+    margin-bottom: 10px;
+  }
+
+  .uk-width-1-1 {
+    width: 100%;
+  }
+  .uk-grid {
+    margin-left: -25px;
+  }
+
+  .owl-carousel {
+    width: 96%;
+    margin-left: 3%;
+  }
+  .owl-theme .owl-controls .owl-buttons div img {
+    top: -50%;
+    width: 60px;
+  }
+
+  .owl-theme .owl-controls .owl-buttons div {
+    background: transparent;
+  }
+  .owl-theme .owl-controls .owl-buttons div.owl-prev {
+    float: left;
+    margin-top: -330px;
+    margin-left: -70px;
+  }
+
+  .owl-theme .owl-controls .owl-buttons div.owl-next {
+    float: right;
+    margin-top: -330px;
+    margin-right: -50px;
+  }
+</style>

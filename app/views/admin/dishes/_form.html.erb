@@ -3,7 +3,7 @@
   <%= f.text_field :name, class: "form-control" %>
 
   <%= f.label :price, t(".price"), class:"form-label" %>
-  <%= f.number_field :price, class: "form-control" %>
+  <%= f.number_field :price, class: "form-control", min: 1 %>
 
   <%= f.label :description, t(".description"), class:"form-label" %>
   <%= f.text_area :description, class: "form-control" %>
