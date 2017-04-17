@@ -297,7 +297,7 @@ img.inactived {
   background-repeat: no-repeat;
   background-size: cover;
   filter: blur(.4px);
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .login-form {
@@ -342,6 +342,10 @@ img.inactived {
 
 #btn-submit:hover {
   background: $meadow;
+}
+
+.btn2 {
+  background: #0a922d  !important
 }
 
 .link {
@@ -453,6 +457,7 @@ img.inactived {
   color: $black;
   min-height: 80vh;
   overflow-y: auto;
+  min-height: 100vh;
 
   h1 {
     font-size: 30px;

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resource :admin, only: [:show, :edit, :update]
   resources :dishes
   resource :order, only: :show
+  resources :orders, only: :index
   resources :order_dishes, only: [:create, :update, :destroy]
   resources :order_combos, only: [:create, :update, :destroy]
   resources :combos

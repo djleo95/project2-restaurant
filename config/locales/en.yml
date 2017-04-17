@@ -7,7 +7,7 @@ en:
     menu: Menu
     combo: Combo
     book: Booking
-    contact: Contact
+    contact: Check order
     admin: Admin Only
   footer:
     about: About the house
@@ -40,6 +40,7 @@ en:
     combo:
       find_fail: Dish not found.
       find_fail: Dish not found.
+      combo_fails: Combo not found.
       create_success: Created combo successfullly!
       update_success: Updated combo successfully!
       destroy_success: Deleted combo successfully!
