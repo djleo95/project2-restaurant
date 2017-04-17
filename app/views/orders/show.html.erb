@@ -1,7 +1,30 @@
 <section class= "section">
   <br><br><br>
+
+
+  <% if current_order.table != nil %>
+    <p> Ban da dat ban so</p>
+    <%= current_order.table.id%>
+    <p>Vao ngay</p>
+    <%= current_order.date%>
+    <p>Tu luc</p>
+    <%= current_order.time_in%>
+    <p>Den</p>
+    <%= current_order.time_out%>
+    <% if current_order.isConfirm == true %>
+      <p> Don dat hang da duoc xac nhan!</p>
+    <% else%>
+      <p> Hay doi chung toi lien he de xac nhan dat hang.</p>
+    <% end%>
+  <% else %>
+    <p>Hay dat ban de hoan tat dat mon an.</p>
+  <% end %>
+
   <div class="wrapper main-content">
     <div class="shopping-cart">
+      <%= render "ordering_cart" %>
+    </div>
+     <div class="shopping-cart">
       <%= render "ordering_cart" %>
     </div>
   </div>
