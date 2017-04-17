@@ -1,15 +1,15 @@
-class Admin::OrderDishesController < ApplicationController
+class Admin::OrderCombosController < ApplicationController
   before_action :logged_in_admin
   before_action :find_order #, only: [:new, :create]
-  before_action :find_order_dish #, only: [:new, :create]
-  before_action :load_dish
+  before_action :find_order_combo #, only: [:new, :create]
+  before_action :load_combo
 
   def new
-    @order_dish = OrderDish.new
+    @order_combo = OrderCombo.new
   end
 
   def create
-    @order_dish = @order.order_dishes.new order_dish_params
+    @order_combo = @order.order_combos.new order_combo_params
     if @order.save
       flash[:success] = "Added successfully!"
       redirect_to admin_order_path @order
@@ -22,7 +22,7 @@ class Admin::OrderDishesController < ApplicationController
   end
 
   def update
-    if @order_dish.update_attributes order_dish_params
+    if @order_combo.update_attributes order_combo_params
       flash[:success] = "Updated successfully!"
       redirect_to admin_order_path @order
     else
@@ -32,8 +32,8 @@ class Admin::OrderDishesController < ApplicationController
 
   def destroy
     if @order
-      @order.order_dishes.include?(@order_dish)
-      if @order.order_dishes.delete @order_dish
+      @order.order_combos.include?(@order_combo)
+      if @order.order_combos.delete @order_combo
         flash[:success] = "Delete successfully!"
         redirect_to admin_order_path @order
       else
@@ -43,23 +43,23 @@ class Admin::OrderDishesController < ApplicationController
   end
 
   private
-  def order_dish_params
-    params.require(:order_dish).permit :dish_id, :order_id, :quantity
+  def order_combo_params
+    params.require(:order_combo).permit :combo_id, :quantity
   end
 
   def find_order
     @order = Order.find_by id: params[:order_id]
   end
 
-  def find_order_dish
-    @order_dish = if @order
-      @order.order_dishes.find_by id: params[:id]
+  def find_order_combo
+    @order_combo = if @order
+      @order.order_combos.find_by id: params[:id]
     else
-      OrderDish.find_by id: params[:id]
+      OrderCombo.find_by id: params[:id]
     end
   end
 
-  def load_dish
-    @dishes = Dish.all.map {|p| [p.name, p.id]}
+  def load_combo
+    @combos = Combo.all.map {|p| [p.name, p.id]}
   end
 end

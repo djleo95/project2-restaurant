@@ -11,11 +11,24 @@
     <% end %>
     <div class="bloc">
       <br>
+      <h3 class="title">Order informations</h3>
       <table dir="ltr" class="default-dg-table">
         <tbody id="combo_dish">
           <tr class="dg_tr" id="di_row_0">
             <td class="default_dg_td dg-left dg-nowrap"><b>Code</b></td>
             <td class="default_dg_td dg-left"><%= @order.code %></td>
+          </tr>
+          <tr class="dg_tr" id="di_row_0">
+            <td class="default_dg_td dg-left dg-nowrap"><b>Guest name</b></td>
+            <td class="default_dg_td dg-left"><%= @order.guest.name %></td>
+          </tr>
+          <tr class="dg_tr" id="di_row_0">
+            <td class="default_dg_td dg-left dg-nowrap"><b>Phone number</b></td>
+            <td class="default_dg_td dg-left"><%= @order.guest.phoneNum %></td>
+          </tr>
+          <tr class="dg_tr" id="di_row_0">
+            <td class="default_dg_td dg-left dg-nowrap"><b>Email</b></td>
+            <td class="default_dg_td dg-left"><%= @order.guest.email %></td>
           </tr>
           <tr class="dg_tr" id="di_row_0">
             <td class="default_dg_td dg-left dg-nowrap"><b>Date</b></td>
@@ -44,7 +57,7 @@
           <tr class="dg_tr" id="di_row_0">
             <td class="default_dg_td dg-left dg-nowrap"><b>Discount</b></td>
             <td class="default_dg_td dg-left dg-nowrap">
-              <%= @order.discount %><i class="fa fa-percent"></i><br>
+              <%= @order.discount %>%<br>
             </td>
           </tr>
         </tbody>
@@ -54,67 +67,110 @@
         <%= link_to "Edit order", edit_admin_order_path(@order), class:"pj-button" %>
       </div>
       <br><br>
-      <h3 style="display: inline">Order items</h3>
-      <h3 style="display: inline">
-        <%= link_to "+ Add dishes", new_admin_order_order_dish_path(@order), class:"btn btn-link" %>
-      </h3>
+      <h3 class="title" style="margin-bottom: 5px">Order items <span style="font-size:12px;color:#777;text-transform:none;font-weight:normal"></span> </h3>
+      <h4 style="display: inline">
+        <%= link_to "+ Add dish", new_admin_order_order_dish_path(@order), class:"btn btn-link" %>
+      </h4>
+      <h4 style="display: inline">
+        <%= link_to "+ Add combo", new_admin_order_order_combo_path(@order), class:"btn btn-link" %>
+      </h4>
       <br><br>
       <table class="items-table">
         <thead>
           <tr>
             <th>No.</th>
-            <th>Dish name</th>
-            <th>Price</th>
+            <th>Product</th>
+            <th>Type</th>
+            <th>Original price</th>
             <th>Quantity</th>
+            <th>Discount</th>
             <th>Subtotal</th>
             <th colspan="2" class="text-center">Action</th>
           </tr>
         </thead>
         <tbody>
-        <% @order.order_dishes.each do |order_dish| %>
-          <tr>
-            <td class="total"><%= order_dish.dish.id %></td>
-            <td class="total">
-              <strong><%= link_to order_dish.dish.name, admin_dish_path(order_dish) %></strong>
-            </td>
-            <td class="total">
-              <%= number_to_currency order_dish.dish.price %>
-            </td>
-            <td class="total">
-              <%= order_dish.quantity %>
-            </td>
-            <td class="total">
-              <%= number_to_currency order_dish.total_price %>
-            </td>
-            <td class="total width-10 text-center">
-              <%= link_to edit_admin_order_order_dish_path(order_dish) do %>
-                  <i class="fa fa-lg fa-pencil-square-o"></i>
-              <% end %>
-            </td>
-            <td class="total width-10 text-center">
-              <%= link_to admin_order_order_dish_path(order_dish), method: :delete,
-                          data: { confirm: t("button.delete_warning") } do %>
-                  <i class="fa fa-lg fa-times"></i>
-              <% end %>
-            </td>
-          </tr>
-        <% end %>
+          <% @order.order_dishes.each do |order_dish| %>
+            <tr>
+              <td class="total"><%= order_dish.dish.id %></td>
+              <td class="total">
+                <strong><%= link_to order_dish.dish.name, admin_dish_path(order_dish) %></strong>
+              </td>
+              <td class="total">Dish</td>
+              <td class="total">
+                <%= number_to_currency order_dish.dish.price %>
+              </td>
+              <td class="total">
+                <%= order_dish.quantity %>
+              </td>
+              <td class="total">0%</td>
+              <td class="total">
+                <%= number_to_currency order_dish.total_price %>
+              </td>
+              <td class="total width-10 text-center">
+                <%= link_to edit_admin_order_order_dish_path(@order, order_dish) do %>
+                    <i class="fa fa-lg fa-pencil-square-o"></i>
+                <% end %>
+              </td>
+              <td class="total width-10 text-center">
+                <%= link_to admin_order_order_dish_path(@order, order_dish), method: :delete,
+                            data: { confirm: t("button.delete_warning") } do %>
+                    <i class="fa fa-lg fa-times"></i>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+        <tbody>
+          <% @order.order_combos.each do |order_combo| %>
+            <tr>
+              <td class="total"><%= order_combo.combo.id %></td>
+              <td class="total">
+                <strong><%= link_to order_combo.combo.name, admin_combo_path(order_combo) %></strong>
+              </td>
+              <td class="total">Combo</td>
+              <td class="total">
+                <%= number_to_currency order_combo.combo.subtotal %>
+              </td>
+              <td class="total">
+                <%= order_combo.quantity %>
+              </td>
+              <td class="total">
+                <%= order_combo.combo.discount %>%
+              </td>
+              <td class="total">
+                <%= number_to_currency order_combo.total_price %>
+              </td>
+              <td class="total width-10 text-center">
+                <%= link_to edit_admin_order_order_combo_path(@order, order_combo) do %>
+                    <i class="fa fa-lg fa-pencil-square-o"></i>
+                <% end %>
+              </td>
+              <td class="total width-10 text-center">
+                <%= link_to admin_order_order_combo_path(@order, order_combo), method: :delete,
+                            data: { confirm: t("button.delete_warning") } do %>
+                    <i class="fa fa-lg fa-times"></i>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
         </tbody>
         <tfoot>
         <tr>
-          <td colspan="4" class="foot">Total (not discount)</td>
+          <td colspan="6" class="foot">Total (not discount)</td>
           <td class="foot" style="text-align: left" colspan="3">
             <%= number_to_currency @order.subtotal %>
           </td>
         </tr>
         <tr>
-          <td colspan="4" class="foot">Voucher discount</td>
-          <td class="foot" colspan="3"></td>
+          <td colspan="6" class="foot">Voucher discount</td>
+          <td class="foot" style="text-align: left;" colspan="3">
+            <%= @order.discount %>%
+          </td>
         </tr>
         <tr>
-          <td colspan="4" align="right" style="padding:7px 9px"><strong>Total</strong></td>
+          <td colspan="6" align="right" style="padding:7px 9px"><strong>Total</strong></td>
           <td style="padding:7px 9px" colspan="3">
-            <strong><%= number_to_currency @order.subtotal %></strong>
+            <strong><%= number_to_currency (@order.subtotal * (100 - @order.discount))/100 %></strong>
           </td>
         </tr>
         </tfoot>
@@ -136,7 +192,15 @@
   h3 {
     display: inline-block;
   }
-  a {
+  h4 {
+    padding-top: -10px;
+  }
+  h4 a {
+    color: red !important;
+    margin-bottom: 20px;
+    margin-left: -10px;
+  }
+  .btn, td a {
     font-size: 18px !important;
   }
   .items-table tbody, tfoot {
@@ -182,5 +246,15 @@
   }
   tr:hover {
     background: white;
+  }
+  .title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #02acea;
+    text-transform: uppercase;
+    margin: 20px 0;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+    width: 100%;
   }
 </style>

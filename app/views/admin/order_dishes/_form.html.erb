@@ -1,8 +1,12 @@
 <%= form_for [:admin, @order, @order_dish] do |f| %>
   <div class="col-xs-12">
-    <%= f.label :dish, "Dish name" %>
-    <%= f.select :dish_id, @dishes, {include_blank: false,
-               selected: :dish_id}, class: "btn btn-default" %>
+    <%= f.label :dish, "Dish name:" %>
+    <% if @order_dish.dish.present? %>
+      <p><%= @order_dish.dish.name %></p>
+    <% else %>
+      <%= f.select :dish_id, @dishes, {include_blank: false,
+        selected: :dish_id}, class: "btn btn-default" %>
+    <% end %>
   </div>
   <div class="col-xs-12">
     <%= f.label :quantity, "Quantity:" %>
@@ -10,14 +14,20 @@
   </div>
   <div class="col-xs-12 text-center">
     <% if @order_dish.new_record? %>
-      <%= f.submit "Add dish", class: "btn btn-primary"%>
+        <%= f.submit "Add dish", class: "btn btn-primary"%>
     <% else %>
-      <%= f.submit "Edit dish", class: "btn btn-success"%>
+        <%= f.submit "Edit dish", class: "btn btn-success"%>
     <% end %>
   </div>
 <% end %>
 <style>
   .btn-default, label {
     font-size: 18px !important;
+  }
+  p {
+    color:red;
+    display: inline;
+    font-size: 20px;
+    font-weight: bolder;
   }
 </style>

@@ -11,10 +11,6 @@ class Combo < ApplicationRecord
   end
 
   def price
-    subtotal * discount / 100
-  end
-
-  def total
-    dishes.sum(&:price)
+    (subtotal * (100 - discount)) / 100
   end
 end

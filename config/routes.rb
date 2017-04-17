@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     end
     resources :orders do
       resources :order_dishes
+      resources :order_combos
     end
   end
 end

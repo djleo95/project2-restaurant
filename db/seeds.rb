@@ -925,7 +925,7 @@ CategoryDish.create!([
 ])
 
 Order.create!([
-  {guest_id: 1,
+  {guest_id: 5,
    table_id: 1,
    code: "A001",
    date: Time.zone.local(2017, 4, 1, 14, 00).to_date,
@@ -933,11 +933,19 @@ Order.create!([
    isConfirm: true,
    discount: 10,
   },
-  {guest_id: 2,
+  {guest_id: 5,
    table_id: 4,
    code: "A002",
    date: Time.zone.local(2017, 4, 14, 20, 00).to_date,
    time_in: Time.zone.local(2017, 4, 14, 20, 00).to_time,
+   isConfirm: false,
+   discount: 0,
+  },
+  {guest_id: 6,
+   table_id: 2,
+   code: "A003",
+   date: Time.zone.local(2017, 4, 19, 20, 00).to_date,
+   time_in: Time.zone.local(2017, 4, 19, 20, 00).to_time,
    isConfirm: false,
    discount: 0,
   },
@@ -947,6 +955,13 @@ OrderDish.create!([
   {order_id: 1,
    dish_id: 3,
    discount: 5,
+   quantity: 1
+  }
+])
+
+OrderCombo.create!([
+  {order_id: 1,
+   combo_id: 9,
    quantity: 1
   }
 ])

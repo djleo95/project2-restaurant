@@ -5,7 +5,6 @@
   </div>
   <br>
   <div class="b10">
-    <%= link_to "+ Add reservation", new_admin_order_path, class:"float_left pj-form r10 pj-link" %>
     <%= f.text_field :code_cont, class:"pj-form-field pj-form-field-search w350",
       placeholder:"Search by code" %>
     <div class="float_right t5">
@@ -110,7 +109,7 @@
             <td><%= link_to order.code, admin_order_path(order) %></td>
             <td><%= order.date.in_time_zone('Hanoi').strftime('%b %d %Y') %></td>
             <td><%= order.time_in.in_time_zone('Hanoi').strftime('%I:%M %p') %></td>
-            <td><%= "name" %></td>
+            <td><%= order.guest.name %></td>
             <td class="text-center">
               <% if order.table.id.present? %>
                 <%= order.table.id %>

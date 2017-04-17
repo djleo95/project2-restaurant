@@ -25,9 +25,6 @@
   <%= f.radio_button :isConfirm, "true", checked: true %> <%= t(".approved") %>
   <%= f.radio_button :isConfirm, "false" %> <%= t(".canceled") %>
 
-  <div class="col-xs-12">
-    <%= link_to "Add dishes", new_admin_order_order_dish_path(@order) %>
-  </div>
   <br><br><br>
   <% if @order.new_record? %>
     <%= f.submit t("button.clear"), type: :reset,
