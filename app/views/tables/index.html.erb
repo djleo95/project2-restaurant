@@ -15,8 +15,8 @@
     <div class="modal-content">
       <div class="modal-header">
         <span class="close">&times;</span>
-        <h2 id="guest-info">Please input your information to complete booking</h2>
-        <h2 id="guest-info-confirmed" class="guest-info-confirmed">Confirm you order</h2>
+        <h2 id="guest-info">Input your information to complete booking</h2>
+        <h2 id="guest-info-confirmed" class="guest-info-confirmed">You're booking this:</h2>
       </div>
       <div class="modal-body">
         <!--<div id="finish-guest-info"> </div>-->
@@ -28,6 +28,10 @@
             <%= f.text_field :email, id: "email-guest", class: "form-control form-group", required: true %>
             <%= f.label :phoneNum, "phone number", class: "form-label" %>
             <%= f.text_field :phoneNum, id: "phone-guest", class: "form-control form-group", required: true %>
+          </div>
+          <div id="show-after-guest-info" class="hide">
+            <div class="modal-body">All item in Cart will be add to this order!</div>
+            <div class="modal-body">And you can change it in Check Order</div>
           </div>
           <div class="row col-sm-12">
             <button id="btn-submit-guest" class="btn-guest

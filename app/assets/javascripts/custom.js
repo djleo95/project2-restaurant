@@ -166,7 +166,7 @@ $(document).on('turbolinks:load', function() {
   $('.datepicker').datepicker({
     constrainInput: true,
     autoSize: true,
-    dateFormat: 'dd-mm-yy',
+    dateFormat: 'yyyy-mm-dd',
     firstDay: 1,
     changeYear: true,
     changeMonth: true
@@ -207,12 +207,7 @@ $(document).on('click', '#btn-find-table', function() {
 
 $(document).ready(function(){
   $('.datepicker2').datepicker({
-    format: 'yyyy/mm/dd',
-    startDate: '+0d',
-    todayHighlight: true,
-    autoclose: true,
-    weekStart: 1,
-    daysOfWeekHighlighted: [6,0]
+    format: 'yyyy-mm-dd',
   });
 });
 
@@ -225,7 +220,24 @@ $(document).ready(function(){
 
 $(document).on('click', '#btn-summit-table', function(e) {
   e.preventDefault();
-  $('#myModal').css('display','block');
+  var a = 0;
+  var val_cap = $('#capacity_field').val();
+  var val_date = $('#date_field').val();
+  var val_time = $('#time_field').val();
+  if(val_cap == "" || val_date == "" || val_time == "") {
+    a = 1;
+    alert("Please fill all field");
+  } else if (!$('.btn-table').hasClass('btn-choose')) {
+    a = 2;
+  }
+
+  if(a == 0) {
+    $('#myModal').css('display','block');
+  } else if(a == 1) {
+
+  } else if(a ==2) {
+    alert("Please choose prefer table");
+  }
 });
 
 $(document).on('click','.close', function(){
@@ -238,17 +250,29 @@ $(document).on('click','#btn-submit-guest', function() {
   $('#guest-info').css('display','none');
   $('#guest-info-confirmed').css('display','block');
   $('#hide-after-guest-info').css('display','none');
+  $('#show-after-guest-info').removeClass('hide')
 });
 
 $(document).on('click', '#btn-submit-order',function(e){
   e.preventDefault();
-  var val_cap = $('#capacity_field').val();
+  function makeid()
+  {
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
+    for( var i=0; i < 5; i++ )
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+    return text;
+  }
+  var val_cap = makeid();
   var val_date = $('#date_field').val();
   var val_time = $('#time_field').val();
   var id_table = $('.btn-table.btn-choose').text();
+  $('#myModal').css('display','none');
   $.ajax({
     type:'POST',
-    url: '/order',
+    url: '/orders',
     dataType: "json",
     data: {
       code: val_cap,
@@ -256,6 +280,8 @@ $(document).on('click', '#btn-submit-order',function(e){
       time_in: val_time,
       table_id: id_table
     }
+  }).success(function(d){
+    location.replace(d.path1);
   });
 });
 $(document).on('turbolinks:load', function(){

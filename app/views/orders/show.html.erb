@@ -7,11 +7,9 @@
       <p> Ban da dat ban so</p>
       <%= current_order.table.id%>
       <p>Vao ngay</p>
-      <%= current_order.date%>
+      <%= current_order.day%>
       <p>Tu luc</p>
       <%= current_order.time_in%>
-      <p>Den</p>
-      <%= current_order.time_out%>
       <%= form_for :order, url: order_path, method: :GET do |f| %>
         <%= f.submit "Create new order", class: "btn btn-primary log-btn" %>
       <% end %>

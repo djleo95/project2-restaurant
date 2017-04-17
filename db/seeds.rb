@@ -920,7 +920,7 @@ Order.create!([
   {guest_id: 5,
    table_id: 1,
    code: "A001",
-   day: Time.zone.local(2017, 4, 1, 14, 00).to_date,
+   day: Time.zone.local(2017, 4, 19, 14, 00).to_date,
    time_in: 1,
    isConfirm: true,
    discount: 10,
