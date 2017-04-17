@@ -78,7 +78,6 @@
       <table class="items-table">
         <thead>
           <tr>
-            <th>No.</th>
             <th>Product</th>
             <th>Type</th>
             <th>Original price</th>
@@ -91,7 +90,6 @@
         <tbody>
           <% @order.order_dishes.each do |order_dish| %>
             <tr>
-              <td class="total"><%= order_dish.dish.id %></td>
               <td class="total">
                 <strong><%= link_to order_dish.dish.name, admin_dish_path(order_dish) %></strong>
               </td>
@@ -123,7 +121,6 @@
         <tbody>
           <% @order.order_combos.each do |order_combo| %>
             <tr>
-              <td class="total"><%= order_combo.combo.id %></td>
               <td class="total">
                 <strong><%= link_to order_combo.combo.name, admin_combo_path(order_combo) %></strong>
               </td>

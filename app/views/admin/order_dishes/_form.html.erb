@@ -10,7 +10,7 @@
   </div>
   <div class="col-xs-12">
     <%= f.label :quantity, "Quantity:" %>
-    <%= f.number_field :quantity, class: "form-control" %>
+    <%= f.number_field :quantity, class: "form-control", min: 1 %>
   </div>
   <div class="col-xs-12 text-center">
     <% if @order_dish.new_record? %>

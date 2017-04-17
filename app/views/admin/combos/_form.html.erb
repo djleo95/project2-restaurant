@@ -6,7 +6,7 @@
   <%= f.text_area :description, class: "form-control" %>
 
   <%= f.label :discount, "Discount", class:"form-label" %>
-  <%= f.number_field :discount, class: "form-control" %>
+  <%= f.number_field :discount, class: "form-control", min: 0 %>
 
   <%= f.label :image, "Image", class:"form-label" %>
   <%= f.text_area :image, class: "form-control" %>
