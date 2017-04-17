@@ -22,7 +22,7 @@ class OrderDish < ApplicationRecord
 
   def order_present
     unless order
-      errors.add :order, t("order.not_valid_value")
+      errors.add :order, I18n.t("order.not_valid_value")
     end
   end
 

@@ -162,17 +162,26 @@ $(document).on('turbolinks:load', function(){
   });
 });
 
-$(document).on('turbolinks:load', function() {
+// $(document).ready(function() {
+//   $('.datepicker').datepicker({
+//     constrainInput: true,
+//     autoSize: true,
+//     dateFormat: 'yyyy/mm/dd',
+//     firstDay: 1,
+//     changeYear: true,
+//     changeMonth: true
+//   });
+//   $('#hideshow').on('click', function () {
+//     $('#content').toggle('show');
+//   });
+// });
+$(document).on('turbolinks:load', function(){
   $('.datepicker').datepicker({
-    constrainInput: true,
-    autoSize: true,
-    dateFormat: 'yyyy-mm-dd',
-    firstDay: 1,
-    changeYear: true,
-    changeMonth: true
-  });
-  $('#hideshow').on('click', function () {
-    $('#content').toggle('show');
+    format: 'yyyy-mm-dd',
+    todayHighlight: true,
+    autoclose: true,
+    weekStart: 1,
+    daysOfWeekHighlighted: [6,0]
   });
 });
 

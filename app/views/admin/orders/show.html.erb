@@ -33,13 +33,13 @@
           <tr class="dg_tr" id="di_row_0">
             <td class="default_dg_td dg-left dg-nowrap"><b>Date</b></td>
             <td class="default_dg_td dg-left">
-              <%= @order.date.in_time_zone('Hanoi').strftime('%b %d %Y') %>
+              <%= @order.day.in_time_zone('Hanoi').strftime('%b %d %Y') %>
             </td>
           </tr>
           <tr class="dg_tr" id="di_row_0">
             <td class="default_dg_td dg-left dg-nowrap"><b>From</b></td>
             <td class="default_dg_td dg-left">
-              <%= @order.time_in.in_time_zone('Hanoi').strftime('%I:%M %p') %>
+              <%= @order.time_in %>
             </td>
           </tr>
           <tr class="dg_tr" id="di_row_0">

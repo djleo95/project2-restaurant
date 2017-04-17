@@ -932,15 +932,78 @@ Order.create!([
    time_in: 2,
    isConfirm: false,
    discount: 0,
+  },
+  {guest_id: 6,
+   table_id: 10,
+   code: "A003",
+   day: Time.zone.local(2017, 4, 1, 20, 00).to_date,
+   time_in: 20,
+   isConfirm: false,
+   discount: 0,
   }
 ])
 
 OrderDish.create!([
   {order_id: 1,
    dish_id: 3,
-   discount: 5,
+   discount: 0,
    quantity: 1
-  }
+  },
+  {order_id: 1,
+   dish_id: 7,
+   discount: 0,
+   quantity: 1
+  },
+  {order_id: 1,
+   dish_id: 27,
+   discount: 0,
+   quantity: 1
+  },
+  {order_id: 1,
+   dish_id: 13,
+   discount: 0,
+   quantity: 1
+  },
+  {order_id: 2,
+   dish_id: 3,
+   discount: 0,
+   quantity: 1
+  },
+  {order_id: 3,
+   dish_id: 3,
+   discount: 0,
+   quantity: 1
+  },
+  {order_id: 2,
+   dish_id: 13,
+   discount: 0,
+   quantity: 1
+  },
+  {order_id: 2,
+   dish_id: 88,
+   discount: 0,
+   quantity: 1
+  },
+  {order_id: 3,
+   dish_id: 6,
+   discount: 0,
+   quantity: 1
+  },
+  {order_id: 3,
+   dish_id: 9,
+   discount: 0,
+   quantity: 1
+  },
+  {order_id: 2,
+   dish_id: 72,
+   discount: 0,
+   quantity: 1
+  },
+  {order_id: 1,
+   dish_id: 63,
+   discount: 0,
+   quantity: 1
+  },
 ])
 
 OrderCombo.create!([
@@ -959,6 +1022,8 @@ Human.create! name: "admin3", email: "admin3@123.com",
 Human.create! name: "guest", email: "guest@123.com",
               role: "Guest", phoneNum: "01213218307"
 Human.create! name: "Foo", email: "guest2@123.com",
+              role: "Guest", phoneNum: "01213218307"
+Human.create! name: "Hien", email: "hienvu@123.com",
               role: "Guest", phoneNum: "01213218307"
 
 Table.create! capacity: 2, code: "5"

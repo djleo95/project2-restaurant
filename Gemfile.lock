@@ -288,7 +288,7 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt
-  bootstrap-datepicker-rails
+  bootstrap-datepicker-rails (~> 1.6.4.1)
   bootstrap-kaminari-views
   bootstrap-sass (= 3.3.6)
   brakeman
@@ -331,4 +331,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   1.13.1
+   1.14.6

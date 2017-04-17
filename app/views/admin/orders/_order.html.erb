@@ -22,12 +22,12 @@
       <div class="w350">
         <p>
           <%= f.label :date_from, class:"date" %>
-          <%= f.text_field :date_gteq,
+          <%= f.text_field :day_gteq,
             class: "datepicker pj-form-field pointer w150 f-text f-calendar" %>
         </p>
         <p>
           <%= f.label :date_to, class:"date" %>
-          <%= f.text_field :date_lteq,
+          <%= f.text_field :day_lteq,
             class: "datepicker pj-form-field pointer w150 f-text f-calendar" %>
         </p>
       </div>
@@ -107,16 +107,10 @@
         <% @orders.each do |order| %>
           <tr>
             <td><%= link_to order.code, admin_order_path(order) %></td>
-            <td><%= order.date.in_time_zone('Hanoi').strftime('%b %d %Y') %></td>
-            <td><%= order.time_in.in_time_zone('Hanoi').strftime('%I:%M %p') %></td>
+            <td><%= order.day.in_time_zone('Hanoi').strftime('%b %d %Y') %></td>
+            <td><%= order.time_in %></td>
             <td><%= order.guest.name %></td>
-            <td class="text-center">
-              <% if order.table.id.present? %>
-                <%= order.table.id %>
-              <% else %>
-                <% t ".no_table" %>
-              <% end %>
-            </td>
+            <td class="text-center"><%= order.table.id %></td>
             <td class="text-center"><%= order.table.capacity %></td>
             <td class="text-center"><%= order.discount %><i class="fa fa-percent"></i></td>
             <td class="text-center">
