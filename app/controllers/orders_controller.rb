@@ -1,5 +1,8 @@
 class OrdersController < ApplicationController
   def show
+    if params[:commit] == "Create new order"
+      session.delete :order_id
+    end
     @order_dishes = current_order.order_dishes
     @order_combos = current_order.order_combos
   end
