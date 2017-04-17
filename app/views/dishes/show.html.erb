@@ -41,16 +41,11 @@
                     <%= f.number_field :quantity, value: 1, class: "form-control", min: 1 %>
                     <div class="input-group-btn">
                       <%= f.hidden_field :dish_id, value: @dish.id %>
-                      <%= f.submit t ".add_to_cart", class: "btn btn-primary" %>
+                      <%= f.submit t ".add_to_cart", class: "btn" %>
                     </div>
                   </div>
                 <% end %>
                 <br>
-                <div class="info_button">
-                  <button type="submit" class="buy-now">
-                    <strong><%= t ".buy" %></strong>
-                  </button>
-                </div>
               <% else %>
                 <label><%= t ".notavai" %></label>
               <% end %>

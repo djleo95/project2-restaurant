@@ -24,6 +24,6 @@ class OrderCombosController < ApplicationController
 
   private
   def order_combo_params
-    params.require(:order_combos).permit :quantity, :id, :combo_id
+    params.require(:order_combo).permit :quantity, :id, :combo_id
   end
 end

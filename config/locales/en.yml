@@ -337,7 +337,7 @@ en:
     update_quantity: Update Quantity
     total_price: "Total price :"
     quantity: "Quantity:"
-    cart_text: "%{cart_size} dishes in cart ( %{total_price}$ )"
+    cart_text: "%{cart_size} items in your order ( %{total_price}$ )"
     not_valid_or_not_active: "is not valid or is not active."
     not_valid_value: "is not a valid order."
     not_valid: "not valid."
