@@ -1,0 +1,17 @@
+<section id="login" class="parallax-section section-box">
+  <div class="login-form">
+    <h1 class= "text-center">YOUR ORDER</h1>
+
+    <%= render "shared/flash" %>
+
+    <%= form_for :order, url: orders_path, method: :GET do |f| %>
+      <%= f.label :email %>
+      <%= f.email_field :email, class: "form-control form-group",
+        placeholder: "Your email" %>
+      <%= f.label :order_code %>
+      <%= f.text_field :code, class: "form-control form-group",
+        placeholder: "Your order code" %>
+      <%= f.submit t("form.button"), class: "btn btn-primary log-btn" %>
+    <% end %>
+  </div>
+</section>
