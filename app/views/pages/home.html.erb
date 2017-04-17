@@ -1,8 +1,10 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="//fonts.googleapis.com/css?family=Khand" rel="stylesheet">
+<link href='//fonts.googleapis.com/css?family=Ranga' rel='stylesheet'>
 <section id="top" class="parallax-section">
   <div id="top2">
     <%= render "shared/flash" %><br><br><br>
+    <h1 class="home-title">Awesomecity</h1>
   </div>
 </section>
   <div class="tm-block-top-a uk-block uk-block-default">
@@ -180,7 +182,7 @@
               </div>
             </div><br>
             <div class="mk-button-order">
-              <%= link_to t(".book_table"), "#", target: "_self",
+              <%= link_to t(".book_table"), tables_path, target: "_self",
                           class: "mk-button skin-dark mk-button--text" %>
             </div>
           </div>
