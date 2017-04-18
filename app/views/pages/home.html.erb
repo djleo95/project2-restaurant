@@ -29,7 +29,7 @@
                   <%= image_tag dish.image, onerror: "this.src='https://t4.ftcdn.net/jpg/01/07/86/19/500_F_107861953_YZ800J1eDVtaEVAMXj1KRpez6efJpm7D.jpg';",
                     class:"hot-dish", tittle: dish.name %>
                 <% end %>
-                  <p style="min-height: 100px;font-size: 16px">
+                  <p style="min-height: 80px;font-size: 16px">
                     <%= truncate dish.description, length: 100, omission: "... (continue)" %>
                   </p>
                   <p class="tm-price">$<%= dish.price %></p>

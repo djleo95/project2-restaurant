@@ -22,12 +22,12 @@
       <div class="w350">
         <p>
           <%= f.label :date_from, class:"date" %>
-          <%= f.text_field :date_gteq,
+          <%= f.text_field :day_gteq,
             class: "datepicker pj-form-field pointer w150 f-text f-calendar" %>
         </p>
         <p>
           <%= f.label :date_to, class:"date" %>
-          <%= f.text_field :date_lteq,
+          <%= f.text_field :day_lteq,
             class: "datepicker pj-form-field pointer w150 f-text f-calendar" %>
         </p>
       </div>
@@ -85,7 +85,7 @@
         <th class="left width-170">
           <%= sort_link @search, :date, t(".date"), {}, {remote: true, method: :get} %>
         </th>
-        <th class="left width-110"><%= t ".from" %></th>
+        <th class="left width-110">Time</th>
         <th class="left width-170">
           <%= sort_link @search, :guest_name, t(".guest_name"), {}, {remote: true, method: :get} %>
         </th>
@@ -107,16 +107,17 @@
         <% @orders.each do |order| %>
           <tr>
             <td><%= link_to order.code, admin_order_path(order) %></td>
-            <td><%= order.date.in_time_zone('Hanoi').strftime('%b %d %Y') %></td>
-            <td><%= order.time_in.in_time_zone('Hanoi').strftime('%I:%M %p') %></td>
-            <td><%= order.guest.name %></td>
-            <td class="text-center">
-              <% if order.table.id.present? %>
-                <%= order.table.id %>
-              <% else %>
-                <% t ".no_table" %>
-              <% end %>
+            <td><%= order.day.in_time_zone('Hanoi').strftime('%b %d %Y') %></td>
+            <td>
+              <% if order.time_in == 1 %>08:00 - 10:00<% end %>
+              <% if order.time_in == 2 %>10:00 - 12:00<% end %>
+              <% if order.time_in == 3 %>13:00 - 15:00<% end %>
+              <% if order.time_in == 4 %>15:00 - 17:00<% end %>
+              <% if order.time_in == 5 %>17:30 - 19:30<% end %>
+              <% if order.time_in == 6 %>20:00 - 22:00<% end %>
             </td>
+            <td><%= order.guest.name %></td>
+            <td class="text-center"><%= order.table.id %></td>
             <td class="text-center"><%= order.table.capacity %></td>
             <td class="text-center"><%= order.discount %><i class="fa fa-percent"></i></td>
             <td class="text-center">

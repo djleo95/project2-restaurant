@@ -14,7 +14,7 @@
   <%= f.label :dishes, t(".dishes"), class:"form-label" %>
   <div class="col-xs-12">
     <% Dish.all.each do |dish| %>
-      <div class="col-xs-4 choose">
+      <div class="col-xs-6 col-sm-4 choose">
         <%= check_box_tag "combo[dish_ids][]", dish.id, @combo.dishes.include?(dish) %>
         <%= label_tag :dish_ids, dish.name %>
       </div>
@@ -32,3 +32,9 @@
     <% end %>
   </div>
 <% end %>
+<style>
+  .form-label {
+    color: black !important;
+    font-size: 20px !important;
+  }
+</style>
