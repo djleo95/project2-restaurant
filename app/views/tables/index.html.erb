@@ -15,11 +15,10 @@
     <div class="modal-content">
       <div class="modal-header">
         <span class="close">&times;</span>
-        <h2 id="guest-info">Input your information to complete booking</h2>
-        <h2 id="guest-info-confirmed" class="guest-info-confirmed">You're booking this:</h2>
+        <h2 id="guest-info" class="text-center">Input your information to complete booking</h2>
+        <h2 id="guest-info-confirmed" class="guest-info-confirmed text-center">Please confirm your order</h2>
       </div>
       <div class="modal-body">
-        <!--<div id="finish-guest-info"> </div>-->
         <%= form_for @guest, url: guests_path, remote: true do |f| %>
           <div id="hide-after-guest-info">
             <%= f.label :name, class: "form-label" %>
@@ -30,8 +29,8 @@
             <%= f.text_field :phoneNum, id: "phone-guest", class: "form-control form-group", required: true %>
           </div>
           <div id="show-after-guest-info" class="hide">
-            <div class="modal-body">All item in Cart will be add to this order!</div>
-            <div class="modal-body">And you can change it in Check Order</div>
+            <div class="modal-body text-center text-confirm-order">All item in Cart will be add to this order!</div>
+            <div class="modal-body text-center text-confirm-order">And you can change it in Check Order</div>
           </div>
           <div class="row col-sm-12">
             <button id="btn-submit-guest" class="btn-guest
@@ -44,7 +43,6 @@
         <% end %>
       </div>
       <div class="modal-footer">
-
       </div>
     </div>
   </div>

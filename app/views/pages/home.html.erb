@@ -15,7 +15,7 @@
             <h2 class="uk-module-title-alt uk-margin-large-bottom">__ Our most loved dishes __</h2>
             <div class="carousel">
             <!--<div class="uk-grid">-->
-              <% Dish.joins(:order_dishes).group("order_dishes.dish_id").order("count(order_dishes.dish_id) desc").limit(10).each do |dish| %>
+              <% Dish.joins(:order_dishes).group("dishes.id").order("count(dishes.id) desc").limit(10).each do |dish| %>
                 <div class="uk-width-medium-1-4">
                   <h3 class="uk-margin-small">
                     <%= link_to dish.name, dish_path(dish) %>

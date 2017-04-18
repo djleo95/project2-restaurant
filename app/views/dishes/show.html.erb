@@ -41,7 +41,7 @@
                     <%= f.number_field :quantity, value: 1, class: "form-control", min: 1 %>
                     <div class="input-group-btn">
                       <%= f.hidden_field :dish_id, value: @dish.id %>
-                      <%= f.submit t(".add_to_cart"), class: "btn btn-primary btn-lg" %>
+                      <%= f.submit t(".add_to_cart"), class: "add-to-cart" %>
                     </div>
                   </div>
                 <% end %>

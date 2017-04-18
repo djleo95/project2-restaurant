@@ -479,314 +479,14 @@ Dish.create! ([
 
 ])
 
-ComboDish.create!([
-  {combo_id: 1,
-   dish_id: 1
-  },
-  {combo_id: 1,
-   dish_id: 3
-  },
-  {combo_id: 1,
-   dish_id: 7
-  },
-  {combo_id: 1,
-   dish_id: 41
-  },
-  {combo_id: 1,
-   dish_id: 55
-  },
-  {combo_id: 2,
-   dish_id: 23
-  },
-  {combo_id: 2,
-   dish_id: 62
-  },
-  {combo_id: 2,
-   dish_id: 63
-  },
-  {combo_id: 2,
-   dish_id: 64
-  },
-  {combo_id: 2,
-   dish_id: 65
-  },
-  {combo_id: 2,
-   dish_id: 66
-  },
-  {combo_id: 2,
-   dish_id: 67
-  },
-  {combo_id: 2,
-   dish_id: 68
-  },
-  {combo_id: 3,
-   dish_id: 14
-  },
-  {combo_id: 3,
-   dish_id: 29
-  },
-  {combo_id: 3,
-   dish_id: 15
-  },
-  {combo_id: 3,
-   dish_id: 30
-  },
-  {combo_id: 4,
-   dish_id: 31
-  },
-  {combo_id: 4,
-   dish_id: 40
-  },
-  {combo_id: 4,
-   dish_id: 17
-  },
-  {combo_id: 4,
-   dish_id: 6
-  },
-  {combo_id: 4,
-   dish_id: 20
-  },
-  {combo_id: 5,
-   dish_id: 5
-  },
-  {combo_id: 5,
-   dish_id: 33
-  },
-  {combo_id: 5,
-   dish_id: 34
-  },
-  {combo_id: 5,
-   dish_id: 59
-  },
-  {combo_id: 6,
-   dish_id: 24
-  },
-  {combo_id: 6,
-   dish_id: 25
-  },
-  {combo_id: 6,
-   dish_id: 60
-  },
-  {combo_id: 6,
-   dish_id: 26
-  },
-  {combo_id: 6,
-   dish_id: 61
-  },
-  {combo_id: 7,
-   dish_id: 2
-  },
-  {combo_id: 7,
-   dish_id: 9
-  },
-  {combo_id: 7,
-   dish_id: 35
-  },
-  {combo_id: 7,
-   dish_id: 61
-  },
-  {combo_id: 8,
-   dish_id: 2
-  },
-  {combo_id: 8,
-   dish_id: 8
-  },
-  {combo_id: 8,
-   dish_id: 10
-  },
-  {combo_id: 8,
-   dish_id: 11
-  },
-  {combo_id: 8,
-   dish_id: 17
-  },
-  {combo_id: 8,
-   dish_id: 33
-  },
-  {combo_id: 8,
-   dish_id: 52
-  },
-  {combo_id: 10,
-   dish_id: 16
-  },
-  {combo_id: 10,
-   dish_id: 38
-  },
-  {combo_id: 10,
-   dish_id: 39
-  },
-  {combo_id: 10,
-   dish_id: 40
-  },
-  {combo_id: 10,
-   dish_id: 41
-  },
-  {combo_id: 9,
-   dish_id: 42
-  },
-  {combo_id: 9,
-   dish_id: 43
-  },
-  {combo_id: 9,
-   dish_id: 44
-  },
-  {combo_id: 9,
-   dish_id: 45
-  },
-  {combo_id: 9,
-   dish_id: 46
-  },
-  {combo_id: 9,
-   dish_id: 47
-  },
-  {combo_id: 11,
-   dish_id: 48
-  },
-  {combo_id: 11,
-   dish_id: 50
-  },
-  {combo_id: 11,
-   dish_id: 49
-  },
-  {combo_id: 11,
-   dish_id: 51
-  },
-  {combo_id: 11,
-   dish_id: 52
-  },
-  {combo_id: 11,
-   dish_id: 58
-  },
-  {combo_id: 12,
-   dish_id: 11
-  },
-  {combo_id: 12,
-   dish_id: 52
-  },
-  {combo_id: 12,
-   dish_id: 40
-  },
-  {combo_id: 12,
-   dish_id: 39
-  },
-  {combo_id: 12,
-   dish_id: 3
-  },
-  {combo_id: 13,
-   dish_id: 13
-  },
-  {combo_id: 13,
-   dish_id: 54
-  },
-  {combo_id: 13,
-   dish_id: 48
-  },
-  {combo_id: 13,
-   dish_id: 51
-  },
-  {combo_id: 13,
-   dish_id: 52
-  },
-  {combo_id: 13,
-   dish_id: 57
-  },
-  {combo_id: 14,
-   dish_id: 53
-  },
-  {combo_id: 14,
-   dish_id: 48
-  },
-  {combo_id: 14,
-   dish_id: 59
-  },
-  {combo_id: 14,
-   dish_id: 54
-  },
-  {combo_id: 14,
-   dish_id: 16
-  },
-  {combo_id: 14,
-   dish_id: 55
-  },
-  {combo_id: 14,
-   dish_id: 51
-  },
-  {combo_id: 14,
-   dish_id: 51
-  },
-  {combo_id: 15,
-   dish_id: 27
-  },
-  {combo_id: 15,
-   dish_id: 51
-  },
-  {combo_id: 15,
-   dish_id: 52
-  },
-  {combo_id: 15,
-   dish_id: 48
-  },
-  {combo_id: 15,
-   dish_id: 56
-  },
-  {combo_id: 15,
-   dish_id: 58
-  },
-  {combo_id: 18,
-   dish_id: 70
-  },
-  {combo_id: 18,
-   dish_id: 71
-  },
-  {combo_id: 18,
-   dish_id: 72
-  },
-  {combo_id: 18,
-   dish_id: 73
-  },
-  {combo_id: 18,
-   dish_id: 76
-  },
-  {combo_id: 18,
-   dish_id: 77
-  },
-  {combo_id: 18,
-   dish_id: 69
-  },
-  {combo_id: 17,
-   dish_id: 74
-  },
-  {combo_id: 17,
-   dish_id: 75
-  },
-  {combo_id: 17,
-   dish_id: 78
-  },
-  {combo_id: 17,
-   dish_id: 79
-  },
-  {combo_id: 17,
-   dish_id: 80
-  },
-  {combo_id: 17,
-   dish_id: 81
-  },
-  {combo_id: 17,
-   dish_id: 82
-  },
-  {combo_id: 17,
-   dish_id: 83
-  },
-  {combo_id: 16,
-   dish_id: 83
-  },
-  {combo_id: 16,
-   dish_id: 84
-  },
-  {combo_id: 16,
-   dish_id: 73
-  },
-])
+CategoryDish.create!([
+                       {category_id: 1,
+                        dish_id: 1
+                       },
+                       {category_id: 1,
+                        dish_id: 2
+                       },
+                     ])
 
 Combo.create!([
   {name: "Special Sushi set",
@@ -907,14 +607,316 @@ Combo.create!([
    to: DateTime.new(2017, 4, 30)},
 ])
 
-CategoryDish.create!([
- {category_id: 1,
-  dish_id: 1
- },
- {category_id: 1,
-  dish_id: 2
- },
-])
+ComboDish.create!([
+                    {combo_id: 1,
+                     dish_id: 1
+                    },
+                    {combo_id: 1,
+                     dish_id: 3
+                    },
+                    {combo_id: 1,
+                     dish_id: 7
+                    },
+                    {combo_id: 1,
+                     dish_id: 41
+                    },
+                    {combo_id: 1,
+                     dish_id: 55
+                    },
+                    {combo_id: 2,
+                     dish_id: 23
+                    },
+                    {combo_id: 2,
+                     dish_id: 62
+                    },
+                    {combo_id: 2,
+                     dish_id: 63
+                    },
+                    {combo_id: 2,
+                     dish_id: 64
+                    },
+                    {combo_id: 2,
+                     dish_id: 65
+                    },
+                    {combo_id: 2,
+                     dish_id: 66
+                    },
+                    {combo_id: 2,
+                     dish_id: 67
+                    },
+                    {combo_id: 2,
+                     dish_id: 68
+                    },
+                    {combo_id: 3,
+                     dish_id: 14
+                    },
+                    {combo_id: 3,
+                     dish_id: 29
+                    },
+                    {combo_id: 3,
+                     dish_id: 15
+                    },
+                    {combo_id: 3,
+                     dish_id: 30
+                    },
+                    {combo_id: 4,
+                     dish_id: 31
+                    },
+                    {combo_id: 4,
+                     dish_id: 40
+                    },
+                    {combo_id: 4,
+                     dish_id: 17
+                    },
+                    {combo_id: 4,
+                     dish_id: 6
+                    },
+                    {combo_id: 4,
+                     dish_id: 20
+                    },
+                    {combo_id: 5,
+                     dish_id: 5
+                    },
+                    {combo_id: 5,
+                     dish_id: 33
+                    },
+                    {combo_id: 5,
+                     dish_id: 34
+                    },
+                    {combo_id: 5,
+                     dish_id: 59
+                    },
+                    {combo_id: 6,
+                     dish_id: 24
+                    },
+                    {combo_id: 6,
+                     dish_id: 25
+                    },
+                    {combo_id: 6,
+                     dish_id: 60
+                    },
+                    {combo_id: 6,
+                     dish_id: 26
+                    },
+                    {combo_id: 6,
+                     dish_id: 61
+                    },
+                    {combo_id: 7,
+                     dish_id: 2
+                    },
+                    {combo_id: 7,
+                     dish_id: 9
+                    },
+                    {combo_id: 7,
+                     dish_id: 35
+                    },
+                    {combo_id: 7,
+                     dish_id: 61
+                    },
+                    {combo_id: 8,
+                     dish_id: 2
+                    },
+                    {combo_id: 8,
+                     dish_id: 8
+                    },
+                    {combo_id: 8,
+                     dish_id: 10
+                    },
+                    {combo_id: 8,
+                     dish_id: 11
+                    },
+                    {combo_id: 8,
+                     dish_id: 17
+                    },
+                    {combo_id: 8,
+                     dish_id: 33
+                    },
+                    {combo_id: 8,
+                     dish_id: 52
+                    },
+                    {combo_id: 10,
+                     dish_id: 16
+                    },
+                    {combo_id: 10,
+                     dish_id: 38
+                    },
+                    {combo_id: 10,
+                     dish_id: 39
+                    },
+                    {combo_id: 10,
+                     dish_id: 40
+                    },
+                    {combo_id: 10,
+                     dish_id: 41
+                    },
+                    {combo_id: 9,
+                     dish_id: 42
+                    },
+                    {combo_id: 9,
+                     dish_id: 43
+                    },
+                    {combo_id: 9,
+                     dish_id: 44
+                    },
+                    {combo_id: 9,
+                     dish_id: 45
+                    },
+                    {combo_id: 9,
+                     dish_id: 46
+                    },
+                    {combo_id: 9,
+                     dish_id: 47
+                    },
+                    {combo_id: 11,
+                     dish_id: 48
+                    },
+                    {combo_id: 11,
+                     dish_id: 50
+                    },
+                    {combo_id: 11,
+                     dish_id: 49
+                    },
+                    {combo_id: 11,
+                     dish_id: 51
+                    },
+                    {combo_id: 11,
+                     dish_id: 52
+                    },
+                    {combo_id: 11,
+                     dish_id: 58
+                    },
+                    {combo_id: 12,
+                     dish_id: 11
+                    },
+                    {combo_id: 12,
+                     dish_id: 52
+                    },
+                    {combo_id: 12,
+                     dish_id: 40
+                    },
+                    {combo_id: 12,
+                     dish_id: 39
+                    },
+                    {combo_id: 12,
+                     dish_id: 3
+                    },
+                    {combo_id: 13,
+                     dish_id: 13
+                    },
+                    {combo_id: 13,
+                     dish_id: 54
+                    },
+                    {combo_id: 13,
+                     dish_id: 48
+                    },
+                    {combo_id: 13,
+                     dish_id: 51
+                    },
+                    {combo_id: 13,
+                     dish_id: 52
+                    },
+                    {combo_id: 13,
+                     dish_id: 57
+                    },
+                    {combo_id: 14,
+                     dish_id: 53
+                    },
+                    {combo_id: 14,
+                     dish_id: 48
+                    },
+                    {combo_id: 14,
+                     dish_id: 59
+                    },
+                    {combo_id: 14,
+                     dish_id: 54
+                    },
+                    {combo_id: 14,
+                     dish_id: 16
+                    },
+                    {combo_id: 14,
+                     dish_id: 55
+                    },
+                    {combo_id: 14,
+                     dish_id: 51
+                    },
+                    {combo_id: 14,
+                     dish_id: 51
+                    },
+                    {combo_id: 15,
+                     dish_id: 27
+                    },
+                    {combo_id: 15,
+                     dish_id: 51
+                    },
+                    {combo_id: 15,
+                     dish_id: 52
+                    },
+                    {combo_id: 15,
+                     dish_id: 48
+                    },
+                    {combo_id: 15,
+                     dish_id: 56
+                    },
+                    {combo_id: 15,
+                     dish_id: 58
+                    },
+                    {combo_id: 18,
+                     dish_id: 70
+                    },
+                    {combo_id: 18,
+                     dish_id: 71
+                    },
+                    {combo_id: 18,
+                     dish_id: 72
+                    },
+                    {combo_id: 18,
+                     dish_id: 73
+                    },
+                    {combo_id: 18,
+                     dish_id: 76
+                    },
+                    {combo_id: 18,
+                     dish_id: 77
+                    },
+                    {combo_id: 18,
+                     dish_id: 69
+                    },
+                    {combo_id: 17,
+                     dish_id: 74
+                    },
+                    {combo_id: 17,
+                     dish_id: 75
+                    },
+                    {combo_id: 17,
+                     dish_id: 78
+                    },
+                    {combo_id: 17,
+                     dish_id: 79
+                    },
+                    {combo_id: 17,
+                     dish_id: 80
+                    },
+                    {combo_id: 17,
+                     dish_id: 81
+                    },
+                    {combo_id: 17,
+                     dish_id: 82
+                    },
+                    {combo_id: 17,
+                     dish_id: 83
+                    },
+                    {combo_id: 16,
+                     dish_id: 83
+                    },
+                    {combo_id: 16,
+                     dish_id: 84
+                    },
+                    {combo_id: 16,
+                     dish_id: 73
+                    },
+                  ])
+
+
 
 Order.create!([
   {guest_id: 5,
