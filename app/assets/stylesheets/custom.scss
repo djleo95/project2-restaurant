@@ -2920,3 +2920,27 @@ a:active, a:focus, a:hover, a:link, a:visited {
 .add-to-cart:hover {
   background-color: $green-sushi;
 }
+
+.combo-title-style {
+  font-family: fantasy;
+  color: $golden-dark;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.small-description {
+  font-size: 10px;
+  color: $gray;
+}
+
+.term {
+  li {
+    list-style: none;
+  }
+}
+
+.combo-include {
+  margin-top: 30px;
+  font-family: monospace;
+  color: $dark-red;
+}

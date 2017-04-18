@@ -1,22 +1,49 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <section class="section user-site">
   <br><br><br><br>
-  <div class="col-sm-10 col-sm-offset-1 menu bloc">
+  <div class="col-sm-10 col-sm-offset-1 menu block">
     <div class="col-xs-12">
       <div class="text-center">
+        <div class="combo-title-style"><%= @combo.name %></div>
         <%= image_tag @combo.image, class: "cover" %>
       </div><br>
-      <%= form_for @order_combo, remote: true do |f| %>
-        <div class="input-group">
-          <%= f.number_field :quantity, value: 1, class: "form-control", min: 1 %>
-          <div class="input-group-btn">
-            <%= f.hidden_field :combo_id, value: @combo.id %>
-            <%= f.submit "Add to cart", class: "add-to-cart" %>
+      <div class="col-sm-6 col-sm-offset-3">
+        <%= form_for @order_combo, remote: true do |f| %>
+          <div class="input-group">
+            <%= f.number_field :quantity, value: 1, class: "form-control", min: 1 %>
+            <div class="input-group-btn">
+              <%= f.hidden_field :combo_id, value: @combo.id %>
+              <%= f.submit "Add to cart", class: "add-to-cart" %>
+            </div>
           </div>
-        </div>
-      <% end %>
-      <p class="menu-desc"><i><%= @combo.description %></i></p><br>
-      <h3 class="menu-desc"><b><%= t ".include" %></b></h3>
+        <% end %>
+      </div>
+      <div class="col-sm-12">
+        <p class="menu-desc text-center"><i class="small-description"><%= @combo.description %></i></p><br>
+      </div>
+
+      <div class="col-sm-12 text-center term">
+        <h3 class="text-center"><b><%= t ".condition" %></b></h3>
+        <li>
+          <%= t ".discount" %>
+          <span class="red"><%= @combo.discount %></span>
+          <i class="fa fa-percent"></i>
+          <%= t ".bill" %>
+        </li>
+        <li>
+          <%= t ".valid" %>
+          <span class="red">
+          <%= @combo.from.in_time_zone("Hanoi").strftime("%b %d %Y") %>
+        </span>
+          <%= t ".to" %>
+          <span class="red">
+          <%= @combo.to.in_time_zone("Hanoi").strftime("%b %d %Y") %>
+        </span>
+        </li>
+      </div>
+      <hr>
+      <br>
+      <h3 class="menu-desc text-center combo-include"><b><%= t ".include" %></b></h3>
       <% @combo.dishes.each do |dish| %>
         <div class="col-xs-12 col-sm-6 dish">
           <div class="menu-entry">
@@ -52,25 +79,6 @@
           </div>
         </div>
       <% end %>
-    </div>
-    <div class="col-sm-12">
-      <h3><b><%= t ".condition" %></b></h3>
-      <li>
-        <%= t ".discount" %>
-        <span class="red"><%= @combo.discount %></span>
-          <i class="fa fa-percent"></i>
-        <%= t ".bill" %>
-      </li>
-      <li>
-        <%= t ".valid" %>
-        <span class="red">
-          <%= @combo.from.in_time_zone("Hanoi").strftime("%b %d %Y") %>
-        </span>
-        <%= t ".to" %>
-        <span class="red">
-          <%= @combo.to.in_time_zone("Hanoi").strftime("%b %d %Y") %>
-        </span>
-      </li>
     </div>
   </div>
 </section>
