@@ -217,6 +217,11 @@ $(document).on('click', '#btn-find-table', function() {
 $(document).ready(function(){
   $('.datepicker2').datepicker({
     format: 'yyyy-mm-dd',
+    todayHighlight: true,
+    autoclose: true,
+    weekStart: 1,
+    daysOfWeekHighlighted: [6,0],
+    startDate: "+0",
   });
 });
 

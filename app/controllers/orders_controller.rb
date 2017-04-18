@@ -2,6 +2,7 @@ class OrdersController < ApplicationController
   def show
     if params[:commit] == "Create new order"
       session.delete :order_id
+      redirect_to order_path
     end
     @order_dishes = current_order.order_dishes
     @order_combos = current_order.order_combos
@@ -22,6 +23,14 @@ class OrdersController < ApplicationController
 
   def create
     params[:guest_id] = session[:guest]["id"]
+    if current_order.code != nil
+      session.delete :order_id
+    end
+    if current_order.id == nil
+      @order = current_order
+      @order.save
+      session[:order_id] = @order.id
+    end
     current_order.update_attributes order_params
     flash[:success] = "Success create order"
     render :json => { :path1 => "#{order_path}" }

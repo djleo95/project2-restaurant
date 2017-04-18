@@ -190,6 +190,17 @@ $inside-ground: rgba(199, 194, 155, 0.93);
   height: 100vh;
 }
 
+#top2 {
+  height:100vh;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: block;
+  color: rgb(255, 255, 255);
+  background: rgba(181, 167, 152, 0.82);
+  z-index: 2;
+}
+
 .navbar {
   box-shadow: 0 4px 6px $bitter;
   height: 5vh;
@@ -2874,4 +2885,16 @@ a:active, a:focus, a:hover, a:link, a:visited {
 
 .guest-info-confirmed {
   display: none;
+}
+
+.home-title{
+  font-family: Ranga;
+  font-size: 15vw;
+  font-style: italic;
+  position: absolute;
+  left: 16%;
+  top: 25%;
+  color: $white;
+  border: 1vh solid $white;
+  padding: 5vw;
 }
