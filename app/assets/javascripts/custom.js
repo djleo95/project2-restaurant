@@ -216,12 +216,12 @@ $(document).on('click', '#btn-find-table', function() {
 
 $(document).ready(function(){
   $('.datepicker2').datepicker({
-    format: 'yyyy-mm-dd',
-    todayHighlight: true,
-    autoclose: true,
-    weekStart: 1,
-    daysOfWeekHighlighted: [6,0],
-    startDate: "+0",
+    altFormat: 'yy-mm-dd',
+    appendText: "yyyy-mm-dd",
+    defaultDate: 0,
+    firstDay: 1,
+    gotoCurrent: true,
+    minDate: 0
   });
 });
 
@@ -311,6 +311,23 @@ $(document).on('turbolinks:load', function(){
     items: 4,
     itemsDesktop: [1119,4],
     itemsDesktopSmall: [979, 3],
+    itemsTablet: [768,2],
+    itemsMobile: [479,1]
+  });
+})
+
+$(document).on('turbolinks:load', function(){
+  $('.carousel2').owlCarousel({
+    stopOnHover: true,
+    touchDrag: true,
+    rewindNav: true,
+    rewindSpeed: 600,
+    pagination: false,
+    navigation: true,
+    navigationText: ["<img src='http://i.imgur.com/gT2qOhV.png'>","<img src='http://i.imgur.com/axMUmPQ.png'>"],
+    items: 3,
+    itemsDesktop: [1119,3],
+    itemsDesktopSmall: [979, 2],
     itemsTablet: [768,2],
     itemsMobile: [479,1]
   });

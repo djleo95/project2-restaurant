@@ -18,12 +18,14 @@
             <%= f.hidden_field :id, value: order_combo.id %>
           </div>
           <div class="col-xs-8 text-left">
-            <div class="btn-group">
-              <%= f.submit t("order.update_quantity"), class: "btn btn-primary" %>
-              <%= link_to t("order.delete"), order_combo,
-                {data: {confirm: t("order.delete_alert", product_name: order_combo.combo.description)},
-                method: :delete, remote: true, class: "btn btn-danger" } %>
-            </div>
+            <% if !current_order.isConfirm %>
+              <div class="btn-group">
+                <%= f.submit t("order.update_quantity"), class: "btn btn-primary" %>
+                <%= link_to t("order.delete"), order_combo,
+                  {data: {confirm: t("order.delete_alert", product_name: order_combo.combo.description)},
+                  method: :delete, remote: true, class: "btn btn-danger" } %>
+              </div>
+            <% end %>
           </div>
         </div>
       <% end %>

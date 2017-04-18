@@ -2,7 +2,7 @@
 @import 'bootstrap';
 $orangered: #ff4500;
 $spectra: #2f4f4f;
-$caribbean-green: #05bba5;
+$caribbean-green: #05a793;
 $light-green: #0ac986;
 $bitter: #8f8f81;
 $alabaster: #f9f9f9;
@@ -90,9 +90,11 @@ $outside-ground: rgba(168, 129, 110, 0.82);
 $inside-ground: rgba(199, 194, 155, 0.93);
 
 .footer {
-  background-image: url('http://hotelselfoss.is/wp-content/uploads/2015/12/E-Riverside-Restaurant.jpg');
+  background: url("http://i.imgur.com/rv22q7J.jpg") no-repeat center center;
+  background-size: 200%;
   margin-top: 0;
   padding: 50px 0;
+
 }
 
 .animated {
@@ -127,7 +129,7 @@ $inside-ground: rgba(199, 194, 155, 0.93);
 
 .animated.faded {
   animation-duration: 5s;
-  animation-iteration-count: infinite;
+  animation-iteration-count: 2;
   animation-name: fading, bounce;
 }
 
@@ -172,12 +174,14 @@ $inside-ground: rgba(199, 194, 155, 0.93);
 
 .nav.navbar-nav.navbar-right li a:hover {
   color: $caribbean-green;
+  font-weight: bold;
 }
 
 #brand {
-  font-family: Ubuntu;
+  font-family: Love Ya Like A Sister;
   font-style: italic;
   font-weight: bolder;
+  font-size: 1.5em;
 }
 
 #top {
@@ -187,17 +191,16 @@ $inside-ground: rgba(199, 194, 155, 0.93);
   background-repeat: no-repeat;
   background-size: cover;
   filter: blur(.4px);
-  height: 100vh;
+  height: 98vh;
 }
 
 #top2 {
-  height:100vh;
   position: absolute;
   width: 100%;
   height: 100%;
   display: block;
   color: rgb(255, 255, 255);
-  background: rgba(181, 167, 152, 0.82);
+  background: rgba(0, 0, 0, 0.61);
   z-index: 2;
 }
 
@@ -2888,12 +2891,11 @@ a:active, a:focus, a:hover, a:link, a:visited {
 }
 
 .home-title{
-  font-family: Ranga;
-  font-size: 15vw;
-  font-style: italic;
+  font-family: Love Ya Like A Sister;
+  font-size: 10vw;
   position: absolute;
-  left: 16%;
-  top: 25%;
+  left: 15%;
+  top: 31%;
   color: $white;
   border: 1vh solid $white;
   padding: 5vw;
@@ -2943,4 +2945,12 @@ a:active, a:focus, a:hover, a:link, a:visited {
   margin-top: 30px;
   font-family: monospace;
   color: $dark-red;
+}
+
+.navbar-nav{
+  li {
+    a {
+      color: $black
+    }
+  }
 }

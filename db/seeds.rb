@@ -916,8 +916,6 @@ ComboDish.create!([
                     },
                   ])
 
-
-
 Order.create!([
   {guest_id: 5,
    table_id: 1,
@@ -1012,7 +1010,39 @@ OrderCombo.create!([
   {order_id: 1,
    combo_id: 9,
    quantity: 1
-  }
+  },
+  {order_id: 2,
+   combo_id: 7,
+   quantity: 1
+  },
+  {order_id: 2,
+   combo_id: 9,
+   quantity: 1
+  },
+  {order_id: 3,
+   combo_id: 9,
+   quantity: 1
+  },
+  {order_id: 2,
+   combo_id: 7,
+   quantity: 1
+  },
+  {order_id: 3,
+   combo_id: 13,
+   quantity: 1
+  },
+  {order_id: 2,
+   combo_id: 16,
+   quantity: 1
+  },
+  {order_id: 3,
+   combo_id: 3,
+   quantity: 1
+  },
+  {order_id: 2,
+   combo_id: 10,
+   quantity: 1
+  },
 ])
 
 Human.create! name: "admin", email: "admin1@123.com",

@@ -1,0 +1,16 @@
+                                     Table "public.orders"
+   Column   |            Type             |                      Modifiers                      
+------------+-----------------------------+-----------------------------------------------------
+ id         | integer                     | not null default nextval('orders_id_seq'::regclass)
+ guest_id   | integer                     | 
+ table_id   | integer                     | 
+ code       | character varying           | 
+ day        | date                        | 
+ time_in    | integer                     | 
+ isConfirm  | boolean                     | default false
+ discount   | integer                     | default 0
+ created_at | timestamp without time zone | not null
+ updated_at | timestamp without time zone | not null
+Indexes:
+    "orders_pkey" PRIMARY KEY, btree (id)
+

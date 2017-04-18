@@ -105,6 +105,7 @@
     <tbody>
       <% if @orders.any? %>
         <% @orders.each do |order| %>
+          <% if order.code != nil %>
           <tr>
             <td><%= link_to order.code, admin_order_path(order) %></td>
             <td><%= order.day.in_time_zone('Hanoi').strftime('%b %d %Y') %></td>
@@ -134,11 +135,12 @@
             </td>
             <td class="width-20">
               <%= link_to admin_order_path(order), method: :delete,
-                data: { confirm: t("button.delete_warning") } do %>
+                          data: { confirm: t("button.delete_warning") } do %>
                 <i class="fa fa-lg fa-times"></i>
               <% end %>
             </td>
           </tr>
+          <% end %>
         <% end %>
       <% end %>
     </tbody>
