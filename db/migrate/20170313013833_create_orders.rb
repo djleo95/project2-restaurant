@@ -1,8 +1,8 @@
 class CreateOrders < ActiveRecord::Migration[5.0]
   def change
     create_table :orders do |t|
-      t.references :guest, foreign_key: true
-      t.references :table, foreign_key: true
+      t.integer :guest_id, foreign_key: true
+      t.integer :table_id, foreign_key: true
       t.string :code
       t.date :day
       t.integer :time_in
