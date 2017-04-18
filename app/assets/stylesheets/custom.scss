@@ -266,7 +266,7 @@ img.inactived {
 #brand:hover {
   animation-duration: 1.75s;
   animation-fill-mode: both;
-  animation-iteration-count: infinite;
+  animation-iteration-count: 2;
   animation-name: bounceIn;
 }
 
@@ -652,7 +652,6 @@ img.inactived {
 
 .wrapper {
   width: auto;
-
   .items {
     margin-bottom: 80px;
 
@@ -1168,6 +1167,7 @@ img.inactived {
       background-color: $sushi;
       box-shadow: 0 2px 0 $dark-sushi;
       position: relative;
+      height: 35px;
     }
 
     .add-to-cart:hover {
@@ -2897,4 +2897,26 @@ a:active, a:focus, a:hover, a:link, a:visited {
   color: $white;
   border: 1vh solid $white;
   padding: 5vw;
+}
+
+.text-confirm-order {
+  font-size: 2em;
+}
+
+.wrapper2 {
+  width: 80vw;
+}
+
+.add-to-cart {
+  background-color: $sushi;
+  box-shadow: 0 2px 0 $dark-sushi;
+  position: relative;
+  height: 35px;
+  width: 10vw;
+  font-size: 18px;
+  color: $white;
+}
+
+.add-to-cart:hover {
+  background-color: $green-sushi;
 }

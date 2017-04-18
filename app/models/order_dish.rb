@@ -16,7 +16,7 @@ class OrderDish < ApplicationRecord
   private
   def dish_present
     unless dish
-      errors.add :dish, t("order.not_valid_or_not_active")
+      errors.add :dish, I18n.t("order.not_valid_or_not_active")
     end
   end
 
