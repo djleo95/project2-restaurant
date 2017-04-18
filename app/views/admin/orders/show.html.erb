@@ -39,7 +39,12 @@
           <tr class="dg_tr" id="di_row_0">
             <td class="default_dg_td dg-left dg-nowrap"><b>From</b></td>
             <td class="default_dg_td dg-left">
-              <%= @order.time_in %>
+              <% if @order.time_in == 1 %>08:00 - 10:00<% end %>
+              <% if @order.time_in == 2 %>10:00 - 12:00<% end %>
+              <% if @order.time_in == 3 %>13:00 - 15:00<% end %>
+              <% if @order.time_in == 4 %>15:00 - 17:00<% end %>
+              <% if @order.time_in == 5 %>17:30 - 19:30<% end %>
+              <% if @order.time_in == 6 %>20:00 - 22:00<% end %>
             </td>
           </tr>
           <tr class="dg_tr" id="di_row_0">

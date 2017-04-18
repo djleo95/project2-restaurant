@@ -228,7 +228,7 @@ en:
         time_out: To
         status: "Status:"
         approved: Approved
-        canceled: Canceled
+        canceled: Pending
       order:
         search: Search
         input_keyword: Search for order code or guest name
@@ -247,7 +247,7 @@ en:
         status: Status
         all: All
         approved: Approved
-        canceled: Canceled
+        canceled: Pending
         no_table: Not order
         action: Action
   button:

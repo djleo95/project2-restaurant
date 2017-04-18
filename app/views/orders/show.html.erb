@@ -1,34 +1,181 @@
 <section class= "section">
   <br><br><br>
-  <% if current_order.id != nil %>
-    <p> Ma don dat hang cua ban la:</p>
-      <%= current_order.table.id%>
-    <% if current_order.table != nil %>
-      <p> Ban da dat ban so</p>
-      <%= current_order.table.id%>
-      <p>Vao ngay</p>
-      <%= current_order.day%>
-      <p>Tu luc</p>
-      <%= current_order.time_in%>
-      <%= form_for :order, url: order_path, method: :GET do |f| %>
-        <%= f.submit "Create new order", class: "btn btn-primary log-btn" %>
+  <div class="bloc col-sm-12 col-md-10 col-md-offset-1">
+    <% if current_order.id != nil %>
+      <div class="tracking-order-process">
+        <p class="order-id">Order code:
+          <span style="color: red;font-size: 20px"><%= current_order.code %></span>
+        </p>
+        <p class="status">Order status:
+          <% if current_order.isConfirm? %>
+            <span>APPROVED</span>
+            <p>Your order has approved. Welcome to Awesomecity</p>
+          <% else %>
+            <span>ORDER COMPLETED</span>
+            <p>Thank for your order. We will check your order as soon as possible.</p>
+          <% end %>
+        </p>
+        <br>
+        <div class="row bs-wizard">
+          <div class="col-lg-6 col-md-6 bs-wizard-step complete">
+            <div class="text-center bs-wizard-stepnum">
+              <p>Order completed.</p>
+            </div>
+            <div class="progress"><div class="progress-bar"></div></div>
+            <span class="bs-wizard-dot"></span>
+          </div>
+          <div class="col-lg-6 col-md-6 bs-wizard-step complete">
+            <div class="text-center bs-wizard-stepnum">
+              <p>Awesomecity approved.</p>
+            </div>
+            <% if current_order.isConfirm? %>
+              <div class="progress"><div class="progress-bar"></div></div>
+              <span class="bs-wizard-dot"></span>
+            <% else %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <br>
+      <% if current_order.table != nil %>
+        <div class="text-center">
+          <p class="description">Your informations</p>
+          <p class="info-item">Name: <span style="font-weight: bolder;color: red"><%= current_order.guest.name %></span></p>
+          <p class="info-item">Email: <span style="font-weight: bolder;color: red"><%= current_order.guest.email %></span></p>
+          <p class="info-item">Phone: <span style="font-weight: bolder;color: red"><%= current_order.guest.phoneNum %></span></p>
+        </div>
+        <br>
+        <div class="text-center">
+          <p class="description">Order infomations</p>
+          <p class="info-item">Table number: <span style="font-weight: bolder;color: red"><%= current_order.table.id %></span></p>
+          <p class="info-item">Date: <span style="font-weight: bolder;color: red"><%= current_order.day %></span></p>
+          <p class="info-item">Time:
+            <span style="font-weight: bolder;color: red">
+              <% if current_order.time_in == 1 %><%= t "select.em" %><% end %>
+              <% if current_order.time_in == 2 %><%= t "select.lm" %><% end %>
+              <% if current_order.time_in == 3 %><%= t "select.ea" %><% end %>
+              <% if current_order.time_in == 4 %><%= t "select.la" %><% end %>
+              <% if current_order.time_in == 5 %><%= t "select.ee" %><% end %>
+              <% if current_order.time_in == 6 %><%= t "select.le" %><% end %>
+            </span>
+          </p>
+        </div>
+        <br>
+        <h4 style="display:inline">Want to book another table?</h4>
+        <%= form_for :order, url: order_path, method: :GET do |f| %>
+          <%= f.submit "Create new order", class: "btn btn-link", style:"display:inline" %>
+        <% end %>
+      <% else %>
+        <p></p>
+        <%= link_to "Book table for completing order.", tables_path%>
       <% end %>
-      <% if current_order.isConfirm == true %>
-        <p> Don dat hang da duoc xac nhan!</p>
-      <% else%>
-        <p> Hay doi chung toi lien he de xac nhan dat hang.</p>
-      <% end%>
-    <% else %>
-      <p></p>
-      <%= link_to "Hay dat ban de hoan tat dat mon an.", tables_path%>
-    <% end %>
-  <% end%>
-  <div class="wrapper main-content">
-    <div class="shopping-cart">
-      <%= render "ordering_cart" %>
+    <% end%>
+    <br>
+    <div class="text-center">
+      <p class="description">Order itmes</p>
     </div>
-     <div class="shopping-cart">
-      <%= render "ordering_cart" %>
+    <div class="wrapper main-content col-sm-12">
+      <div class="shopping-cart">
+        <%= render "ordering_cart" %>
+      </div>
     </div>
   </div>
 </section>
+<style>
+  .tracking-order-process {
+    border: 1px solid #ddd;
+    padding: 15px 15px 0;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    text-align: center;
+  }
+  .tracking-order-process .order-id {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  p {
+    margin: 0 0 10px;
+  }
+  .tracking-order-process .status {
+    font-size: 14px;
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+  .tracking-order-process .status span {
+    color: #7bc828;
+  }
+  .tracking-order-process .bs-wizard>.bs-wizard-step {
+    padding: 0;
+    position: relative;
+  }
+  .tracking-order-process .bs-wizard>.bs-wizard-step .bs-wizard-stepnum {
+    font-size: 14px;
+  }
+  .text-center {
+    text-align: center;
+  }
+  .tracking-order-process .bs-wizard>.bs-wizard-step:first-child>.progress {
+    left: 50%;
+    width: 100%;
+    height: 5px;
+    margin-top: 5px;
+  }
+  .tracking-order-process .bs-wizard>.bs-wizard-step.complete>.progress>.progress-bar {
+    width: 100%;
+  }
+  .tracking-order-process .bs-wizard>.bs-wizard-step>.progress>.progress-bar {
+    width: 0;
+    box-shadow: none;
+    background: #00b6f0;
+    -webkit-transition: none;
+    -o-transition: none;
+    transition: none;
+  }
+  .progress-bar {
+    float: left;
+    width: 0;
+    height: 100%;
+    font-size: 12px;
+    line-height: 20px;
+    color: #fff;
+    text-align: center;
+    background-color: #337ab7;
+    -webkit-box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
+    box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
+    -webkit-transition: width .6s ease;
+    -o-transition: width .6s ease;
+    transition: width .6s ease;
+  }
+  .tracking-order-process .bs-wizard>.bs-wizard-step>.bs-wizard-dot {
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    display: block;
+    top: 30px;
+    left: 50%;
+    margin-top: -10px;
+    margin-left: -15px;
+    border-radius: 50%;
+    color: #000;
+    border: 2px solid #35c4f6;
+    font-size: 14px;
+    text-align: center;
+    line-height: 23px;
+    background: url(https://vcdn.tikicdn.com/assets/img/check.png) 5px 7px no-repeat #00b6f0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+
+  .description {
+    text-transform: uppercase;
+    font-size: 18px;
+    color: #00b6f0;
+    font-weight: bolder;
+  }
+
+  .info-item {
+    font-size: 16px;
+  }
+</style>

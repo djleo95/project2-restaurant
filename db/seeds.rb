@@ -937,7 +937,7 @@ Order.create!([
    table_id: 10,
    code: "A003",
    day: Time.zone.local(2017, 4, 1, 20, 00).to_date,
-   time_in: 20,
+   time_in: 4,
    isConfirm: false,
    discount: 0,
   }

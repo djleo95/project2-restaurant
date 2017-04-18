@@ -56,7 +56,7 @@ class Admin::OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit :code, :discount, :date, :time_in, :isConfirm,
+    params.require(:order).permit :code, :discount, :day, :time_in, :isConfirm,
       guest_attributes: [:id, :name], table_attributes: [:id, :capacity]
   end
 

@@ -85,7 +85,7 @@
         <th class="left width-170">
           <%= sort_link @search, :date, t(".date"), {}, {remote: true, method: :get} %>
         </th>
-        <th class="left width-110"><%= t ".from" %></th>
+        <th class="left width-110">Time</th>
         <th class="left width-170">
           <%= sort_link @search, :guest_name, t(".guest_name"), {}, {remote: true, method: :get} %>
         </th>
@@ -108,7 +108,14 @@
           <tr>
             <td><%= link_to order.code, admin_order_path(order) %></td>
             <td><%= order.day.in_time_zone('Hanoi').strftime('%b %d %Y') %></td>
-            <td><%= order.time_in %></td>
+            <td>
+              <% if order.time_in == 1 %>08:00 - 10:00<% end %>
+              <% if order.time_in == 2 %>10:00 - 12:00<% end %>
+              <% if order.time_in == 3 %>13:00 - 15:00<% end %>
+              <% if order.time_in == 4 %>15:00 - 17:00<% end %>
+              <% if order.time_in == 5 %>17:30 - 19:30<% end %>
+              <% if order.time_in == 6 %>20:00 - 22:00<% end %>
+            </td>
             <td><%= order.guest.name %></td>
             <td class="text-center"><%= order.table.id %></td>
             <td class="text-center"><%= order.table.capacity %></td>
