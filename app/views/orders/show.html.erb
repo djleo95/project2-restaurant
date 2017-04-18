@@ -61,10 +61,12 @@
           </p>
         </div>
         <br>
+        <div class="text-center" style="background: rgba(47, 222, 255, 0.13); padding-top:10px; padding-bottom: 10px">
         <h4 style="display:inline">Want to book another table?</h4>
         <%= form_for :order, url: order_path, method: :GET do |f| %>
-          <%= f.submit "Create new order", class: "btn btn-link", style:"display:inline" %>
+          <%= f.submit "Create new order", class: "btn btn-info", style:"display:inline" %>
         <% end %>
+            </div>
       <% else %>
         <p></p>
         <%= link_to "Book table for completing order.", tables_path%>
@@ -177,5 +179,9 @@
 
   .info-item {
     font-size: 16px;
+  }
+  .btn-info {
+    margin-top: 10px;
+    font-size: 20px;
   }
 </style>
