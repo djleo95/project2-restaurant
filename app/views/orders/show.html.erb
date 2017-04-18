@@ -3,28 +3,47 @@
   <div class="bloc col-sm-12 col-md-10 col-md-offset-1">
     <% if current_order.id != nil %>
       <div class="tracking-order-process">
+        <% if current_order.code %>
         <p class="order-id">Order code:
           <span style="color: red;font-size: 20px"><%= current_order.code %></span>
         </p>
+        <% end %>
         <p class="status">Order status:
-          <% if current_order.isConfirm? %>
-            <span>APPROVED</span>
-            <p>Your order has approved. Welcome to Awesomecity</p>
+          <% if current_order.code %>
+            <% if current_order.isConfirm == true %>
+              <span>APPROVED</span>
+              <p>Your order has approved. Welcome to Awesomecity</p>
+            <% else %>
+              <span>ORDER COMPLETED</span>
+              <p>Thank for your order. We will check your order as soon as possible.</p>
+            <% end %>
           <% else %>
-            <span>ORDER COMPLETED</span>
-            <p>Thank for your order. We will check your order as soon as possible.</p>
+            <span>READY TO ORDER</span>
+            <p>You aren't order table.</p>
           <% end %>
         </p>
         <br>
         <div class="row bs-wizard">
-          <div class="col-lg-6 col-md-6 bs-wizard-step complete">
+          <div class="col-lg-4 col-sm-4 bs-wizard-step complete">
             <div class="text-center bs-wizard-stepnum">
-              <p>Order completed.</p>
+              <p>Ready to order.</p>
             </div>
             <div class="progress"><div class="progress-bar"></div></div>
             <span class="bs-wizard-dot"></span>
           </div>
-          <div class="col-lg-6 col-md-6 bs-wizard-step complete">
+          <div class="col-lg-4 col-sm-4 bs-wizard-step complete">
+            <div class="text-center bs-wizard-stepnum">
+              <p>Table booked.</p>
+            </div>
+            <% if current_order.code != nil %>
+              <div class="progress"><div class="progress-bar"></div></div>
+              <span class="bs-wizard-dot"></span>
+            <% else %>
+              <div class="progress"><div class="progress-bar2"></div></div>
+              <span class="bs-wizard-dot"></span>
+            <% end %>
+          </div>
+          <div class="col-lg-4 col-sm-4 bs-wizard-step complete">
             <div class="text-center bs-wizard-stepnum">
               <p>Awesomecity approved.</p>
             </div>
@@ -32,6 +51,8 @@
               <div class="progress"><div class="progress-bar"></div></div>
               <span class="bs-wizard-dot"></span>
             <% else %>
+              <div class="progress"><div class="progress-bar2"></div></div>
+              <span class="bs-wizard-dot"></span>
             <% end %>
           </div>
         </div>
@@ -74,7 +95,7 @@
     <% end%>
     <br>
     <div class="text-center">
-      <p class="description">Order itmes</p>
+      <p class="description">Order items</p>
     </div>
     <div class="wrapper wrapper2 main-content col-sm-12">
       <div class="shopping-cart">
@@ -118,7 +139,7 @@
   .text-center {
     text-align: center;
   }
-  .tracking-order-process .bs-wizard>.bs-wizard-step:first-child>.progress {
+  .progress {
     left: 50%;
     width: 100%;
     height: 5px;
@@ -144,6 +165,21 @@
     color: #fff;
     text-align: center;
     background-color: #337ab7;
+    -webkit-box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
+    box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
+    -webkit-transition: width .6s ease;
+    -o-transition: width .6s ease;
+    transition: width .6s ease;
+  }
+  .progress-bar2 {
+    float: left;
+    width: 0;
+    height: 100%;
+    font-size: 12px;
+    line-height: 20px;
+    color: #fff;
+    text-align: center;
+    background-color: red;
     -webkit-box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
     box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
     -webkit-transition: width .6s ease;
